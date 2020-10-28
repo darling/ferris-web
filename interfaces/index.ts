@@ -4,7 +4,19 @@
 //
 // import User from 'path/to/interfaces';
 
-export type User = {
-  id: number
-  name: string
+export type UserGuilds = {
+  [id: string]: Guild;
+};
+
+export type Guild = {
+  icon: string;
+  name: string;
+};
+
+export interface User {
+  uid: string;
+  displayName: string;
+  lastLoginAt: string;
+  createdAt: string;
+  photoURL: string;
 }
