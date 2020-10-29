@@ -53,7 +53,7 @@ export const FailedAuth = () => {
                 an Error!
               </h2>
               <p className="text-base text-green-300 md:text-lg">
-                Seems like you're not logged in, please login using discord!
+                Seems like you're not logged in, please login using Discord!
               </p>
             </div>
             <div>

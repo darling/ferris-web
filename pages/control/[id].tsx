@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { FailedAuth } from "../../components/auth/FailedAuth";
 import Layout from "../../components/Layout";
 import { useAuth } from "../../contexts/auth";
 import { Guild } from "../../interfaces";
@@ -38,6 +39,11 @@ const ControlPanel = ({ item, errors }: Props) => {
       </Layout>
     );
   }
+
+  if (!user) {
+    return <FailedAuth />;
+  }
+
   if (!guild) {
     return (
       <Layout title={"Ferris Bot"}>
