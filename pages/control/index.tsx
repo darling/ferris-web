@@ -4,15 +4,21 @@ import Layout from "../../components/Layout";
 import { useAuth } from "../../contexts/auth";
 import { UserGuilds } from "../../interfaces";
 import app from "../../utils/auth/firebase";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { gruvboxDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { FailedAuth } from "../../components/auth/FailedAuth";
 
+function guildIconExtension(hash: string): string {
+  return hash.startsWith("a_") ? "gif" : "png";
+}
 const ControlIndex = () => {
   const [guilds, setGuilds] = useState<UserGuilds>({});
   const user = useAuth();
 
   useEffect(() => {
-    const ref = app.database().ref(`users/141075183271280641/guilds`);
+    if (!user) {
+      console.warn("user not logged in");
+      return;
+    }
+    const ref = app.database().ref(`users/${user.uid}/guilds`);
 
     ref.once("value", (snapshot) => {
       console.log("fetching user guilds");
@@ -24,10 +30,16 @@ const ControlIndex = () => {
     };
   }, [user]);
 
+  if (!user) {
+    return <FailedAuth />;
+  }
+
   return (
     <Layout title="Control Panel | Next.js + TypeScript Example">
       <div className="p-5">
-        <h1 className="font-bold text-4xl">Welcome back!</h1>
+        <h1 className="font-bold text-4xl">
+          Welcome back, {user.displayName}!
+        </h1>
         <h3>Please choose which server you'd like to view.</h3>
       </div>
       <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 p-5 rounded-lg">
@@ -37,7 +49,9 @@ const ControlIndex = () => {
               <img
                 src={
                   guild[1].icon
-                    ? `https://cdn.discordapp.com/icons/${guild[0]}/${guild[1].icon}.png`
+                    ? `https://cdn.discordapp.com/icons/${guild[0]}/${
+                        guild[1].icon
+                      }.${guildIconExtension(guild[1].icon)}`
                     : `/img/placeholder-crystal.png`
                 }
                 className="rounded-full h-24 w-24"
@@ -47,15 +61,11 @@ const ControlIndex = () => {
           </Link>
         ))}
       </div>
-      {/* <SyntaxHighlighter style={gruvboxDark} language="json">
-        {JSON.stringify(guilds, null, 2)}
-      </SyntaxHighlighter>
-      <SyntaxHighlighter style={gruvboxDark} language="json">
-        {JSON.stringify(user, null, 2)}
-      </SyntaxHighlighter> */}
       <p>
         <Link href="/">
-          <a>Go home</a>
+          <a className="bg-green-300 text-green-900 rounded py-1 px-2">
+            Go back
+          </a>
         </Link>
       </p>
     </Layout>

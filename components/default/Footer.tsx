@@ -2,11 +2,13 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="pt-8 bg-gray-900 text-green-300">
-      <div className="flex container mx-auto">
-        <div className="my-2 mr-2 px-8 pb-16 w-1/3">
+    <footer className="pt-8 bg-gray-900 text-green-300 border-t-2 border-gray-800">
+      <div className="flex flex-col lg:flex-row container mx-auto">
+        <div className="my-2 mr-2 px-8 lg:pb-16 w-1/3">
           <p className="text-3xl font-bold">Ferris</p>
-          <p className="mt-2 text-lg">Leave protecting your community to us.</p>
+          <p className="mt-2 text-lg hidden lg:contents">
+            Leave protecting your community to us.
+          </p>
         </div>
         <FooterColumn name="RESOURCES">
           <FooterLink to="/about">About</FooterLink>
@@ -22,12 +24,14 @@ const Footer = () => {
           <FooterLink to="/terms">Terms of Service</FooterLink>
           <FooterLink to="/privacy">Privacy Policy</FooterLink>
         </FooterColumn>
-        <div className="m-2 p-1 flex-1">
-          <img
-            src={"/img/crystal-outline-dark.svg"}
-            draggable={false}
-            alt="Ferris Crystal"
-          />
+        <div className="hidden lg:contents">
+          <div className="m-2 p-1 flex-1">
+            <img
+              src={"/img/crystal-outline-dark.svg"}
+              draggable={false}
+              alt="Ferris Crystal"
+            />
+          </div>
         </div>
       </div>
     </footer>

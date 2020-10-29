@@ -5,6 +5,9 @@ module.exports = {
   },
   purge: [],
   theme: {
+    fontFamily: {
+      sans: ["Roboto", "system-ui"],
+    },
     extend: {},
   },
   variants: {},
