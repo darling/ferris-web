@@ -6,7 +6,7 @@ import { admin } from "../../utils/auth/firebase-admin";
 const DISCORD_API_ENDPOINT = "https://discord.com/api";
 const DISCORD_CLIENT_ID = "637804742935838751";
 const DISCORD_CLIENT_SECRET = "guhpkDIXMEoFKQup_6jrKHdz0q8hUwXa";
-const DISCORD_REDIRECT_URI = "http://localhost:3000/login";
+const DISCORD_REDIRECT_URI = "https://ferrisbot.app/login";
 
 interface UserGuild {
   id: string;
