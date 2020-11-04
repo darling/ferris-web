@@ -9,7 +9,12 @@ const IndexPage = () => {
   const user = useAuth();
 
   return (
-    <Layout title={(user ? user.displayName + " " : "Home") + "| Ferris Bot"}>
+    <Layout
+      title={
+        (user ? user.displayName : "Ferris Bot") +
+        " — A Discord bot for protecting your community."
+      }
+    >
       <HomeHero />
       <div className="hidden lg:contents">
         <div className="flex justify-center mt-32">
