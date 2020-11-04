@@ -24,6 +24,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     res.redirect(
       `${DISCORD_API_ENDPOINT}/oauth2/authorize?response_type=code&client_id=${DISCORD_CLIENT_ID}&redirect_uri=${DISCORD_REDIRECT_URI}&scope=identify%20guilds`
     );
+    return;
   }
 
   const data = {
