@@ -9,12 +9,7 @@ const IndexPage = () => {
   const user = useAuth();
 
   return (
-    <Layout
-      title={
-        (user ? user.displayName + " " : "Home") +
-        "| Next.js + TypeScript Example"
-      }
-    >
+    <Layout title={(user ? user.displayName + " " : "Home") + "| Ferris Bot"}>
       <HomeHero />
       <div className="hidden lg:contents">
         <div className="flex justify-center mt-32">

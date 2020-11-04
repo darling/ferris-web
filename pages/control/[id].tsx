@@ -32,7 +32,7 @@ const ControlPanel = ({ item, errors }: Props) => {
 
   if (errors) {
     return (
-      <Layout title="Error | Next.js + TypeScript Example">
+      <Layout title="Error | Ferris Bot">
         <p>
           <span style={{ color: "red" }}>Error:</span> {errors}
         </p>
@@ -65,11 +65,7 @@ const ControlPanel = ({ item, errors }: Props) => {
   }
 
   return (
-    <Layout
-      title={`${
-        item ? item.name : "User Detail"
-      } | Next.js + TypeScript Example`}
-    >
+    <Layout title={`${item ? item.name : "User Detail"} | Ferris Bot`}>
       <p className="animate-pulse">Placeholder Text</p>
       <p>Guild: {id}</p>
       <pre>

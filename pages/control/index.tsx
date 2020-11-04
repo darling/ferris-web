@@ -35,7 +35,7 @@ const ControlIndex = () => {
   }
 
   return (
-    <Layout title="Control Panel | Next.js + TypeScript Example">
+    <Layout title="Control Panel | Ferris Bot">
       <div className="p-5">
         <h1 className="font-bold text-4xl">
           Welcome back, {user.displayName}!
