@@ -5,7 +5,8 @@ import app from "../utils/auth/firebase";
 export const UserContext = createContext<User | null>(null);
 
 const UserContextProvider = (props: any) => {
-  const [user, setUser] = useState<User | null>(null);
+  // TODO: Fix any
+  const [user, setUser] = useState<any>(null);
 
   useEffect(() => {
     console.log("listeninig for auth state changes");
