@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import ControlPanel from "../../../components/ControlPanel";
+import JSONstringify from "../../../components/dev/JSONstringify";
 import { GuildContext } from "../../../contexts/guild";
 
 const ControlWarns = () => {
@@ -8,9 +9,7 @@ const ControlWarns = () => {
   return (
     <ControlPanel>
       <p>Warning Page</p>
-      <pre>
-        <code>{JSON.stringify(guild, null, 4)}</code>
-      </pre>
+      <JSONstringify data={guild} />
     </ControlPanel>
   );
 };

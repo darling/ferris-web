@@ -14,7 +14,7 @@ const SidebarEntry = ({ name, path }: Props) => {
   className +=
     router.asPath + "/" === path
       ? " bg-green-400 text-green-100 shadow-2xl hover:bg-green-300"
-      : " bg-gray-900 hover:bg-blue-900 hover:text-green-200";
+      : " bg-gray-700 shadow-md hover:shadow-xl active:shadow-none hover:bg-green-300 hover:text-green-800";
 
   return (
     <Link href={"/control/" + router.query.id + (path || "")} replace>

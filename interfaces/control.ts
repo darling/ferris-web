@@ -1,9 +1,12 @@
 export interface GuildInfo {
-  hasFerris: boolean;
+  hasFerris?: boolean;
   id?: string;
   member_count: number;
+  name?: string;
+  icon?: string;
   config?: GuildConfig;
   warns?: GuildWarns;
+  blocked?: boolean;
 }
 
 export interface GuildConfig {

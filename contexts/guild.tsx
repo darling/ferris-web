@@ -15,16 +15,28 @@ const GuildProvider = (props: any) => {
       return;
     }
 
-    console.log("Opening connection");
+    console.log("Opening connection for guild", query.id);
     const ref = app.database().ref(`guilds/${query.id}`);
-    ref.on("value", (snapshot) => {
-      console.log("Got update from database");
-      setGuild({
-        ...snapshot.val(),
-        id: query.id,
-        hasFerris: snapshot.exists(),
-      });
-    });
+    ref.on(
+      "value",
+      (snapshot) => {
+        console.log("Database response");
+        if (!snapshot.exists()) console.log("Guild does not exist");
+        setGuild({
+          ...snapshot.val(),
+          id: query.id,
+          hasFerris: snapshot.exists(),
+        });
+      },
+      () => {
+        console.log("permission denied");
+        setGuild({
+          blocked: true,
+          member_count: 0,
+          hasFerris: false,
+        });
+      }
+    );
 
     return function close() {
       console.log("closing connection");

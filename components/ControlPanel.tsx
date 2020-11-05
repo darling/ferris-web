@@ -15,20 +15,34 @@ const ControlPanel = (props: any) => {
   }
 
   if (user && !guild) {
-    return <Layout>Loading</Layout>;
+    return (
+      <Layout>
+        <p className="animate-pulse">Loading</p>
+      </Layout>
+    );
+  }
+
+  if (guild?.blocked) {
+    return (
+      <Layout>
+        <p className="animate-pulse">Access Denied</p>
+      </Layout>
+    );
   }
 
   return (
     <Layout>
-      <div className="flex flex-col md:flex-row">
+      <div className="flex flex-col items-start md:flex-row">
         <Sidebar
           entries={[
             { name: "Home" },
             { name: "Config", path: "/config" },
             { name: "Warns", path: "/warns" },
           ]}
+          guildName={guild?.name}
+          guildIcon={guild?.icon}
         />
-        <div>{props.children}</div>
+        <div className="mt-2 mx-2 md:w-4/5">{props.children}</div>
       </div>
     </Layout>
   );

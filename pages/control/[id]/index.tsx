@@ -1,27 +1,42 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
 import { useContext } from "react";
 import ControlPanel from "../../../components/ControlPanel";
+import JSONstringify from "../../../components/dev/JSONstringify";
 import { GuildContext } from "../../../contexts/guild";
+
+const ControlBox = (props: any) => {
+  return (
+    <div className={`bg-gray-800 p-3 rounded-md mr-3 ${props.className}`}>
+      <h5 className="text-sm tracking-wider">{props.title}</h5>
+      <h4 className="text-3xl font-bold">{props.value}</h4>
+    </div>
+  );
+};
 
 const ControlHome = () => {
   const guild = useContext(GuildContext);
-  const router = useRouter();
-  const { id } = router.query;
-
   return (
     <ControlPanel>
-      <p>Home Page</p>
-      <Link
-        href={`/control/${encodeURIComponent(
-          Array.isArray(id) ? id.pop() || "" : id
-        )}/warns`}
-      >
-        Goto other page
-      </Link>
-      <pre>
-        <code>{JSON.stringify(guild, null, 4)}</code>
-      </pre>
+      <h1 className="font-bold tracking-wide align-middle text-4xl text-green-200">
+        {"Control Home"}
+      </h1>
+      <div className="flex flex-row w-full">
+        <ControlBox
+          className="w-1/3"
+          title="Member Count"
+          value={guild?.member_count}
+        />
+        <ControlBox
+          className="w-1/3"
+          title="Member Count"
+          value={guild?.member_count}
+        />
+        <ControlBox
+          className="w-1/3"
+          title="Member Count"
+          value={guild?.member_count}
+        />
+      </div>
+      <JSONstringify data={guild} />
     </ControlPanel>
   );
 };
