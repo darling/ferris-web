@@ -8,7 +8,7 @@ import Layout from "./Layout";
 const ControlPanel = (props: any) => {
   const guild = useContext(GuildContext);
   const user = useAuth();
-  const router = useRouter();
+  // const router = useRouter();
 
   if (!user) {
     alert("No auth");

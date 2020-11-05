@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import SidebarEntry from "./SidebarEntry";
 
 interface Props {
@@ -6,7 +5,7 @@ interface Props {
   className?: string;
 }
 
-const Sidebar = ({ entries, className }: Props) => {
+const Sidebar = ({ entries }: Props) => {
   return (
     <div className={"flex flex-col md:w-1/5"}>
       {entries.map((entry) => {
