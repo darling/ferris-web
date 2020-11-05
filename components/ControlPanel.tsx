@@ -10,7 +10,7 @@ const ControlPanel = (props: any) => {
   // const router = useRouter();
 
   if (!user) {
-    alert("No auth");
+    console.error("NO AUTH");
     return <Layout>Not authenticated</Layout>;
   }
 
