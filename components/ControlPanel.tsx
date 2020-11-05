@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { useContext } from "react";
 import { useAuth } from "../contexts/auth";
 import { GuildContext } from "../contexts/guild";
