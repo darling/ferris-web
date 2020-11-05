@@ -1,4 +1,6 @@
 export interface GuildInfo {
+  hasFerris: boolean;
+  id?: string;
   member_count: number;
   config?: GuildConfig;
   warns?: GuildWarns;

@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 interface Props {
   name: string;
-  path: string;
+  path?: string;
 }
 
 const SidebarEntry = ({ name, path }: Props) => {
@@ -17,7 +17,7 @@ const SidebarEntry = ({ name, path }: Props) => {
       : " bg-gray-900 hover:bg-blue-900 hover:text-green-200";
 
   return (
-    <Link href={path}>
+    <Link href={"/control/" + router.query.id + (path || "")} replace>
       <a className={className}>{name}</a>
     </Link>
   );
