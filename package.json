@@ -8,13 +8,21 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "@mdx-js/loader": "^1.6.19",
+    "@next/mdx": "^10.0.1",
+    "@types/lodash": "^4.14.165",
     "@types/react-syntax-highlighter": "^13.5.0",
     "axios": "^0.21.0",
     "firebase": "^8.0.0",
     "firebase-admin": "^9.3.0",
+    "fs": "^0.0.1-security",
+    "gray-matter": "^4.0.2",
+    "lodash": "^4.17.20",
     "next": "latest",
+    "next-mdx-remote": "^1.0.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-markdown": "^5.0.2",
     "react-syntax-highlighter": "^15.2.1"
   },
   "devDependencies": {
