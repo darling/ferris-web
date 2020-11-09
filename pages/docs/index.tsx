@@ -1,5 +1,4 @@
 import { readFileSync } from 'fs';
-import Layout from './../../components/Layout';
 import matter from 'gray-matter';
 import { GetStaticProps } from 'next';
 // @ts-ignore
