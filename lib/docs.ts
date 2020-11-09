@@ -1,7 +1,4 @@
 import { readdirSync, statSync } from 'fs';
-import { join } from 'path';
-
-const docsDirectory = join(process.cwd(), 'docs');
 
 export function getFiles(dir: any, files_?: any) {
 	files_ = files_ || [];
