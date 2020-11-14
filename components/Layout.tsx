@@ -18,13 +18,14 @@ const Layout = ({
 	<div className={colorOverride || 'bg-gray-900 text-green-100'}>
 		<Head>
 			<title>{title}</title>
-			<CustomHead title={title} />
+
 			<meta charSet="utf-8" />
 			<meta
 				name="viewport"
 				content="initial-scale=1.0, width=device-width"
 			/>
 		</Head>
+		<CustomHead title={title} />
 		<Header />
 		<div className="container mx-auto min-h-screen">{children}</div>
 		<Footer />
