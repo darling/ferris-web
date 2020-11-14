@@ -1,5 +1,14 @@
+import Link from 'next/link';
+
 function a(props: any) {
-	return <a>{props.children}</a>;
+	console.log(props);
+	return (
+		<Link href={props.href}>
+			<a className="text-teal-300 hover:text-green-200 underline tracking-wide rounded-lg">
+				{props.children}
+			</a>
+		</Link>
+	);
 }
 function blockquote(props: any) {
 	return <blockquote>{props.children}</blockquote>;
@@ -44,7 +53,7 @@ function h1(props: any) {
 }
 function h2(props: any) {
 	return (
-		<h2 className="text-3xl font-semibold tracking-wide">
+		<h2 className="text-3xl text-green-200 font-semibold tracking-wide">
 			{props.children}
 		</h2>
 	);
@@ -74,13 +83,17 @@ function inlineCode(props: any) {
 	);
 }
 function p(props: any) {
-	return <p className="">{props.children}</p>;
+	return (
+		<p className="mb-4 text-lg tracking-wide text-green-100">
+			{props.children}
+		</p>
+	);
 }
 function img(props: any) {
 	console.log(props);
 	return (
 		<img
-			className="w-1/2 h-auto rounded-xl"
+			className="w-1/2 h-auto rounded-xl shadow-xl border border-gray-100"
 			src={props.src}
 			alt={props.alt}
 		/>

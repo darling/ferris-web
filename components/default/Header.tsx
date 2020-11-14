@@ -39,12 +39,11 @@ const Header = () => {
 									Home
 								</a>
 							</Link>
-							<a
-								className="mr-3 px-3 py-2 rounded mb-2 border border-gray-800"
-								href="https://docs.ferrisbot.app/"
-							>
-								Documentation
-							</a>
+							<Link href="/docs">
+								<a className="mr-3 px-3 py-2 rounded mb-2 border border-gray-800">
+									Documentation
+								</a>
+							</Link>
 							<Link href="/pricing">
 								<a className="mr-3 px-3 py-2 rounded mb-2 border border-gray-800">
 									Plans
@@ -66,16 +65,20 @@ const Header = () => {
 						</Link>
 						<nav className="flex-none">
 							<Link href="/">
+								<a className="mr-3 px-3 py-2 rounded shadow-md hover:bg-green-500 bg-green-700 transition-all duration-150">
+									Add Ferris
+								</a>
+							</Link>
+							<Link href="/">
 								<a className="mr-3 px-3 py-2 rounded hover:bg-gray-800">
 									Home
 								</a>
 							</Link>
-							<a
-								className="mr-3 px-3 py-2 rounded hover:bg-gray-800"
-								href="https://docs.ferrisbot.app/"
-							>
-								Documentation
-							</a>
+							<Link href="/docs">
+								<a className="mr-3 px-3 py-2 rounded mb-2 hover:bg-gray-800">
+									Documentation
+								</a>
+							</Link>
 							<Link href="/pricing">
 								<a className="mr-3 px-3 py-2 rounded hover:bg-gray-800">
 									Plans

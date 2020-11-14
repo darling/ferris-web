@@ -26,7 +26,7 @@ export const DocumentationPage = ({
 			/>
 			<div className="flex flex-col md:flex-row">
 				<DocumentationSideBar docList={docList} />
-				<div className="md:w-4/5">{content}</div>
+				<div className="md:w-3/5">{content}</div>
 			</div>
 		</Layout>
 	);

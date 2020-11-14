@@ -41,7 +41,7 @@ export default function DocumentationSideBar({ docList }: Props) {
 				.sort((a, b) => (a.order || 100) - (b.order || 100))
 				.map((e) => {
 					console.log('order', e.title);
-					return <SideBarEntry {...e} />;
+					return <SideBarEntry key={e.title} {...e} />;
 				})}
 			{Object.keys(pages).map((categories) => {
 				return (
@@ -52,13 +52,13 @@ export default function DocumentationSideBar({ docList }: Props) {
 						{pages[categories]
 							.sort((a, b) => b.order || 100 - a.order || 100)
 							.map((entry) => (
-								<SideBarEntry {...entry} />
+								<SideBarEntry key={entry.title} {...entry} />
 							))}
 					</>
 				);
 			})}
 			{bottomPages.map((e) => {
-				return <SideBarEntry {...e} />;
+				return <SideBarEntry key={e.title} {...e} />;
 			})}
 		</div>
 	);
