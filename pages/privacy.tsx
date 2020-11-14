@@ -1,4 +1,3 @@
-import { privateDecrypt } from 'crypto';
 import Layout from '../components/Layout';
 
 const Privacy = () => {
