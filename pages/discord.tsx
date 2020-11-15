@@ -1,7 +1,10 @@
+import { useEffect } from 'react';
 import Layout from '../components/Layout';
 
 const Discord = () => {
-	window.location.replace('https://discord.gg/A3ZjXAn');
+	useEffect(() => {
+		window.location.replace('https://discord.gg/A3ZjXAn');
+	});
 	return <Layout></Layout>;
 };
 
