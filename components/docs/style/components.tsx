@@ -4,7 +4,11 @@ function a(props: any) {
 	console.log(props);
 	return (
 		<Link href={props.href}>
-			<a className="text-teal-300 hover:text-green-200 underline tracking-wide rounded-lg">
+			<a
+				className={
+					'text-teal-300 hover:text-green-200 underline tracking-wide rounded-lg'
+				}
+			>
 				{props.children}
 			</a>
 		</Link>
@@ -21,7 +25,7 @@ function code(props: any) {
 	);
 }
 function em(props: any) {
-	return <em>{props.children}</em>;
+	return <em className="italic">{props.children}</em>;
 }
 function h1(props: any) {
 	return (
@@ -93,10 +97,30 @@ function img(props: any) {
 	console.log(props);
 	return (
 		<img
-			className="w-1/2 h-auto rounded-xl shadow-xl border border-gray-100"
-			src={props.src}
+			className="mx-auto md:my-12 md:w-3/4 h-auto rounded-xl shadow-xl border-4 border-gray-100"
+			src={
+				props.src.length
+					? props.src
+					: 'https://ferrisbot.app/img/Ferris-banner-meta.png'
+			}
 			alt={props.alt}
 		/>
+	);
+}
+function li(props: any) {
+	console.log(props);
+	if (!props.id) {
+		return (
+			<li className={'text-lg list-inside list-disc'}>
+				{props.children}
+			</li>
+		);
+	}
+	return (
+		<li key={props.id}>
+			<span className="text-xs">{props.id.replace('fn-', '')}</span>{' '}
+			{props.children}
+		</li>
 	);
 }
 export const components = {
@@ -114,4 +138,5 @@ export const components = {
 	inlineCode,
 	p,
 	img,
+	li,
 };

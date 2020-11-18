@@ -55,6 +55,7 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
 	);
 	const { data, content } = matter(source);
 	const mdxSource = await renderToString(content);
+	console.log('Content', mdxSource);
 	const files: string[] = getFiles(docFilePosition);
 
 	const output = files.map((file) => {

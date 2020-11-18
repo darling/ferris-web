@@ -11,13 +11,14 @@ interface DocProps {
 	slug: string;
 	category: string;
 	order: number;
+	customTitle?: string;
 }
 
 function SideBarEntry(props: Partial<DocProps>) {
 	return (
 		<Link href={'/docs/' + (props.slug || '')}>
-			<a className="mt-2 py-2 px-3 rounded bg-gray-800 mr-1">
-				{props.title || 'No title'}
+			<a className="mt-2 py-2 px-3 rounded bg-gray-800 hover:bg-gray-700 transition-all duration-100 mr-1">
+				{props.customTitle || props.title || 'No title'}
 			</a>
 		</Link>
 	);
@@ -41,7 +42,7 @@ export default function DocumentationSideBar({ docList }: Props) {
 				.sort((a, b) => (a.order || 100) - (b.order || 100))
 				.map((e) => {
 					console.log('order', e.title);
-					return <SideBarEntry key={e.title} {...e} />;
+					return <SideBarEntry key={e.slug} {...e} />;
 				})}
 			{Object.keys(pages).map((categories) => {
 				return (
@@ -52,7 +53,7 @@ export default function DocumentationSideBar({ docList }: Props) {
 						{pages[categories]
 							.sort((a, b) => b.order || 100 - a.order || 100)
 							.map((entry) => (
-								<SideBarEntry key={entry.title} {...entry} />
+								<SideBarEntry key={entry.slug} {...entry} />
 							))}
 					</>
 				);

@@ -26,7 +26,13 @@ export const DocumentationPage = ({
 			/>
 			<div className="flex flex-col md:flex-row">
 				<DocumentationSideBar docList={docList} />
-				<div className="md:w-3/5">{content}</div>
+				<div className="md:w-3/5 flex flex-col">
+					<h1 className="text-5xl font-bold tracking-wider text-green-200">
+						{frontMatter.title}
+					</h1>
+					<hr className="border-gray-800 transition-colors duration-100 mb-3" />
+					<div>{content}</div>
+				</div>
 			</div>
 		</Layout>
 	);
