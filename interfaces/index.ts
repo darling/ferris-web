@@ -5,18 +5,19 @@
 // import User from 'path/to/interfaces';
 
 export type UserGuilds = {
-  [id: string]: Guild;
+	[id: string]: Guild;
 };
 
 export type Guild = {
-  icon: string;
-  name: string;
+	icon: string;
+	name: string;
 };
 
 export interface User {
-  uid: string;
-  displayName: string;
-  lastLoginAt: string;
-  createdAt: string;
-  photoURL: string;
+	uid: string;
+	displayName: string;
+	lastLoginAt: string;
+	createdAt: string;
+	photoURL: string;
+	premium: boolean;
 }
