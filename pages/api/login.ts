@@ -6,7 +6,6 @@ import { admin } from '../../utils/auth/firebase-admin';
 const DISCORD_API_ENDPOINT = 'https://discord.com/api';
 const DISCORD_CLIENT_ID = '637804742935838751';
 const DISCORD_CLIENT_SECRET = 'guhpkDIXMEoFKQup_6jrKHdz0q8hUwXa';
-const DISCORD_REDIRECT_URI = 'https://ferris.gg/login';
 
 interface UserGuild {
 	id: string;
@@ -17,12 +16,12 @@ interface UserGuild {
 }
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-	console.log(req.body);
+	const red_rui = 'http' + (req.headers.host?.startsWith('localhost') ? '' : 's') + '://' + req.headers.host + '/login'
 	const { code } = req.body;
 
 	if (!code) {
 		res.redirect(
-			`${DISCORD_API_ENDPOINT}/oauth2/authorize?response_type=code&client_id=${DISCORD_CLIENT_ID}&redirect_uri=${DISCORD_REDIRECT_URI}&scope=identify%20guilds`
+			`${DISCORD_API_ENDPOINT}/oauth2/authorize?response_type=code&client_id=${DISCORD_CLIENT_ID}&redirect_uri=${red_rui}&scope=identify%20guilds`
 		);
 		return;
 	}
@@ -32,7 +31,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		client_secret: DISCORD_CLIENT_SECRET,
 		grant_type: 'authorization_code',
 		code: code,
-		redirect_uri: DISCORD_REDIRECT_URI,
+		redirect_uri: red_rui,
 		scope: 'identify guilds',
 	};
 

@@ -11,12 +11,13 @@ const Login = () => {
 
 	useEffect(() => {
 		if (router.query.code === undefined || user) return;
-		console.log('logging in', router.query.code);
 		axios
-			.post('https://ferris.gg/api/login', { code: router.query.code })
+			.post('/api/login', {
+				code: router.query.code,
+			})
 			.then((res) => {
-				console.log('Signing in with custom token');
-				app.auth()
+				app
+					.auth()
 					.signInWithCustomToken(res.data)
 					.then((user) => {
 						console.log('new User', user);
@@ -31,7 +32,7 @@ const Login = () => {
 
 	if (user) {
 		router.push('/');
-		return <p>Logged In</p>;
+		return <Layout>Finished Logging in... redirecting now</Layout>;
 	}
 
 	return (
