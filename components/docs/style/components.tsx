@@ -101,7 +101,7 @@ function img(props: any) {
 			src={
 				props.src.length
 					? props.src
-					: 'https://ferrisbot.app/img/Ferris-banner-meta.png'
+					: 'https://Ferris.gg/img/Ferris-banner-meta.png'
 			}
 			alt={props.alt}
 		/>

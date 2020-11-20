@@ -5,15 +5,14 @@ const Privacy = () => {
 		<Layout>
 			<div className="md:w-2/4 mx-auto my-16 text-gray-100">
 				<h1 className="text-2xl font-bold mb-5">
-					Privacy Policy for ferrisbot.app
+					Privacy Policy for Ferris.gg
 				</h1>
 
 				<p className="mb-3">
-					At ferrisbot.app, accessible from https://ferrisbot.app/,
-					one of our main priorities is the privacy of our visitors.
-					This Privacy Policy document contains types of information
-					that is collected and recorded by ferrisbot.app and how we
-					use it.
+					At Ferris.gg, accessible from https://Ferris.gg/, one of our
+					main priorities is the privacy of our visitors. This Privacy
+					Policy document contains types of information that is
+					collected and recorded by Ferris.gg and how we use it.
 				</p>
 
 				<p className="mb-3">
@@ -24,10 +23,9 @@ const Privacy = () => {
 				<p className="mb-3">
 					This Privacy Policy applies only to our online activities
 					and is valid for visitors to our website with regards to the
-					information that they shared and/or collect in
-					ferrisbot.app. This policy is not applicable to any
-					information collected offline or via channels other than
-					this website.
+					information that they shared and/or collect in Ferris.gg.
+					This policy is not applicable to any information collected
+					offline or via channels other than this website.
 				</p>
 
 				<h2 className="text-lg mb-3">Consent</h2>
@@ -84,24 +82,23 @@ const Privacy = () => {
 				<h2 className="text-lg mb-3">Log Files</h2>
 
 				<p className="mb-3">
-					ferrisbot.app follows a standard procedure of using log
-					files. These files log visitors when they visit websites.
-					All hosting companies do this and a part of hosting
-					services' analytics. The information collected by log files
-					include internet protocol (IP) addresses, browser type,
-					Internet Service Provider (ISP), date and time stamp,
-					referring/exit pages, and possibly the number of clicks.
-					These are not linked to any information that is personally
-					identifiable. The purpose of the information is for
-					analyzing trends, administering the site, tracking users'
-					movement on the website, and gathering demographic
-					information.
+					Ferris.gg follows a standard procedure of using log files.
+					These files log visitors when they visit websites. All
+					hosting companies do this and a part of hosting services'
+					analytics. The information collected by log files include
+					internet protocol (IP) addresses, browser type, Internet
+					Service Provider (ISP), date and time stamp, referring/exit
+					pages, and possibly the number of clicks. These are not
+					linked to any information that is personally identifiable.
+					The purpose of the information is for analyzing trends,
+					administering the site, tracking users' movement on the
+					website, and gathering demographic information.
 				</p>
 
 				<h2 className="text-lg mb-3">Cookies and Web Beacons</h2>
 
 				<p className="mb-3">
-					Like any other website, ferrisbot.app uses 'cookies'. These
+					Like any other website, Ferris.gg uses 'cookies'. These
 					cookies are used to store information including visitors'
 					preferences, and the pages on the website that the visitor
 					accessed or visited. The information is used to optimize the
@@ -123,29 +120,29 @@ const Privacy = () => {
 
 				<p className="mb-3">
 					You may consult this list to find the Privacy Policy for
-					each of the advertising partners of ferrisbot.app.
+					each of the advertising partners of Ferris.gg.
 				</p>
 
 				<p className="mb-3">
 					Third-party ad servers or ad networks uses technologies like
 					cookies, JavaScript, or Web Beacons that are used in their
 					respective advertisements and links that appear on
-					ferrisbot.app, which are sent directly to users' browser.
-					They automatically receive your IP address when this occurs.
+					Ferris.gg, which are sent directly to users' browser. They
+					automatically receive your IP address when this occurs.
 					These technologies are used to measure the effectiveness of
 					their advertising campaigns and/or to personalize the
 					advertising content that you see on websites that you visit.
 				</p>
 
 				<p className="mb-3">
-					Note that ferrisbot.app has no access to or control over
-					these cookies that are used by third-party advertisers.
+					Note that Ferris.gg has no access to or control over these
+					cookies that are used by third-party advertisers.
 				</p>
 
 				<h2 className="text-lg mb-3">Third Party Privacy Policies</h2>
 
 				<p className="mb-3">
-					ferrisbot.app's Privacy Policy does not apply to other
+					Ferris.gg's Privacy Policy does not apply to other
 					advertisers or websites. Thus, we are advising you to
 					consult the respective Privacy Policies of these third-party
 					ad servers for more detailed information. It may include
@@ -241,7 +238,7 @@ const Privacy = () => {
 				</p>
 
 				<p className="mb-3">
-					ferrisbot.app does not knowingly collect any Personal
+					Ferris.gg does not knowingly collect any Personal
 					Identifiable Information from children under the age of 13.
 					If you think that your child provided this kind of
 					information on our website, we strongly encourage you to
