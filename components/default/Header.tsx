@@ -64,11 +64,13 @@ const Header = () => {
 							<img height="30" width="100" src="/img/logo.svg" />
 						</Link>
 						<nav className="flex-none">
-							<Link href="/">
-								<a className="mr-3 px-3 py-2 rounded shadow-md hover:bg-green-500 bg-green-700 transition-all duration-150">
-									Add Ferris
-								</a>
-							</Link>
+							<a
+								target="_blank"
+								href="https://discord.com/api/oauth2/authorize?client_id=637804742935838751&permissions=2134207679&scope=bot"
+								className="mr-3 px-3 py-2 rounded shadow-md hover:bg-green-500 bg-green-700 transition-all duration-150"
+							>
+								Add Ferris
+							</a>
 							<Link href="/">
 								<a className="mr-3 px-3 py-2 rounded hover:bg-gray-800">
 									Home
