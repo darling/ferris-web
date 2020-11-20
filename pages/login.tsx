@@ -13,7 +13,7 @@ const Login = () => {
 		if (router.query.code === undefined || user) return;
 		console.log('logging in', router.query.code);
 		axios
-			.post('https://Ferris.gg/api/login', { code: router.query.code })
+			.post('https://ferris.gg/api/login', { code: router.query.code })
 			.then((res) => {
 				console.log('Signing in with custom token');
 				app.auth()

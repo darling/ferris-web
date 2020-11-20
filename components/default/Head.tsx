@@ -9,7 +9,7 @@ interface Props {
 export const CustomHead = ({
 	title,
 	desc,
-	image = 'https://Ferris.gg/img/Ferris-banner-meta.png',
+	image = 'https://ferris.gg/img/Ferris-banner-meta.png',
 }: Props) => {
 	return (
 		<Head>
@@ -21,7 +21,7 @@ export const CustomHead = ({
 				}
 			/>
 
-			<meta property="og:url" content="https://www.Ferris.gg" />
+			<meta property="og:url" content="https://www.ferris.gg" />
 			<meta property="og:type" content="website" />
 			<meta
 				property="og:title"
@@ -40,8 +40,8 @@ export const CustomHead = ({
 			<meta property="og:image" content={image} />
 
 			<meta name="twitter:card" content="summary_large_image" />
-			<meta property="twitter:domain" content="Ferris.gg" />
-			<meta property="twitter:url" content="https://www.Ferris.gg" />
+			<meta property="twitter:domain" content="ferris.gg" />
+			<meta property="twitter:url" content="https://www.ferris.gg" />
 			<meta
 				name="twitter:title"
 				content={
