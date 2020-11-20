@@ -17,7 +17,8 @@ const ControlWarns = () => {
 						<br />
 						{Object.entries(reasons).map((reason) => {
 							const [timestamp, meta] = reason;
-							return <p>{JSON.stringify(meta)}</p>;
+							console.log(meta);
+							return <p>{JSON.stringify(timestamp)}</p>;
 						})}
 					</div>
 				);
