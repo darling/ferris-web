@@ -34,6 +34,12 @@ const Header = () => {
 						}`}
 					>
 						<nav className="flex flex-col mb-2">
+							<a
+								href="https://discord.com/api/oauth2/authorize?client_id=637804742935838751&permissions=2134207679&scope=bot"
+								className="mr-3 px-3 py-2 rounded mb-2 border border-green-800"
+							>
+								Add Ferris
+							</a>
 							<Link href="/">
 								<a className="mr-3 px-3 py-2 rounded mb-2 border border-gray-800">
 									Home
