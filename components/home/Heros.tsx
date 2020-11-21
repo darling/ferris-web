@@ -101,10 +101,10 @@ export const HomeEndHero = () => {
 							have questions?
 						</h2>
 						<p className="text-base text-green-100 md:text-lg">
-							Try Ferris for free! If you don't like it, don't use
-							it! Ferris is under development, so please make sure
-							to check out the Support Server to input
-							constructive critisizm or suggest new features.
+							Try Ferris for free! Ferris is still under
+							development, so please make sure to check out the
+							Ferris Support Server to input constructive
+							criticism or suggest new features.
 						</p>
 					</div>
 					<div>

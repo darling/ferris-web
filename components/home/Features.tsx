@@ -5,13 +5,14 @@ export const HomeFeatures = () => {
 		<div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
 			<div className="flex flex-col lg:flex-row">
 				<div className="max-w-xl pr-16 mx-auto mb-10">
-					<h5 className="mb-6 text-3xl font-extrabold leading-none text-green-300">
+					<h5 className="mb-6 text-3xl font-bold leading-none text-green-300">
 						Use a bot that works.
 					</h5>
 					<p className="mb-6">
-						Build a server with the best utilites availible. From a
-						real-time web panel to rich and improved commands that
-						will protect your community.
+						Build a server with the best utilities available. From a
+						real-time web panel to rich and improved commands,
+						Ferris has all the features that it needs to protect
+						your community.
 					</p>
 					<div className="flex items-center">
 						<Link href="/discord">
@@ -49,9 +50,9 @@ export const HomeFeatures = () => {
 							Security from the start
 						</h6>
 						<p className="text-sm text-green-100">
-							Ferris has been developed with security in mind,
-							using Ferris is easy, intuitive, and powerful. The
-							bot gives your mods a list of tools that work great.
+							Ferris was developed with security in mind. Ferris
+							won't collect, use, or distribute any data beyond
+							what will serve your needs.
 						</p>
 					</div>
 					<div className="max-w-md">
@@ -68,10 +69,10 @@ export const HomeFeatures = () => {
 							</svg>
 						</div>
 						<h6 className="mb-2 font-semibold leading-5">
-							Real time data
+							Real-time data
 						</h6>
 						<p className="text-sm text-green-100">
-							Discord offers real-time chat, it's time that bots
+							Discord offers real-time chat. It's time that bots
 							keep up. Ferris uses a database configured to send
 							data in less than a micro-second.
 						</p>
@@ -96,8 +97,8 @@ export const HomeFeatures = () => {
 						</h6>
 						<p className="text-sm text-green-100">
 							Use Ferris to run social events, control giveaways,
-							help announce messages. Giving utilities to you
-							through chat allows you to work on building a better
+							and help announce messages. Ferris offers a number
+							of utilities for you to work on building a better
 							community.
 						</p>
 					</div>
@@ -117,12 +118,12 @@ export const HomeFeatures = () => {
 							</svg>
 						</div>
 						<h6 className="mb-2 font-semibold leading-5">
-							Responsive Developers
+							Responsive developers
 						</h6>
 						<p className="text-sm text-green-100">
-							Join the Support Discord to contact the developers
-							of Ferris. Get the features you want, made for you,
-							in your server.
+							Join the Ferris Support Discord Server to contact
+							the developers of Ferris. Get the features you want,
+							made for you, for your server.
 						</p>
 					</div>
 				</div>
