@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { useAuth } from '../../contexts/auth';
-import Image from 'next/image';
 
 const HeaderProfile = () => {
 	const user = useAuth();
