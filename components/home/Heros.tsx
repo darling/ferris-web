@@ -7,7 +7,8 @@ export const HomeHero = () => {
 			<div className="z-0 flex justify-center h-full overflow-hidden lg:pt-24 lg:pb-16 lg:pr-8 xl:pr-0 lg:w-1/2 lg:absolute lg:justify-end lg:bottom-0 lg:left-0 lg:items-center">
 				<Image
 					src="/img/front-banner.png"
-					unsized
+					width={710}
+					height={540}
 					className="object-right hidden md:flex lg:w-auto lg:h-full"
 					alt="front example vector"
 				/>

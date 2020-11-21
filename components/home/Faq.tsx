@@ -46,16 +46,14 @@ export const HomeFaq = () => {
 							</p>
 							<p className="text-green-200">
 								As a mod of a few servers with hundreds of
-								thousands of members each, I can say that using
-								bots is a drag. I created Ferris in order to
-								have a backbone that any guild could build off
-								of. I wanted real tools that felt natural to
-								use.
+								thousands of members each, I can confidently say
+								that using bots is a drag. I wanted real tools
+								that felt natural to use, as well as functional
+								within the "Discord" flow.
 								<br />
 								<br />
-								Many people create bots for others to use;
-								Ferris is that, but also a bot for me to use
-								within the communities I manage.
+								Ferris was my solution; it serves as a reliable
+								backbone that any guild can build off of.
 							</p>
 						</div>
 						<div>
@@ -63,11 +61,11 @@ export const HomeFaq = () => {
 								What can Ferris actually do?
 							</p>
 							<p className="text-green-200">
-								Well, since Ferris is a moderation bot, it can
-								do moderation and community management things.
+								Ferris is a moderation bot! It can moderate and
+								manage your community.
 								<br />
 								<br />
-								If you really want to know more, check out the
+								If you want to know the details, check out the
 								documentation site! There's a list of every
 								Discord command we have on there, plus more on
 								how to use the web panel to your advantage.
@@ -78,11 +76,11 @@ export const HomeFaq = () => {
 								What does Ferris cost? Is there a pricing model?
 							</p>
 							<p className="text-green-200">
-								Currently, we do accept donations, but running
-								Ferris is completely free. If I were to create
-								premium features, they would be completely
-								optional and would only cost enough to handle
-								covering the costs of Ferris.
+								Currently, we do accept donations, but using
+								Ferris is completely free! Any future premium
+								features would be completely optional and only
+								cost enough to cover the costs for running
+								Ferris.
 							</p>
 						</div>
 					</div>
@@ -92,10 +90,11 @@ export const HomeFaq = () => {
 								What does a real-time web panel mean?
 							</p>
 							<p className="text-green-200">
-								We provide a website app that gives you
-								real-time information on your guild, when you
-								change the settings in Discord, the settings on
-								the panel will change.
+								We provide a website app that gives you real-
+								time information on your guild; this means that
+								when you change any settings in Discord, the
+								settings in the panel will change to reflect
+								those made in Discord.
 								<br />
 								<br />
 								This panel is powerful and will provide a great
@@ -107,11 +106,11 @@ export const HomeFaq = () => {
 								What about my privacy?
 							</p>
 							<p className="text-green-200">
-								Fortunately, privacy is important to me, as it
-								is for you. Ferris doesn't collect, distribute,
-								or use data outside of what we need to give you
-								a good service. Obviously, most Discord bots
-								don't collect data, but we take it a step
+								Fortunately for you, privacy is just as
+								important to me as it is for you. Ferris doesn't
+								collect, distribute, or use data outside of what
+								we need to give you a good service. Most Discord
+								bots don't collect data, but we take it a step
 								further to make sure your details are secured
 								and secret.
 							</p>
@@ -122,8 +121,11 @@ export const HomeFaq = () => {
 							</p>
 							<p className="text-green-200">
 								At the moment, I don't know! If you want a say
-								in the Future of Ferris, please join the Support
-								server and reach out to us!
+								in the future of Ferris, please join the Support
+								server and reach out to us! At the moment, I
+								don't know! If you want a say in the Future of
+								Ferris, please join the Support server and reach
+								out to us!
 							</p>
 						</div>
 					</div>
