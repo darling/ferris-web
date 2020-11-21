@@ -21,10 +21,10 @@ export const HomeHero = () => {
 							</span>
 							.
 						</h2>
-						<p className="text-base text-green-100 md:text-lg">
+						<h1 className="text-base text-green-100 md:text-lg">
 							Ferris is a discord bot created to secure and manage
 							Discord servers of all sizes.
-						</p>
+						</h1>
 					</div>
 					<form>
 						<div className="flex items-center mt-4">

@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /control/
+Sitemap: https://ferris.gg/sitemap.xml

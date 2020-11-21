@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://ferris.gg/</loc>
+  <lastmod>2020-11-21T04:19:08+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://ferris.gg/docs</loc>
+  <lastmod>2020-11-21T04:19:08+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ferris.gg/pricing</loc>
+  <lastmod>2020-11-21T04:19:08+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ferris.gg/about</loc>
+  <lastmod>2020-11-21T04:19:08+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ferris.gg/discord</loc>
+  <lastmod>2020-11-21T04:19:08+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ferris.gg/terms</loc>
+  <lastmod>2020-11-21T04:19:08+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ferris.gg/privacy</loc>
+  <lastmod>2020-11-21T04:19:08+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ferris.gg/docs/commands</loc>
+  <lastmod>2020-11-21T04:19:08+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ferris.gg/docs/getting-started</loc>
+  <lastmod>2020-11-21T04:19:08+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ferris.gg/docs/logging/introduction</loc>
+  <lastmod>2020-11-21T04:19:08+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ferris.gg/docs/punishments/introduction</loc>
+  <lastmod>2020-11-21T04:19:08+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>
