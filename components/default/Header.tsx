@@ -55,11 +55,12 @@ const Header = () => {
 									Plans
 								</a>
 							</Link>
-							<Link href="/more">
-								<a className="mr-3 px-3 py-2 rounded mb-2 border border-gray-800">
-									More
-								</a>
-							</Link>
+							<a
+								href="https://discord.gg/A3ZjXAn"
+								className="mr-3 px-3 py-2 rounded mb-2 border border-gray-800"
+							>
+								Discord Server
+							</a>
 						</nav>
 						<HeaderProfile />
 					</div>
@@ -92,12 +93,12 @@ const Header = () => {
 									Plans
 								</a>
 							</Link>
-							{/* TODO: Make more a dropdown */}
-							<Link href="/more">
-								<a className="mr-3 px-3 py-2 rounded hover:bg-gray-800">
-									More
-								</a>
-							</Link>
+							<a
+								href="https://discord.gg/A3ZjXAn"
+								className="mr-3 px-3 py-2 rounded hover:bg-gray-800"
+							>
+								Discord Server
+							</a>
 						</nav>
 						<HeaderProfile />
 					</div>
