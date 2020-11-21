@@ -8,7 +8,7 @@ const Header = () => {
 	return (
 		<header className="relative bg-gray-900 border-b-2 border-gray-800">
 			<div className="container mx-auto px-4 md:px-6 py-2 text-green-100">
-				<div className="md:hidden">
+				<div className="lg:hidden">
 					<div className="flex flex-row h-20 justify-between transition-all duration-300">
 						<Link href="/">
 							<img height="30" width="100" src="/img/logo.svg" />
@@ -65,7 +65,7 @@ const Header = () => {
 						<HeaderProfile />
 					</div>
 				</div>
-				<div className="hidden md:contents">
+				<div className="hidden lg:contents">
 					<div className="flex flex-row justify-between items-center">
 						<Link href="/">
 							<img height="30" width="100" src="/img/logo.svg" />
