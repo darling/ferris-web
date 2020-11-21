@@ -10,7 +10,7 @@ const Header = () => {
 		<header className="relative bg-gray-900 border-b-2 border-gray-800">
 			<div className="container mx-auto px-4 md:px-6 py-2 text-green-100">
 				<div className="lg:hidden">
-					<div className="flex flex-row h-20 justify-between transition-all duration-300">
+					<div className="flex flex-row items-center h-20 justify-between transition-all duration-300">
 						<Link href="/">
 							<Image
 								height="30"
