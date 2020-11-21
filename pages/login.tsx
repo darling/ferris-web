@@ -16,8 +16,7 @@ const Login = () => {
 				code: router.query.code,
 			})
 			.then((res) => {
-				app
-					.auth()
+				app.auth()
 					.signInWithCustomToken(res.data)
 					.then((user) => {
 						console.log('new User', user);
@@ -31,7 +30,7 @@ const Login = () => {
 	}, [router.query.code, user]);
 
 	if (user) {
-		router.push('/');
+		router.push('/control');
 		return <Layout>Finished Logging in... redirecting now</Layout>;
 	}
 
