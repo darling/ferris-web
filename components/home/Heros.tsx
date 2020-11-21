@@ -25,7 +25,7 @@ export const HomeHero = () => {
 							.
 						</h2>
 						<h1 className="text-base text-green-100 md:text-lg">
-							Ferris is a discord bot created to secure and manage
+							Ferris is a Discord bot created to secure and manage
 							Discord servers of all sizes.
 						</h1>
 					</div>
@@ -101,7 +101,7 @@ export const HomeEndHero = () => {
 							have questions?
 						</h2>
 						<p className="text-base text-green-100 md:text-lg">
-							Try Ferris for free, if you don't like it, don't use
+							Try Ferris for free! If you don't like it, don't use
 							it! Ferris is under development, so please make sure
 							to check out the Support Server to input
 							constructive critisizm or suggest new features.
