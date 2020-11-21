@@ -22,6 +22,14 @@ const ControlPanel = (props: any) => {
 		);
 	}
 
+	if (!guild?.hasFerris) {
+		return (
+			<Layout>
+				This server doesn't have Ferris yet! Please add Ferris.
+			</Layout>
+		);
+	}
+
 	if (guild?.blocked) {
 		return (
 			<Layout>
