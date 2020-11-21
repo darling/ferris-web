@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Footer = () => {
 	return (
@@ -25,9 +26,10 @@ const Footer = () => {
 				</FooterColumn>
 				<div className="hidden lg:contents">
 					<div className="m-2 p-1 flex-1">
-						<img
+						<Image
 							src={'/img/crystal-outline-dark.svg'}
 							draggable={false}
+							unsized
 							alt="Ferris Crystal"
 						/>
 					</div>

@@ -98,12 +98,8 @@ function img(props: any) {
 	return (
 		<img
 			className="mx-auto md:my-12 md:w-3/4 h-auto rounded-xl shadow-xl border-4 border-gray-100"
-			src={
-				props.src.length
-					? props.src
-					: 'https://ferris.gg/img/Ferris-banner-meta.png'
-			}
-			alt={props.alt}
+			src={props.src.length ? props.src : '/img/Ferris-banner-meta.png'}
+			alt={props.alt || 'No alt given'}
 		/>
 	);
 }

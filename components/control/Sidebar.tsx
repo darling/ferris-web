@@ -18,7 +18,9 @@ const Sidebar = ({ entries, guildIcon, guildName }: Props) => {
 					guildIcon
 						? `https://cdn.discordapp.com/icons/${
 								router.query.id
-						  }/${guildIcon}.${guildIcon.startsWith('_a') ? 'gif' : 'png'}`
+						  }/${guildIcon}.${
+								guildIcon.startsWith('_a') ? 'gif' : 'png'
+						  }`
 						: '/img/placeholder-crystal.png'
 				}
 				className="ml-4 w-12 h-12 rounded-md"
