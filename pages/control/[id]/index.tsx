@@ -27,8 +27,8 @@ const ControlHome = () => {
 				/>
 				<ControlBox
 					className="w-1/3"
-					title="Member Count"
-					value={guild?.member_count}
+					title="Warning Count"
+					value={Object.keys(guild?.warns || {}).length}
 				/>
 				<ControlBox
 					className="w-1/3"
