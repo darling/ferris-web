@@ -1,15 +1,18 @@
+const colors = require('tailwindcss/colors');
+
 module.exports = {
-  future: {
-    // removeDeprecatedGapUtilities: true,
-    // purgeLayersByDefault: true,
-  },
-  purge: [],
-  theme: {
-    fontFamily: {
-      sans: ["Roboto", "system-ui"],
-    },
-    extend: {},
-  },
-  variants: {},
-  plugins: [],
+	purge: {
+		content: ['./components/**/*.*', './pages/**/*.*'],
+	},
+	darkMode: false,
+	theme: {
+		colors: {
+			gray: colors.warmGray,
+			green: colors.green,
+			blue: colors.blue,
+			white: colors.white,
+		},
+	},
+	variants: {},
+	plugins: [],
 };

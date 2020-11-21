@@ -74,7 +74,7 @@ const Header = () => {
 							<a
 								target="_blank"
 								href="https://discord.com/api/oauth2/authorize?client_id=637804742935838751&permissions=2134207679&scope=bot"
-								className="mr-3 px-3 py-2 rounded shadow-md hover:bg-green-500 bg-green-700 transition-all duration-150"
+								className="mr-3 px-3 py-2 rounded shadow-md hover:bg-white hover:text-gray-900 bg-green-400 transition-all duration-150"
 							>
 								Add Ferris
 							</a>
