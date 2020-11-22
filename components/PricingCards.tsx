@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 const PricingPerk = ({ children }: any) => {
 	return (
 		<li className="flex items-center">
@@ -90,12 +92,15 @@ export const PricingCards = () => {
 								<PricingPerk>Support</PricingPerk>
 								<PricingPerk>Our Love</PricingPerk>
 							</ul>
-							<button
-								type="submit"
-								className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-gray-100 transition duration-200 rounded shadow-md bg-green-400 hover:bg-white hover:text-gray-900 focus:shadow-outline focus:outline-none"
-							>
-								Get Started
-							</button>
+							<Link href="/control">
+								<button
+									name="Add Ferris"
+									type="submit"
+									className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-gray-100 transition duration-200 rounded shadow-md bg-green-400 hover:bg-white hover:text-gray-900 focus:shadow-outline focus:outline-none"
+								>
+									Get Started
+								</button>
+							</Link>
 						</div>
 						<div className="w-11/12 h-2 mx-auto bg-gray-100 rounded-b opacity-75" />
 						<div className="w-10/12 h-2 mx-auto bg-gray-100 rounded-b opacity-50" />
@@ -125,9 +130,9 @@ export const PricingCards = () => {
 							</ul>
 							<button
 								type="submit"
-								className="inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-white transition duration-200 rounded shadow-md bg-green-400 hover:bg-white hover:text-green-900 hover:shadow-lg hover:transform focus:shadow-outline focus:outline-none"
+								className="inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-gray-900 transition duration-200 rounded shadow-md bg-white hover:bg-white hover:text-green-900 hover:shadow-lg hover:transform focus:shadow-outline focus:outline-none"
 							>
-								Upgrade
+								Not available.
 							</button>
 						</div>
 						<div className="w-11/12 h-2 mx-auto bg-green-100 rounded-b opacity-75" />
