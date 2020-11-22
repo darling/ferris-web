@@ -29,7 +29,8 @@ const Footer = () => {
 						<Image
 							src={'/img/crystal-outline-dark.svg'}
 							draggable={false}
-							unsized
+							width={230}
+							height={260}
 							alt="Ferris Crystal"
 						/>
 					</div>
