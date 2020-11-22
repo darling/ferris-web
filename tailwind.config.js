@@ -7,7 +7,7 @@ module.exports = {
 	darkMode: false,
 	theme: {
 		colors: {
-			gray: colors.warmGray,
+			gray: colors.trueGray,
 			green: colors.green,
 			blue: colors.blue,
 			white: colors.white,

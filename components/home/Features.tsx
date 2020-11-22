@@ -1,13 +1,14 @@
 import Link from 'next/link';
+import { GetStartedButton } from './ui/GetStartedButton';
 
 export const HomeFeatures = () => {
 	return (
 		<div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
 			<div className="flex flex-col lg:flex-row">
 				<div className="max-w-xl pr-16 mx-auto mb-10">
-					<h5 className="mb-6 text-3xl font-bold leading-none text-green-300">
+					<h2 className="mb-6 text-3xl font-bold leading-none text-green-300">
 						Use a bot that works.
-					</h5>
+					</h2>
 					<p className="mb-6">
 						Build a server with the best utilities available. From a
 						real-time web panel to rich and improved commands,
@@ -15,16 +16,9 @@ export const HomeFeatures = () => {
 						your community.
 					</p>
 					<div className="flex items-center">
-						<Link href="/discord">
-							<button
-								type="submit"
-								className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-green-400 hover:bg-green-700 focus:shadow-outline focus:outline-none"
-							>
-								Get started
-							</button>
-						</Link>
+						<GetStartedButton />
 						<Link href="/docs">
-							<a className="inline-flex items-center font-semibold transition-colors duration-200 text-green-400 hover:text-green-800">
+							<a className="ml-6 inline-flex items-center font-semibold transition-colors duration-200 text-green-400 hover:text-green-800">
 								Learn more
 							</a>
 						</Link>
@@ -46,9 +40,9 @@ export const HomeFeatures = () => {
 								/>
 							</svg>
 						</div>
-						<h6 className="mb-2 font-semibold leading-5">
+						<h3 className="mb-2 font-semibold leading-5">
 							Security from the start
-						</h6>
+						</h3>
 						<p className="text-sm text-green-100">
 							Ferris was developed with security in mind. Ferris
 							won't collect, use, or distribute any data beyond
@@ -68,9 +62,9 @@ export const HomeFeatures = () => {
 								<path d="M17 5c0 1.657-3.134 3-7 3S3 6.657 3 5s3.134-3 7-3 7 1.343 7 3z" />
 							</svg>
 						</div>
-						<h6 className="mb-2 font-semibold leading-5">
+						<h3 className="mb-2 font-semibold leading-5">
 							Real-time data
-						</h6>
+						</h3>
 						<p className="text-sm text-green-100">
 							Discord offers real-time chat. It's time that bots
 							keep up. Ferris uses a database configured to send
@@ -92,9 +86,9 @@ export const HomeFeatures = () => {
 								/>
 							</svg>
 						</div>
-						<h6 className="mb-2 font-semibold leading-5">
+						<h3 className="mb-2 font-semibold leading-5">
 							Build a platform
-						</h6>
+						</h3>
 						<p className="text-sm text-green-100">
 							Use Ferris to run social events, control giveaways,
 							and help announce messages. Ferris offers a number
@@ -117,9 +111,9 @@ export const HomeFeatures = () => {
 								/>
 							</svg>
 						</div>
-						<h6 className="mb-2 font-semibold leading-5">
+						<h3 className="mb-2 font-semibold leading-5">
 							Responsive developers
-						</h6>
+						</h3>
 						<p className="text-sm text-green-100">
 							Join the Ferris Support Discord Server to contact
 							the developers of Ferris. Get the features you want,

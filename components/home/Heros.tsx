@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { GetStartedButton } from './ui/GetStartedButton';
 
 export const HomeHero = () => {
 	return (
@@ -16,31 +17,24 @@ export const HomeHero = () => {
 			<div className="relative flex justify-end max-w-xl mx-auto lg:max-w-screen-xl">
 				<div className="lg:pr-5 lg:max-w-lg lg:mb-0">
 					<div className="max-w-xl mb-6">
-						<h2 className="max-w-lg mb-6 font-sans text-3xl font-bold text-gray-100 sm:text-4xl sm:leading-none">
+						<h1 className="max-w-lg mb-6 font-sans text-3xl font-bold text-green-100 sm:text-4xl sm:leading-none">
 							Let Ferris protect your{' '}
 							<br className="hidden md:block" />{' '}
 							<span className="inline-block text-green-400">
 								community
 							</span>
 							.
-						</h2>
-						<h1 className="text-base text-green-100 md:text-lg">
+						</h1>
+						<h2 className="text-base text-green-100 md:text-lg">
 							Ferris is a Discord bot created to secure and manage
 							Discord servers of all sizes.
-						</h1>
+						</h2>
 					</div>
 					<form>
 						<div className="flex items-center mt-4">
-							<Link href="/api/login">
-								<button
-									type="submit"
-									className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-green-400 hover:bg-green-700 focus:shadow-outline focus:outline-none"
-								>
-									Get started
-								</button>
-							</Link>
+							<GetStartedButton />
 							<Link href="/docs">
-								<a className="inline-flex items-center font-semibold transition-colors duration-200 text-green-400 hover:text-green-800">
+								<a className="ml-6 inline-flex items-center font-semibold transition-colors duration-200 text-green-400 hover:text-green-800">
 									Learn more
 								</a>
 							</Link>
@@ -58,7 +52,7 @@ export const HomeEndHero = () => {
 			<div className="max-w-xl sm:mx-auto lg:max-w-2xl">
 				<div className="flex flex-col mb-16 sm:text-center sm:mb-0">
 					<Link href="/">
-						<a className="mb-6 sm:mx-auto">
+						<div className="mb-6 sm:mx-auto">
 							<div className="flex items-center justify-center w-12 h-12 rounded-full bg-gray-800">
 								<svg
 									className="w-10 h-10 text-green-100"
@@ -69,7 +63,7 @@ export const HomeEndHero = () => {
 									<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
 								</svg>
 							</div>
-						</a>
+						</div>
 					</Link>
 					<div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
 						<h2 className="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-green-100 sm:text-4xl md:mx-auto">
@@ -108,11 +102,7 @@ export const HomeEndHero = () => {
 						</p>
 					</div>
 					<div>
-						<Link href="/api/login">
-							<a className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md hover:shadow-xl bg-green-400 hover:bg-green-700 focus:shadow-xl focus:outline-none">
-								Get started
-							</a>
-						</Link>
+						<GetStartedButton />
 					</div>
 				</div>
 			</div>

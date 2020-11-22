@@ -31,6 +31,7 @@ const HeaderProfile = () => {
 							width="30"
 							height="30"
 							src={user.photoURL}
+							alt="user profile"
 						/>
 						<p className="mr-2">{user.displayName}</p>
 					</div>
@@ -42,7 +43,7 @@ const HeaderProfile = () => {
 	return (
 		<div>
 			<a
-				className="bg-green-500 hover:text-black hover:bg-green-100 hover:shadow-2xl transition duration-100 rounded-lg px-3 py-2"
+				className="hover:bg-green-100 hover:text-gray-900 bg-green-200 text-green-800 hover:shadow-2xl transition duration-100 rounded-lg px-3 py-2"
 				href="/api/login"
 			>
 				Sign in

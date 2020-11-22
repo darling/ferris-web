@@ -23,6 +23,7 @@ const Sidebar = ({ entries, guildIcon, guildName }: Props) => {
 						  }`
 						: '/img/placeholder-crystal.png'
 				}
+				alt="Guild"
 				className="ml-4 w-12 h-12 rounded-md"
 			/>
 			<h1 className="pl-2 mt-2 mx-2 text-xl font-bold leading-relaxed">

@@ -50,11 +50,16 @@ const ControlIndex = () => {
 							<img
 								src={
 									guild[1].icon
-										? `https://cdn.discordapp.com/icons/${guild[0]}/${
+										? `https://cdn.discordapp.com/icons/${
+												guild[0]
+										  }/${
 												guild[1].icon
-										  }.${guildIconExtension(guild[1].icon)}`
+										  }.${guildIconExtension(
+												guild[1].icon
+										  )}`
 										: `/img/placeholder-crystal.png`
 								}
+								alt="guild"
 								className="rounded-full h-24 w-24"
 							/>
 							<p className="mt-3">{guild[1].name}</p>

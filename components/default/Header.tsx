@@ -12,11 +12,14 @@ const Header = () => {
 				<div className="lg:hidden">
 					<div className="flex flex-row items-center h-20 justify-between transition-all duration-300">
 						<Link href="/">
-							<Image
-								height="30"
-								width="100"
-								src="/img/logo.svg"
-							/>
+							<>
+								<Image
+									height="30"
+									width="100"
+									src="/img/logo.svg"
+									alt="Logo"
+								/>
+							</>
 						</Link>
 						<button onClick={() => setOpen(!open)}>
 							<svg
@@ -73,17 +76,20 @@ const Header = () => {
 				<div className="hidden lg:contents">
 					<div className="flex flex-row justify-between items-center">
 						<Link href="/">
-							<Image
-								height="30"
-								width="100"
-								src="/img/logo.svg"
-							/>
+							<>
+								<Image
+									height="30"
+									width="100"
+									src="/img/logo.svg"
+									alt="Logo"
+								/>
+							</>
 						</Link>
 						<nav className="flex-none">
 							<a
 								target="_blank"
 								href="https://discord.com/api/oauth2/authorize?client_id=637804742935838751&permissions=2134207679&scope=bot"
-								className="mr-3 px-3 py-2 rounded shadow-md hover:bg-white hover:text-gray-900 bg-green-400 transition-all duration-150"
+								className="mr-3 px-3 py-2 rounded shadow-md hover:bg-green-100 hover:text-gray-900 bg-green-200 text-green-800 transition-all duration-150"
 							>
 								Add Ferris
 							</a>
