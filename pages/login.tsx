@@ -36,7 +36,7 @@ const Login = () => {
 
 	return (
 		<Layout>
-			<p>Logging in</p>
+			<p className="animate-pulse">Logging in</p>
 		</Layout>
 	);
 };

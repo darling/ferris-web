@@ -14,6 +14,7 @@ const Header = () => {
 							<img
 								height="30"
 								width="100"
+								className="cursor-pointer"
 								src="/img/logo.svg"
 								alt="Logo"
 							/>
@@ -78,6 +79,7 @@ const Header = () => {
 								width="100"
 								src="/img/logo.svg"
 								alt="Logo"
+								className="cursor-pointer"
 							/>
 						</Link>
 						<nav className="flex-none">

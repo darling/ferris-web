@@ -46,7 +46,7 @@ const ControlIndex = () => {
 			<div className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 p-5 rounded-lg">
 				{Object.entries(guilds).map((guild) => (
 					<Link key={guild[0]} href={`control/${guild[0]}`}>
-						<div className="hover:bg-gray-700 hover:text-green-200 hover:shadow-lg transition-all duration-100 h-40 p-4 rounded-xl flex flex-col items-center content-center">
+						<div className="hover:bg-gray-700 hover:text-green-200 hover:shadow-lg cursor-pointer transition-all duration-100 h-40 p-4 rounded-xl flex flex-col items-center content-center">
 							<img
 								src={
 									guild[1].icon
