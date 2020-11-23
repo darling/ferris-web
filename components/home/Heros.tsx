@@ -1,12 +1,11 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { GetStartedButton } from './ui/GetStartedButton';
 
 export const HomeHero = () => {
 	return (
 		<div className="relative flex flex-col-reverse px-4 p-8 md:p-16 mx-auto lg:block lg:flex-col lg:py-32 xl:py-48 md:px-8 sm:max-w-xl md:max-w-full">
 			<div className="z-0 flex justify-center h-full overflow-hidden lg:pt-24 lg:pb-16 lg:pr-8 xl:pr-0 lg:w-1/2 lg:absolute lg:justify-end lg:bottom-0 lg:left-0 lg:items-center">
-				<Image
+				<img
 					src="/img/front-banner.png"
 					width={710}
 					height={540}
