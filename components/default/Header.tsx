@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { useState } from 'react';
-import Image from 'next/image';
 import HeaderProfile from './HeaderProfile';
 
 const Header = () => {
@@ -12,14 +11,12 @@ const Header = () => {
 				<div className="lg:hidden">
 					<div className="flex flex-row items-center h-20 justify-between transition-all duration-300">
 						<Link href="/">
-							<>
-								<Image
-									height="30"
-									width="100"
-									src="/img/logo.svg"
-									alt="Logo"
-								/>
-							</>
+							<img
+								height="30"
+								width="100"
+								src="/img/logo.svg"
+								alt="Logo"
+							/>
 						</Link>
 						<button onClick={() => setOpen(!open)}>
 							<svg
@@ -76,14 +73,12 @@ const Header = () => {
 				<div className="hidden lg:contents">
 					<div className="flex flex-row justify-between items-center">
 						<Link href="/">
-							<>
-								<Image
-									height="30"
-									width="100"
-									src="/img/logo.svg"
-									alt="Logo"
-								/>
-							</>
+							<img
+								height="30"
+								width="100"
+								src="/img/logo.svg"
+								alt="Logo"
+							/>
 						</Link>
 						<nav className="flex-none">
 							<a
