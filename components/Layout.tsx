@@ -15,7 +15,11 @@ const Layout = ({
 	title = 'Ferris Bot — A Discord bot for protecting your community.',
 	colorOverride,
 }: Props) => (
-	<div className={colorOverride || 'bg-gray-900 text-green-100'}>
+	<div
+		className={
+			(colorOverride || 'bg-gray-900 text-green-100 ') + 'overflow-hidden'
+		}
+	>
 		<Head>
 			<title>{title}</title>
 
