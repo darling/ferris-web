@@ -5,6 +5,204 @@ slug: commands
 order: 2
 ---
 
-Sorry, this page is under construction!
+Welcome to the command list! This list of commands will be kept updated and maintained along with the bot.
 
-If you want a list of commands for Ferris, check out our unmaintained documentation page [here](https://docs.ferris.gg/).
+IN PROGRESS: A custom search menu and sorting through commands. For the first release of the bot, we have many features done, but want to slowly perfect stuff like muting and management commands. Our goal is to provide high-quality and complete commands. Please join the Support Server if you are excited to see the upcoming features!
+
+## General Commands
+
+---
+
+General utilities any bot should come with. Most users will know that Ferris provides these commands to everyone.
+
+### help
+
+---
+
+`help <command>`
+
+_command_ is optional
+
+Get information on a command, or information on the bot.
+
+### ping
+
+---
+
+`ping`
+
+pong!
+
+### prefix
+
+---
+
+`prefix <new prefix>`
+
+_new prefix_ is optional
+
+Get information on the prefix, or set the prefix using the command.
+
+### help
+
+---
+
+`whois <user>`
+
+_user_ is optional
+
+Get information on a user, or information on yourself.
+
+## Role Management
+
+---
+
+For any of the role management commands, Ferris must be able to manage and control the roles, as well as the user. A user with `Manage Guild` permissions in discord can manage any of the Roles that are under their highest role for example.
+
+### autorole
+
+---
+
+`autorole <role>`
+
+Automagically give a specified role to members that join the server.
+
+### hoistrole
+
+---
+
+`hoistrole <role>`
+
+Hoist the role onto the sidebar.
+
+### createrole
+
+---
+
+`createrole <name> <color>`
+
+_color_ is optional
+
+Create a new role with a custom name and zero permissions, add a color code at the end to give it a color.
+
+### deleterole
+
+---
+
+`deleterole <role>`
+
+Delete the role mentioned, or given by id.
+
+### setrole
+
+---
+
+`setrole <member> <role>`
+
+Give the member a role.
+
+### removerole
+
+---
+
+`removerole <member> <role>`
+
+Remove the role from a member.
+
+## Logging
+
+---
+
+Logging is a big part of Ferris' feature set. Most of what logging can do can be managed through the web panel, however there are some commands kept in the discord to make sure that logging can be controlled in specific use cases.
+
+### setlogchannel
+
+---
+
+`setlogchannel <text channel>`
+
+This command is the most important logging command at the moment. If you delete your webhook, or need to set up logging for the first time. This command will reset your settings and set a new channel.
+
+### stoplogging
+
+---
+
+`stoplogging`
+
+This command will stop logging. This will NOT delete your configuration or any settings, it will only prevent Ferris from sending anything.
+
+### resumelogging
+
+---
+
+`resumelogging`
+
+This command will enable logging if stopped.
+
+## Moderation
+
+---
+
+Moderation is the corner-stone of Ferris' service. Being able to protect and provide is very important. For our first release of Ferris, we are giving a small, but complete set of basic commands to work with.
+
+### warn
+
+---
+
+`warn <member> <reason>`
+
+_reason_ is optional
+
+Add a warning to the user's list of warnings. Warnings will not give any punishments unless configured to.
+
+### listwarns
+
+---
+
+`listwarns <member>`
+
+_member_ is optional
+
+List the warnings of the member, with each warning containing the relavant information.
+
+### delwarn
+
+---
+
+`delwarn <member> <warning>`
+
+_warning_ is a number
+
+Delete a warning from the given member, the warning number comes from the listwarns command.
+
+### ban
+
+---
+
+`ban <member> <reason>`
+
+_reason_ is optional
+
+Bans the given member from the Discord server. Make sure to have the correct permissions for the user of the command and the bot.
+
+Without a reason, the bot will put the information of the person who banned the user.
+
+### kick
+
+---
+
+`kick <member> <reason>`
+
+_reason_ is optional
+
+Kicks the given member from the Discord server. Make sure to have the correct permissions for the user of the command and the bot.
+
+Without a reason, the bot will put the information of the person who kicked the user.
+
+### purge
+
+---
+
+`purge <amount>`
+
+Deletes the amount of messages given in the first argument. There's not really much to this command, it's what you would expect.
