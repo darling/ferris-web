@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import { LoggingSettings } from '../../../components/control/Settings/LoggingSettings';
 import ControlPanel from '../../../components/ControlPanel';
-import JSONstringify from '../../../components/dev/JSONstringify';
 import { GuildContext } from '../../../contexts/guild';
 import app from '../../../utils/auth/firebase';
 
@@ -59,7 +58,6 @@ const ControlConfig = () => {
 				</div>
 			</div>
 			<LoggingSettings />
-			<JSONstringify data={guild} />
 		</ControlPanel>
 	);
 };

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import ControlPanel from '../../../components/ControlPanel';
-import JSONstringify from '../../../components/dev/JSONstringify';
 import { GuildContext } from '../../../contexts/guild';
+import { SmallHero } from './../../../components/SmallHero';
 
 const ControlBox = (props: any) => {
 	return (
@@ -36,7 +36,11 @@ const ControlHome = () => {
 					value={guild?.member_count}
 				/>
 			</div>
-			<JSONstringify data={guild} />
+			<SmallHero
+				title="Thank you for trying out the panel!"
+				description="The only 'working' tab is the config tab, please try it out. Also, please check out our discord server for updates. The panel is so new that we had to put this here to show you that it's not empty."
+				href="/discord"
+			/>
 		</ControlPanel>
 	);
 };

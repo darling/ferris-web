@@ -55,13 +55,19 @@ export const LoggingSettings = () => {
 
 	if (!guild?.config?.log_channel) {
 		return (
-			<div className="border my-2 rounded-3xl">
+			<>
+				<div className="my-5">
+					<h2 className="text-3xl font-bold tracking-wider mb-1">
+						Logging
+					</h2>
+					<hr />
+				</div>
 				<SmallHero
 					title="Please enable logging in your server."
 					description="You need to enable logging initially through the 'setlogchannel' command. After that, you can change the settings here."
-					href="/docs/logging/introduction"
+					href="/docs/commands"
 				/>
-			</div>
+			</>
 		);
 	}
 

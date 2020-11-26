@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import ControlPanel from '../../../components/ControlPanel';
-import JSONstringify from '../../../components/dev/JSONstringify';
 import { GuildContext } from '../../../contexts/guild';
 
 const ControlWarns = () => {
@@ -8,7 +7,13 @@ const ControlWarns = () => {
 
 	return (
 		<ControlPanel>
-			<p>Warning Page</p>
+			<h1 className="font-bold tracking-wide align-middle text-4xl text-green-200">
+				{'Warning Page'}
+			</h1>
+			<p>
+				Warnings is under construction, but you can still try things in
+				real-time. Try the Discord warning commands out!
+			</p>
 			{Object.entries(guild?.warns || {}).map((entry) => {
 				const [uid, reasons] = entry;
 				return (
@@ -16,14 +21,12 @@ const ControlWarns = () => {
 						{uid}
 						<br />
 						{Object.entries(reasons).map((reason) => {
-							const [timestamp, meta] = reason;
-							console.log(meta);
-							return <p>{JSON.stringify(timestamp)}</p>;
+							// const [timestamp, meta] = reason;
+							return <p>{JSON.stringify(reason)}</p>;
 						})}
 					</div>
 				);
 			})}
-			<JSONstringify data={guild} />
 		</ControlPanel>
 	);
 };
