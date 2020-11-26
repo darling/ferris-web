@@ -9,10 +9,14 @@ module.exports = {
 		colors: {
 			gray: colors.trueGray,
 			green: colors.green,
-			blue: colors.blue,
+			red: colors.red,
 			white: colors.white,
 		},
 	},
-	variants: {},
+	variants: {
+		extend: {
+			backgroundColor: ['checked', 'active'],
+		},
+	},
 	plugins: [],
 };
