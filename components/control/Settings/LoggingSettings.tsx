@@ -80,12 +80,12 @@ export const LoggingSettings = () => {
 				/>
 				Logging is currently {button ? 'enabled' : 'disabled'}.{' '}
 			</p>
-			<div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-full">
+			<div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-2/3 md:mx-0 md:w-full">
 				{breakCategories(typesAsArray).map((category) => {
 					return (
 						<div
 							key={category[0]}
-							className="bg-gray-800 p-2 rounded-lg w-screen"
+							className="bg-gray-800 p-2 rounded-lg"
 						>
 							<p className="font-bold text-2xl tracking-wider">
 								{startCase(category[0].toLowerCase())}
