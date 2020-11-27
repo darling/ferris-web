@@ -32,10 +32,14 @@ const ControlHome = () => {
 				/>
 				<ControlBox
 					className="w-1/3"
-					title="Member Count"
-					value={guild?.member_count}
+					title="Roles"
+					value={Object.keys(guild?.roles || {}).length}
 				/>
 			</div>
+			<p>
+				As a small demo, the statistics above update in{' '}
+				<u>real time!</u> Try catching them change :)
+			</p>
 			<SmallHero
 				title="Thank you for trying out the panel!"
 				description="The only 'working' tab is the config tab, please try it out. Also, please check out our discord server for updates. The panel is so new that we had to put this here to show you that it's not empty."
