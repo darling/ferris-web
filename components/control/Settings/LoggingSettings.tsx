@@ -2,7 +2,7 @@ import { groupBy, startCase } from 'lodash';
 import { useContext, useEffect, useState } from 'react';
 import { GuildContext } from '../../../contexts/guild';
 import { LoggingTypes, typesAsArray } from '../../../interfaces/logging';
-import app from '../../../utils/auth/firebase';
+import { db } from '../../../utils/auth/firebase';
 import ToggleSwitch from './../../ui/ToggleSwitch';
 import { SmallHero } from './../../SmallHero';
 
@@ -11,20 +11,20 @@ function logTypeToBit(type: LoggingTypes): number {
 	return bit;
 }
 
-export const LoggingSettings = () => {
+export const LoggingSettings = ({ config }: any) => {
 	const guild = useContext(GuildContext);
+
 	const [button, setButtonState] = useState(
-		guild?.config?.log_channel?.enabled
+		config?.logging?.enabled
 	);
 
 	useEffect(() => {
-		setButtonState(guild?.config?.log_channel?.enabled);
-	}, [guild?.config]);
+		setButtonState(config?.logging?.enabled);
+	}, [config]);
 
 	function toggleEnabled(type: boolean) {
-		app.database()
-			.ref(`guilds/${guild!.id}/config/log_channel`)
-			.update({ enabled: type })
+		db.collection('configs').doc(guild?.id)
+			.set({ logging: { enabled: type }}, { merge: true })
 			.catch((e) => {
 				console.error(e);
 			});
@@ -33,7 +33,7 @@ export const LoggingSettings = () => {
 	function toggleLogConfigProperty(type: LoggingTypes): void {
 		const typeValue = logTypeToBit(type);
 
-		const newSubs = (guild?.config?.log_channel?.subs || 0) ^ typeValue;
+		const newSubs = (config?.logging?.subs || 0) ^ typeValue;
 
 		setNewLogConfig(newSubs);
 	}
@@ -45,15 +45,14 @@ export const LoggingSettings = () => {
 	}
 
 	function setNewLogConfig(subs: number): void {
-		app.database()
-			.ref(`guilds/${guild!.id}/config/log_channel`)
-			.update({ subs: subs })
+		db.collection('configs').doc(guild?.id)
+			.set({ logging: {subs: subs} }, { merge: true })
 			.catch((e) => {
 				console.error(e);
 			});
 	}
 
-	if (!guild?.config?.log_channel) {
+	if (!config?.logging) {
 		return (
 			<>
 				<div className="my-5">
@@ -82,7 +81,7 @@ export const LoggingSettings = () => {
 			<p className="text-lg tracking-wide mb-2 flex flex-row items-center">
 				<ToggleSwitch
 					toggleFunction={toggleEnabled}
-					initialState={guild?.config?.log_channel?.enabled}
+					initialState={config?.logging?.enabled}
 				/>
 				Logging is currently {button ? 'enabled' : 'disabled'}.{' '}
 			</p>
@@ -120,7 +119,7 @@ export const LoggingSettings = () => {
 													);
 												}}
 												initialState={
-													(guild?.config?.log_channel
+													(config?.logging
 														?.subs || 0) &
 													logTypeToBit(logType)
 														? true

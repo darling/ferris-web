@@ -2,16 +2,16 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import Layout from '../../components/Layout';
 import { useAuth } from '../../contexts/auth';
-import { UserGuilds } from '../../interfaces';
-import app from '../../utils/auth/firebase';
+import { db } from '../../utils/auth/firebase';
 import { FailedAuth } from '../../components/auth/FailedAuth';
+import { GuildConfig } from '../../interfaces/control';
 
 function guildIconExtension(hash: string): string {
 	return hash.startsWith('a_') ? 'gif' : 'png';
 }
 
 const ControlIndex = () => {
-	const [guilds, setGuilds] = useState<UserGuilds>({});
+	const [guilds, setGuilds] = useState<GuildConfig | {}>({});
 	const user = useAuth();
 
 	useEffect(() => {
@@ -19,15 +19,17 @@ const ControlIndex = () => {
 			console.warn('user not logged in');
 			return;
 		}
-		const ref = app.database().ref(`users/${user.uid}/guilds`);
 
-		ref.once('value', (snapshot) => {
+		const ref = db.collection('users').doc(user.uid)
+
+		const close = ref.onSnapshot((snapshot) => {
 			console.log('fetching user guilds');
-			setGuilds(snapshot.val());
+			console.log(snapshot.data())
+			setGuilds(snapshot.data()?.guilds as GuildConfig);
 		});
 
 		return () => {
-			ref.off();
+			close();
 		};
 	}, [user]);
 
@@ -44,8 +46,8 @@ const ControlIndex = () => {
 				<h3>Please choose which server you'd like to view.</h3>
 			</div>
 			<div className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 p-5 rounded-lg">
-				{Object.entries(guilds).map((guild) => (
-					<Link key={guild[0]} href={`control/${guild[0]}`}>
+				{Object.entries(guilds).map((guild) => {
+					 return <Link key={guild[0]} href={`control/${guild[0]}`}>
 						<div className="hover:bg-gray-700 hover:text-green-200 hover:shadow-lg cursor-pointer transition-all duration-100 h-40 p-4 rounded-xl flex flex-col items-center content-center">
 							<img
 								src={
@@ -65,7 +67,7 @@ const ControlIndex = () => {
 							<p className="mt-3">{guild[1].name}</p>
 						</div>
 					</Link>
-				))}
+				})}
 			</div>
 			<p>
 				<Link href="/">

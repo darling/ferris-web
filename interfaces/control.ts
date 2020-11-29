@@ -4,8 +4,6 @@ export interface GuildInfo {
 	member_count: number;
 	name?: string;
 	icon?: string;
-	config?: GuildConfig;
-	warns?: GuildWarns;
 	blocked?: boolean;
 	roles?: {
 		[id: string]: Role;

@@ -72,7 +72,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	});
 
 	const uid: string = discordInfo.data['id'];
-	const ref = admin.database().ref(`users/${uid}`);
+	const ref = admin.firestore().collection('users').doc(uid);
 
 	const { discriminator, username, avatar } = discordInfo.data;
 

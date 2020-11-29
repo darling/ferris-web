@@ -9,8 +9,6 @@ interface Props {
 const SidebarEntry = ({ name, path }: Props) => {
 	const router = useRouter();
 
-	console.log(router, path);
-
 	let className =
 		'rounded p-2 mt-2 mx-2 transition-all duration-100 active:-translate-y-1';
 	className += router.pathname.endsWith(path || ']')

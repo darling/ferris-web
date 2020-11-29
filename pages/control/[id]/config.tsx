@@ -1,20 +1,34 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { LoggingSettings } from '../../../components/control/Settings/LoggingSettings';
 import ControlPanel from '../../../components/ControlPanel';
+import JSONstringify from '../../../components/dev/JSONstringify';
 import { GuildContext } from '../../../contexts/guild';
-import app from '../../../utils/auth/firebase';
+import { db } from '../../../utils/auth/firebase';
 
 const ControlConfig = () => {
 	const guild = useContext(GuildContext);
+	const [config, setConfig] = useState<any | null>(null);
 	// const [newPrefix, setNewPrefix] = useState<string>('');
+
+	useEffect(() => {
+		if (!guild?.id) return;
+		console.log('FETCHING CONFIG', guild?.id)
+		const close = db.collection('configs').doc(guild.id).onSnapshot((snapshot) => {
+			console.log('NEW DATA', snapshot.data())
+			setConfig({...snapshot.data()} || null)
+		}, (e) => {
+			console.error(e)
+		})
+
+		return close;
+	}, [guild?.id])
 
 	function changePrefix(event: any) {
 		event.preventDefault();
 
 		if (event.target[0].value.length) {
-			app.database()
-				.ref(`guilds/${guild?.id}/config`)
-				.update({ prefix: event.target[0].value });
+			db.collection('configs').doc(guild?.id)
+				.set({ prefix: event.target[0].value }, { merge: true });
 		}
 	}
 
@@ -34,7 +48,7 @@ const ControlConfig = () => {
 					<p>
 						The prefix is currently{' '}
 						<code className="bg-gray-800 rounded-md px-1">
-							{guild?.config?.prefix || ';'}
+							{config?.prefix || ';'}
 						</code>
 						.
 					</p>
@@ -57,7 +71,8 @@ const ControlConfig = () => {
 					</form>
 				</div>
 			</div>
-			<LoggingSettings />
+			<LoggingSettings config={config} />
+			<JSONstringify data={config}/>
 		</ControlPanel>
 	);
 };
