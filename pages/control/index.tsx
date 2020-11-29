@@ -43,7 +43,7 @@ const ControlIndex = () => {
 				<h1 className="font-bold text-4xl">
 					Welcome back, {user.displayName}!
 				</h1>
-				<h3>Please choose which server you'd like to view.</h3>
+				<h3>Hello! If you don't see any servers and think that's a mistake, please re-login! Thanks!</h3>
 			</div>
 			<div className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 p-5 rounded-lg">
 				{Object.entries(guilds).map((guild) => {
