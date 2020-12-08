@@ -72,7 +72,6 @@ const ControlConfig = () => {
 				</div>
 			</div>
 			<LoggingSettings config={config} />
-			<JSONstringify data={config}/>
 		</ControlPanel>
 	);
 };

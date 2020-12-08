@@ -1,3 +1,5 @@
+import { LoggingTypes } from "./logging";
+
 export interface GuildInfo {
 	hasFerris?: boolean;
 	id?: string;
@@ -27,10 +29,10 @@ export interface Channel {
 
 export interface GuildConfig {
 	auto_role?: string;
-	log_channel?: {
+	logging?: {
 		channel: string;
 		enabled: boolean;
-		subs: number;
+		subs: LoggingTypes[];
 		webhook_id: string;
 	};
 	prefix: string;

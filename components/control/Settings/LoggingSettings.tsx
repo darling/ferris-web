@@ -5,13 +5,9 @@ import { LoggingTypes, typesAsArray } from '../../../interfaces/logging';
 import { db } from '../../../utils/auth/firebase';
 import ToggleSwitch from './../../ui/ToggleSwitch';
 import { SmallHero } from './../../SmallHero';
+import { GuildConfig } from '../../../interfaces/control';
 
-function logTypeToBit(type: LoggingTypes): number {
-	const bit = 1 << typesAsArray.indexOf(type);
-	return bit;
-}
-
-export const LoggingSettings = ({ config }: any) => {
+export const LoggingSettings = ({ config }: { config: GuildConfig }) => {
 	const guild = useContext(GuildContext);
 
 	const [button, setButtonState] = useState(
@@ -31,11 +27,15 @@ export const LoggingSettings = ({ config }: any) => {
 	}
 
 	function toggleLogConfigProperty(type: LoggingTypes): void {
-		const typeValue = logTypeToBit(type);
+		const types: LoggingTypes[] = config?.logging?.subs || [];
 
-		const newSubs = (config?.logging?.subs || 0) ^ typeValue;
+		if(types.includes(type)) {
+			types.splice(types.indexOf(type), 1)
+		} else {
+			types.push(type);
+		}
 
-		setNewLogConfig(newSubs);
+		setNewLogConfig(types);
 	}
 
 	function breakCategories(logEvents: LoggingTypes[]) {
@@ -44,7 +44,7 @@ export const LoggingSettings = ({ config }: any) => {
 		);
 	}
 
-	function setNewLogConfig(subs: number): void {
+	function setNewLogConfig(subs: LoggingTypes[]): void {
 		db.collection('configs').doc(guild?.id)
 			.set({ logging: {subs: subs} }, { merge: true })
 			.catch((e) => {
@@ -119,11 +119,7 @@ export const LoggingSettings = ({ config }: any) => {
 													);
 												}}
 												initialState={
-													(config?.logging
-														?.subs || 0) &
-													logTypeToBit(logType)
-														? true
-														: false
+													config?.logging?.subs?.includes(logType)
 												}
 											/>
 										</div>
