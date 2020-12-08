@@ -20,8 +20,6 @@ const app = firebase;
 
 var db = app.firestore();
 
-db.useEmulator("localhost", 8080);
-
 export { db };
 
 export default app;
