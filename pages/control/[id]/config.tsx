@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { LoggingSettings } from '../../../components/control/Settings/LoggingSettings';
 import ControlPanel from '../../../components/ControlPanel';
-import JSONstringify from '../../../components/dev/JSONstringify';
 import { GuildContext } from '../../../contexts/guild';
 import { db } from '../../../utils/auth/firebase';
 
