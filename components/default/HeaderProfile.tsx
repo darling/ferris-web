@@ -31,6 +31,7 @@ const HeaderProfile = () => {
 							width="30"
 							height="30"
 							src={user.photoURL}
+							onError={(e: any) => { e.target.src = '/img/placeholder-crystal.png'}}
 							alt="user profile"
 						/>
 						<p className="mr-2">{user.displayName}</p>
