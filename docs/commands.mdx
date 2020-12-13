@@ -57,7 +57,7 @@ Get information on a user, or information on yourself.
 
 ---
 
-For any of the role management commands, Ferris must be able to manage and control the roles, as well as the user. A user with `Manage Guild` permissions in discord can manage any of the Roles that are under their highest role for example.
+For any of the role management commands, Ferris must be able to manage and control the roles, as well as the user. A user with `Manage Guild` permissions in Discord can manage any of the Roles that are under their highest role, for example.
 
 ### autorole
 
@@ -83,7 +83,7 @@ Hoist the role onto the sidebar.
 
 _color_ is optional
 
-Create a new role with a custom name and zero permissions, add a color code at the end to give it a color.
+Create a new role with a custom name and zero permissions. You can add a color code at the end to assign a color to it.
 
 ### deleterole
 
@@ -113,7 +113,7 @@ Remove the role from a member.
 
 ---
 
-Logging is a big part of Ferris' feature set. Most of what logging can do can be managed through the web panel, however there are some commands kept in the discord to make sure that logging can be controlled in specific use cases.
+Logging is a big part of Ferris's feature set. Most of what logging can do can be managed through the web panel, but there are some commands kept in the Discord to make sure that logging can be controlled in specific use cases.
 
 ### setlogchannel
 
@@ -121,7 +121,7 @@ Logging is a big part of Ferris' feature set. Most of what logging can do can be
 
 `setlogchannel <text channel>`
 
-This command is the most important logging command at the moment. If you delete your webhook, or need to set up logging for the first time. This command will reset your settings and set a new channel.
+This command is the most important logging command at the moment. If you delete your webhook, or need to set up logging for the first time, this command will reset your settings and set a new channel.
 
 ### stoplogging
 
@@ -129,7 +129,7 @@ This command is the most important logging command at the moment. If you delete 
 
 `stoplogging`
 
-This command will stop logging. This will NOT delete your configuration or any settings, it will only prevent Ferris from sending anything.
+This command will stop logging. This will NOT delete your configuration or any settings, only prevent Ferris from sending anything.
 
 ### resumelogging
 
@@ -137,13 +137,13 @@ This command will stop logging. This will NOT delete your configuration or any s
 
 `resumelogging`
 
-This command will enable logging if stopped.
+This command will enable logging if it was stopped.
 
 ## Moderation
 
 ---
 
-Moderation is the corner-stone of Ferris' service. Being able to protect and provide is very important. For our first release of Ferris, we are giving a small, but complete set of basic commands to work with.
+Moderation is the cornerstone of Ferris's service. Being able to protect and provide is very important. For our initial release of Ferris, we are giving a small, but complete set of basic commands to work with.
 
 ### warn
 
@@ -153,7 +153,7 @@ Moderation is the corner-stone of Ferris' service. Being able to protect and pro
 
 _reason_ is optional
 
-Add a warning to the user's list of warnings. Warnings will not give any punishments unless configured to.
+Add a warning to the user's list of warnings. Warnings will not give any punishments unless configured to do so.
 
 ### listwarns
 
@@ -163,7 +163,7 @@ Add a warning to the user's list of warnings. Warnings will not give any punishm
 
 _member_ is optional
 
-List the warnings of the member, with each warning containing the relavant information.
+List the warnings of the member, with each warning containing the relevant information.
 
 ### delwarn
 
@@ -173,7 +173,7 @@ List the warnings of the member, with each warning containing the relavant infor
 
 _warning_ is a number
 
-Delete a warning from the given member, the warning number comes from the listwarns command.
+Delete a warning from the given member. The warning number comes from the listwarns command.
 
 ### ban
 
@@ -185,7 +185,7 @@ _reason_ is optional
 
 Bans the given member from the Discord server. Make sure to have the correct permissions for the user of the command and the bot.
 
-Without a reason, the bot will put the information of the person who banned the user.
+Without a reason, the bot will list the information of the person who banned the member.
 
 ### kick
 
@@ -197,7 +197,7 @@ _reason_ is optional
 
 Kicks the given member from the Discord server. Make sure to have the correct permissions for the user of the command and the bot.
 
-Without a reason, the bot will put the information of the person who kicked the user.
+Without a reason, the bot will list the information of the person who kicked the member.
 
 ### purge
 
@@ -206,3 +206,33 @@ Without a reason, the bot will put the information of the person who kicked the 
 `purge <amount>`
 
 Deletes the amount of messages given in the first argument. There's not really much to this command, it's what you would expect.
+
+### muterole
+
+---
+
+`muterole <role>`
+
+_role_ is optional
+
+The role that Ferris will use for muting users. You'll need to create the role before you can use it with this command.
+
+### mute
+
+---
+
+`mute <member> <duration> <reason>`
+
+_reason_ is optional
+
+Mutes the member for a duration given by the second argument. Make sure to have the correct permissions for the user of the command and the bot.
+
+Without a reason, the bot will list the information of the person who muted the user.
+
+### unmute
+
+---
+
+`unmute <member>`
+
+Unmutes the member early. You can unmute the member by removing the role, but Ferris won't know until later.
