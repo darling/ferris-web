@@ -62,7 +62,7 @@ const Header = () => {
 								</a>
 							</Link>
 							<a
-								href="https://discord.gg/A3ZjXAn"
+								href="https://discord.gg/qUzdFQ2wBG"
 								className="mr-3 px-3 py-2 rounded mb-2 border border-gray-800"
 							>
 								Discord Server
@@ -106,7 +106,7 @@ const Header = () => {
 								</a>
 							</Link>
 							<a
-								href="https://discord.gg/A3ZjXAn"
+								href="https://discord.gg/qUzdFQ2wBG"
 								className="mr-3 px-3 py-2 rounded hover:bg-gray-800"
 							>
 								Discord Server
