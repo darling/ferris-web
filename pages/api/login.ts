@@ -16,7 +16,12 @@ interface UserGuild {
 }
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-	const red_rui = 'http' + (req.headers.host?.startsWith('localhost') ? '' : 's') + '://' + req.headers.host + '/login'
+	const red_rui =
+		'http' +
+		(req.headers.host?.startsWith('localhost') ? '' : 's') +
+		'://' +
+		req.headers.host +
+		'/login';
 	const { code } = req.body;
 
 	if (!code) {
@@ -76,12 +81,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
 	const { discriminator, username, avatar } = discordInfo.data;
 
-	await ref.set({
-		discrim: discriminator,
-		username: username,
-		avatar: avatar,
-		guilds: guilds,
-	});
+	await ref.set(
+		{
+			discrim: discriminator,
+			username: username,
+			avatar: avatar,
+			guilds: guilds,
+		},
+		{ merge: true }
+	);
 
 	const token = await admin.auth().createCustomToken(uid);
 
