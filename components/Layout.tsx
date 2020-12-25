@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import Head from 'next/head';
 import Header from './default/Header';
 import Footer from './default/Footer';
 import { CustomHead } from './default/Head';
@@ -20,15 +19,6 @@ const Layout = ({
 			(colorOverride || 'bg-gray-900 text-green-100 ') + 'overflow-hidden'
 		}
 	>
-		<Head>
-			<title>{title}</title>
-
-			<meta charSet="utf-8" />
-			<meta
-				name="viewport"
-				content="initial-scale=1.0, width=device-width"
-			/>
-		</Head>
 		<CustomHead title={title} />
 		<Header />
 		<div className="container mx-auto min-h-screen">{children}</div>

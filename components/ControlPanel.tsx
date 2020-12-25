@@ -86,7 +86,10 @@ const ControlPanel = (props: any) => {
 							</div>
 							<div>
 								<a
-									href="https://discord.com/api/oauth2/authorize?client_id=637804742935838751&permissions=2134207679&scope=bot"
+									href={
+										'https://discord.com/api/oauth2/authorize?client_id=637804742935838751&permissions=2134207679&scope=bot&guild_id=' +
+										guild?.id
+									}
 									className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-green-800 transition duration-200 rounded shadow-md bg-green-200 hover:bg-green-100 focus:shadow-outline focus:outline-none"
 								>
 									Add Ferris
