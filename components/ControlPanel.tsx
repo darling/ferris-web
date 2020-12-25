@@ -118,7 +118,7 @@ const ControlPanel = (props: any) => {
 						{ name: 'Home' },
 						{ name: 'Config', path: '/config' },
 						{ name: 'Warns', path: '/warns' },
-						{ name: 'Custom Commands', path: '/custom-commands' },
+						// { name: 'Custom Commands', path: '/custom-commands' },
 					]}
 					guildName={guild?.name}
 					guildIcon={guild?.icon}
