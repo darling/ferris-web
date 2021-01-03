@@ -16,6 +16,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			return_url: 'https://ferris.gg/profile',
 		});
 
+		res.setHeader('Access-Control-Allow-Origin', '*');
 		res.redirect(session.url);
 	} catch (error) {
 		return res.status(400).json({
