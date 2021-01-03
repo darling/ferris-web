@@ -1,85 +1,69 @@
-// import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-// import { FormEvent, useEffect, useState } from 'react';
-// import JSONstringify from '../components/dev/JSONstringify';
+import { useStripe } from '@stripe/react-stripe-js';
+import { FormEvent, useEffect, useState } from 'react';
+import Stripe from 'stripe';
+
 import Layout from '../components/Layout';
 import { useAuth } from '../contexts/auth';
-// import { fetchApi } from '../utils/auth/fetch';
+import { fetchApi } from '../utils/auth/fetch';
 import app from '../utils/auth/firebase';
-// import Select, { StylesConfig } from 'react-select';
 
 function signOut() {
 	app.auth().signOut();
 }
 
-// const customStyles: StylesConfig = {
-// 	option: (provided, state) => ({
-// 		...provided,
-// 		color: state.isSelected ? 'red' : 'blue',
-// 		padding: '1rem',
-// 	}),
-// 	control: () => ({
-// 		display: 'flex',
-// 		flexDirection: 'row',
-// 		backgroundColor: 'white',
-// 		borderRadius: 7,
-// 		padding: 3,
-// 		marginBottom: '10px',
-// 	}),
-// 	singleValue: (provided, state) => {
-// 		const opacity = state.isDisabled ? 0.5 : 1;
-// 		const transition = 'opacity 300ms';
-
-// 		return { ...provided, opacity, transition };
-// 	},
-// };
-
 const Profile = () => {
-	// const stripe = useStripe();
-	// const elements = useElements();
+	const stripe = useStripe();
 	const user = useAuth();
 
-	// const [setupIntent, setSetupIntent] = useState<any>();
-	// const [wallet, setWallet] = useState<any>([]);
+	const [subscriptions, setSubscriptions] = useState<Stripe.Subscription[]>();
+	const [loading, setLoading] = useState(false);
 
-	// const createSetupIntent = async () => {
-	// 	const si = await fetchApi('wallet');
-	// 	setSetupIntent(si);
-	// };
+	const hasSubscription = (subscriptions?.length || 0) > 0;
 
-	// const getWallet = async () => {
-	// 	if (user) {
-	// 		const paymentMethods = await fetchApi('list-payments', {
-	// 			method: 'GET',
-	// 		});
-	// 		setWallet(paymentMethods);
-	// 	}
-	// };
+	const getSubscriptions = async () => {
+		if (user) {
+			const subs = await fetchApi('subscriptions', { method: 'GET' });
+			setSubscriptions(subs.data);
+		}
+	};
 
-	// const handleSubmit = async (event: FormEvent) => {
-	// 	event.preventDefault();
+	const newSub = async (event: FormEvent) => {
+		setLoading(true);
+		event.preventDefault();
 
-	// 	const cardElement = elements!.getElement(CardElement);
+		const checkoutSession: any = await fetchApi('checkout', {
+			method: 'POST',
+			body: { priceId: 'price_1I5S02CpSTRHmRnCfVhI0fm9' },
+		});
 
-	// 	const {
-	// 		setupIntent: updatedSetupIntent,
-	// 		error,
-	// 	} = await stripe!.confirmCardSetup(setupIntent.client_secret, {
-	// 		payment_method: { card: cardElement! },
-	// 	});
+		stripe?.redirectToCheckout({
+			sessionId: checkoutSession.sessionId,
+		});
 
-	// 	if (error) {
-	// 		alert(error.message);
-	// 		console.log(error);
-	// 	} else {
-	// 		setSetupIntent(updatedSetupIntent);
-	// 		await getWallet();
-	// 		alert('Success! Card added to your wallet');
-	// 	}
-	// };
+		setLoading(false);
+	};
 
-	// useEffect(() => {
-	// 	getWallet();
-	// }, [user]);
+	const billingPortal = async (event: FormEvent) => {
+		setLoading(true);
+		event.preventDefault();
+
+		await fetchApi('billing-portal');
+
+		setLoading(false);
+	};
+
+	const parseTime = (time: number) => {
+		return new Date(time * 1000);
+	};
+
+	useEffect(() => {
+		if (!user) {
+			console.warn('user not logged in');
+			return;
+		}
+
+		getSubscriptions();
+	}, [user]);
 
 	if (user === null) {
 		return <Layout>You are not signed in.</Layout>;
@@ -89,44 +73,6 @@ const Profile = () => {
 		<Layout
 			title={`${user.displayName || 'User Profile Page'} | Ferris Bot`}
 		>
-			{/* <div className="p-4 bg-gray-800 shadow-xl rounded-lg md:w-1/3">
-				<label>Current Payment Method</label>
-				<Select
-					styles={customStyles}
-					options={wallet.map((payment: any) => ({
-						value: payment.id,
-						label: `**** **** **** ${payment.card.last4}`,
-					}))}
-				/>
-				{!setupIntent ? (
-					<button
-						className="bg-green-600 text-white rounded-lg px-2 py-1"
-						onClick={createSetupIntent}
-					>
-						Add New Card
-					</button>
-				) : (
-					<form onSubmit={handleSubmit}>
-						<CardElement
-							options={{
-								hidePostalCode: false,
-								classes: {
-									base:
-										'bg-green-100 p-4 rounded-lg shadow-lg',
-								},
-								iconStyle: 'solid',
-							}}
-						/>
-						<button
-							className="mt-4 bg-green-600 text-white rounded-lg px-2 py-1"
-							type="submit"
-						>
-							Attach
-						</button>
-					</form>
-				)}
-			</div>
-			<JSONstringify data={wallet} /> */}
 			<div className="mr-3 px-3 py-2 relative flex justify-end h-auto w-auto bg-gray-900">
 				<button
 					onClick={signOut}
@@ -134,6 +80,57 @@ const Profile = () => {
 				>
 					Sign Out
 				</button>
+			</div>
+
+			<div className="py-2 relative flex justify-start h-auto w-auto bg-gray-900 mb-5">
+				<p className="text-green-300 text-xl">Manage Plan</p>
+			</div>
+			<div className="flex flex-col lg:w-1/3 md:w-1/2 gap-5">
+				{subscriptions?.map((sub: Stripe.Subscription) => {
+					return (
+						<div
+							key={sub.id}
+							className="flex flex-col bg-gray-800 p-3 rounded-lg gap-2"
+						>
+							<span className="font-bold tracking-wide text-lg">
+								Billing Information
+							</span>
+							<p>
+								Your subscription will automatically renew on{' '}
+								<span className="font-bold">
+									{parseTime(
+										sub.current_period_end
+									).toDateString()}
+								</span>
+								. The amount is $
+								{(
+									(sub.items.data[0].plan.amount || 0) / 100
+								).toFixed(2)}
+								.
+							</p>
+							<button
+								className="bg-white rounded-md w-full p-3 text-gray-900 mt-2"
+								onClick={billingPortal}
+								disabled={loading}
+							>
+								Manage Subscription
+							</button>
+						</div>
+					);
+				})}
+				<div className="flex flex-col bg-gray-800 p-3 rounded-lg gap-2">
+					<span className="font-bold tracking-wide text-lg">
+						Checkout
+					</span>
+					<button
+						className="bg-white rounded-md w-full p-3 text-gray-900 mt-2"
+						onClick={newSub}
+						disabled={loading}
+						hidden={hasSubscription}
+					>
+						Purchase a subscription
+					</button>
+				</div>
 			</div>
 		</Layout>
 	);

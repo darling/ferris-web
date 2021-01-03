@@ -128,12 +128,14 @@ export const PricingCards = () => {
 								<PricingPerk>Fast, Private Support</PricingPerk>
 								<PricingPerk>Custom Commands</PricingPerk>
 							</ul>
-							<button
-								type="submit"
-								className="inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-gray-900 transition duration-200 rounded shadow-md bg-white hover:bg-white hover:text-green-900 hover:shadow-lg hover:transform focus:shadow-outline focus:outline-none"
-							>
-								Not available.
-							</button>
+							<Link href="/profile">
+								<button
+									type="submit"
+									className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-gray-100 transition duration-200 rounded shadow-md bg-green-400 hover:bg-white hover:text-gray-900 focus:shadow-outline focus:outline-none"
+								>
+									Subscribe
+								</button>
+							</Link>
 						</div>
 						<div className="w-11/12 h-2 mx-auto bg-green-100 rounded-b opacity-75" />
 						<div className="w-10/12 h-2 mx-auto bg-green-100 rounded-b opacity-50" />

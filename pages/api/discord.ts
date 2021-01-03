@@ -1,6 +1,6 @@
-import nacl from 'tweetnacl';
-import { NextApiRequest, NextApiResponse } from 'next';
 import admin from 'firebase-admin';
+import { NextApiRequest, NextApiResponse } from 'next';
+import nacl from 'tweetnacl';
 
 const PUBLIC_KEY =
 	'3e9acfbb546dbef42a019147c63c1c26983589790dc9b81e0fcdaa17cd17333d';
@@ -89,7 +89,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 				});
 				break;
 			case 'log':
-				console.log(JSON.stringify(body.data.options));
 				return res.status(200).json({
 					type: 4,
 					data: {

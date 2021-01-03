@@ -1,39 +1,15 @@
-// import { useStripe, useElements } from '@stripe/react-stripe-js';
-import { useEffect, useState } from 'react';
-import JSONstringify from '../../components/dev/JSONstringify';
 import Layout from '../../components/Layout';
-import { useAuth } from '../../contexts/auth';
-import { fetchApi } from '../../utils/auth/fetch';
+import { PaymentMethods } from '../../components/stripe/PaymentMethods';
 
 const Billing = () => {
-	return <>Not allowed</>;
-	// const stripe = useStripe();
-	// const elements = useElements();
-	const user = useAuth();
-
-	const [subscriptions, setSubscriptions] = useState([]);
-
-	const getSubscriptions = async () => {
-		if (user) {
-			const subs = await fetchApi('subscriptions', { method: 'GET' });
-			setSubscriptions(subs);
-		}
-	};
-
-	const cancel = async () => {
-		if (user) {
-			await fetchApi('subscriptions/' + user.uid, { method: 'PATCH' });
-		}
-	};
-
-	useEffect(() => {
-		getSubscriptions();
-	}, [user]);
-
 	return (
 		<Layout>
-			<button onClick={cancel}>Skrrt</button>
-			<JSONstringify data={subscriptions} />
+			<div className="md:w-1/3 mx-auto">
+				<h1 className="text-4xl font-bold tracking-wide my-3">
+					Edit Payment Details
+				</h1>
+				<PaymentMethods />
+			</div>
 		</Layout>
 	);
 };

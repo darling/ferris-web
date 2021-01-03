@@ -53,7 +53,6 @@ export async function getStaticPaths() {
 // In this case we see that we only have one possible path
 // and that is the path to "my-first-blog-post".
 export async function getStaticProps({ params }: any) {
-	console.log('building', params.id);
 	const source = readFileSync(path + (params.id.join('/') + '.mdx'), 'utf8');
 	const { data, content } = matter(source, { excerpt: true });
 	const mdxSource = await renderToString(content, { components });

@@ -21,3 +21,10 @@ export interface User {
 	photoURL: string;
 	premium: boolean;
 }
+
+export interface UserData {
+	avatar: string;
+	discrim: string;
+	guilds: UserGuilds;
+	username: string;
+}

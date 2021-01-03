@@ -11,24 +11,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	try {
 		const customer = await getCustomer(userAuth.uid);
 
-		const session = await stripeAdmin.checkout.sessions.create({
-			mode: 'subscription',
-			payment_method_types: ['card'],
+		const session = await stripeAdmin.billingPortal.sessions.create({
 			customer: customer.id,
-			line_items: [
-				{
-					quantity: 1,
-					price: req.body.priceId || 'price_1I5S02CpSTRHmRnCfVhI0fm9',
-				},
-			],
-			cancel_url: 'https://ferris.gg/profile',
-			success_url:
-				'https://ferris.gg/profile?session_id={CHECKOUT_SESSION_ID}',
+			return_url: 'https://ferris.gg/profile',
 		});
 
-		res.json({
-			sessionId: session.id,
-		});
+		res.redirect(session.url);
 	} catch (error) {
 		return res.status(400).json({
 			error: {

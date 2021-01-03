@@ -13,7 +13,6 @@ const ToggleSwitch = ({ toggleFunction, initialState = false }: Props) => {
 	}, [initialState]);
 
 	function toggleSwitch() {
-		console.log('switch now: ' + !enabled);
 		setEnabled(!enabled);
 
 		if (toggleFunction) {

@@ -6,7 +6,7 @@ import GuildProvider from '../contexts/guild';
 import '../styles.css';
 
 const stripePromise = loadStripe(
-	'pk_test_51HNt6qCpSTRHmRnCgSh6GElDl7q5YNlmo67u4Vtm7ctZvlI7idk0lVGBQMiE9owaNb8norFngbR5h0QtJY1GtJP500GuHVGpm1'
+	'pk_live_51HNt6qCpSTRHmRnCpFlyyRUJLzCxFeeAPU586P9RzbE4znwIsVazNQvGq9NESikgCkVrIoV89HSaOkTVAIw9qBTj003ED9nVi0'
 );
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
