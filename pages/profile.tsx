@@ -47,7 +47,9 @@ const Profile = () => {
 		setLoading(true);
 		event.preventDefault();
 
-		await fetchApi('billing-portal');
+		const { url } = await fetchApi('billing-portal');
+
+		window.location.replace(url);
 
 		setLoading(false);
 	};
@@ -118,7 +120,10 @@ const Profile = () => {
 						</div>
 					);
 				})}
-				<div className="flex flex-col bg-gray-800 p-3 rounded-lg gap-2">
+				<div
+					className="flex flex-col bg-gray-800 p-3 rounded-lg gap-2"
+					hidden={hasSubscription}
+				>
 					<span className="font-bold tracking-wide text-lg">
 						Checkout
 					</span>
@@ -126,7 +131,6 @@ const Profile = () => {
 						className="bg-white rounded-md w-full p-3 text-gray-900 mt-2"
 						onClick={newSub}
 						disabled={loading}
-						hidden={hasSubscription}
 					>
 						Purchase a subscription
 					</button>
