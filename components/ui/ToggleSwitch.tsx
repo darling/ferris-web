@@ -3,9 +3,14 @@ import { useEffect, useState } from 'react';
 interface Props {
 	initialState?: boolean;
 	toggleFunction?: (target: boolean) => any;
+	className?: string;
 }
 
-const ToggleSwitch = ({ toggleFunction, initialState = false }: Props) => {
+const ToggleSwitch = ({
+	toggleFunction,
+	initialState = false,
+	className,
+}: Props) => {
 	const [enabled, setEnabled] = useState<boolean>(false);
 
 	useEffect(() => {
@@ -26,8 +31,9 @@ const ToggleSwitch = ({ toggleFunction, initialState = false }: Props) => {
 				toggleSwitch();
 			}}
 			className={
-				'w-14 flex-none h-8 m-1 rounded-full flex-shrink p-1 transition-colors duration-75 ' +
-				(!enabled ? 'bg-gray-500' : 'bg-green-300')
+				'w-14 flex-none h-8 rounded-full flex-shrink p-1 transition-colors duration-75 cursor-pointer ' +
+				(!enabled ? 'bg-gray-500' : 'bg-green-300') +
+				` ${className}`
 			}
 		>
 			<div

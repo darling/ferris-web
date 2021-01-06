@@ -1,4 +1,4 @@
-import { LoggingTypes } from "./logging";
+import { LoggingTypes } from './logging';
 
 export interface GuildInfo {
 	hasFerris?: boolean;
@@ -36,6 +36,42 @@ export interface GuildConfig {
 		webhook_id: string;
 	};
 	prefix: string;
+	custom?: {
+		[key: string]: {
+			channel_list?: string[];
+			role_list?: string[];
+			whitelist?: boolean;
+			embed?: Embed;
+		};
+	};
+}
+
+export interface Embed {
+	title?: string;
+	description?: string;
+	url?: string;
+	timestamp?: Date | number;
+	color?: number;
+	fields?: {
+		name: string;
+		value: string;
+		inline?: boolean;
+	}[];
+	author?: {
+		name?: string;
+		url?: string;
+		iconURL?: string;
+	};
+	thumbnail?: {
+		url?: string;
+	};
+	image?: {
+		url?: string;
+	};
+	footer?: {
+		text?: string;
+		iconURL?: string;
+	};
 }
 
 export interface GuildWarns {

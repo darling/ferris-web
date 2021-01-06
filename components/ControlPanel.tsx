@@ -118,12 +118,14 @@ const ControlPanel = (props: any) => {
 						{ name: 'Home' },
 						{ name: 'Config', path: '/config' },
 						{ name: 'Warns', path: '/warns' },
-						// { name: 'Custom Commands', path: '/custom-commands' },
+						{ name: 'Custom Commands', path: '/custom-commands' },
 					]}
 					guildName={guild?.name}
 					guildIcon={guild?.icon}
 				/>
-				<div className="mt-2 mx-2 md:w-4/5">{props.children}</div>
+				<div className="mt-2 mx-2 sm:w-4/5 w-screen">
+					{props.children}
+				</div>
 			</div>
 		</Layout>
 	);
