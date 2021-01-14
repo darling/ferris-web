@@ -15,7 +15,7 @@ const Header = () => {
 								height="30"
 								width="100"
 								className="cursor-pointer"
-								src="/img/logo.svg"
+								src="/img/logo.png"
 								alt="Logo"
 							/>
 						</Link>
@@ -77,7 +77,7 @@ const Header = () => {
 							<img
 								height="30"
 								width="100"
-								src="/img/logo.svg"
+								src="/img/logo.png"
 								alt="Logo"
 								className="cursor-pointer"
 							/>
