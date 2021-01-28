@@ -110,6 +110,7 @@ const ControlPanel = (props: any) => {
 		);
 	}
 
+	// In guild view
 	return (
 		<Layout>
 			<div className="flex flex-col items-start md:flex-row">
@@ -123,9 +124,10 @@ const ControlPanel = (props: any) => {
 					guildName={guild?.name}
 					guildIcon={guild?.icon}
 				/>
-				<div className="mt-2 mx-2 sm:w-4/5 w-screen">
+				<div className="mt-2 md:mx-2 sm:w-4/5 w-screen">
 					{props.children}
 				</div>
+				<div></div>
 			</div>
 		</Layout>
 	);

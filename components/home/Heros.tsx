@@ -3,42 +3,375 @@ import { GetStartedButton } from './ui/GetStartedButton';
 
 export const HomeHero = () => {
 	return (
-		<div className="relative flex flex-col-reverse px-4 p-8 md:p-16 mx-auto lg:block lg:flex-col lg:py-32 xl:py-48 md:px-8 sm:max-w-xl md:max-w-full">
-			<div className="z-0 flex justify-center h-full overflow-hidden lg:pt-24 lg:pb-16 lg:pr-8 xl:pr-0 lg:w-1/2 lg:absolute lg:justify-end lg:bottom-0 lg:left-0 lg:items-center">
-				<img
-					src="/img/front-banner.png"
-					width={710}
-					height={540}
-					className="object-right hidden md:flex lg:w-auto lg:h-full"
-					alt="front example vector"
-				/>
-			</div>
-			<div className="relative flex justify-end max-w-xl mx-auto lg:max-w-screen-xl">
-				<div className="lg:pr-5 lg:max-w-lg lg:mb-0">
+		<div className="relative px-4 pt-16 mx-auto lg:py-32 md:px-8 sm:max-w-xl md:max-w-full">
+			<div className="max-w-xl mx-auto lg:max-w-full">
+				<div className="mb-16 lg:max-w-lg lg:mb-0">
 					<div className="max-w-xl mb-6">
-						<h1 className="max-w-lg mb-6 font-sans text-3xl font-bold text-green-100 sm:text-4xl sm:leading-none">
+						<div>
+							<p className="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-green-900 uppercase rounded-full bg-green-400">
+								In Beta
+							</p>
+						</div>
+						<h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
 							Let Ferris protect your{' '}
-							<br className="hidden md:block" />{' '}
 							<span className="inline-block text-green-400">
-								community
+								Community
 							</span>
 							.
-						</h1>
-						<h2 className="text-base text-green-100 md:text-lg">
+						</h2>
+						<p className="text-base text-green-200 md:text-lg">
 							Ferris is a Discord bot created to secure and manage
 							Discord servers of all sizes.
-						</h2>
+						</p>
 					</div>
-					<form>
-						<div className="flex items-center mt-4">
-							<GetStartedButton />
-							<Link href="/docs">
-								<a className="ml-6 inline-flex items-center font-semibold transition-colors duration-200 text-green-400 hover:text-green-800">
-									Learn more
-								</a>
-							</Link>
-						</div>
-					</form>
+					<div className="flex items-center">
+						<GetStartedButton />
+					</div>
+				</div>
+			</div>
+			<div className="flex justify-center h-full overflow-hidden lg:w-2/3 xl:w-1/2 lg:absolute lg:justify-start lg:bottom-0 lg:right-0 lg:items-end">
+				<img
+					src="/img/front-banner-dark.png"
+					className="object-cover object-top w-full h-64 max-w-xl -mb-16 rounded lg:ml-64 xl:ml-8 lg:-mb-24 xl:-mb-28 lg:h-auto lg:max-w-screen-md"
+					alt=""
+				/>
+			</div>
+		</div>
+	);
+};
+
+export const HomeFeatureFirst = () => {
+	return (
+		<div className="px-4 py-16 mx-auto container md:px-24 lg:px-8 lg:py-20">
+			<div className="flex flex-col mb-6 lg:flex-row md:mb-10">
+				<div className="lg:w-1/2">
+					<h2 className="max-w-md mb-6 font-sans text-3xl font-bold tracking-tight text-green-200 sm:text-4xl sm:leading-none xl:max-w-lg">
+						Use a bot that performs under pressure.
+					</h2>
+				</div>
+				<div className="lg:w-1/2">
+					<p className="text-base text-gray-100 md:text-lg">
+						Build a server with the best utilities available. From a
+						real-time web panel to rich and improved commands,
+						Ferris has all the features that it needs to protect
+						your community.
+					</p>
+				</div>
+			</div>
+			<div className="grid gap-8 row-gap-10 sm:grid-cols-2 lg:grid-cols-4">
+				<div>
+					<div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-gray-800">
+						<svg
+							className="w-8 h-8 text-green-300"
+							fill="currentColor"
+							viewBox="0 0 20 20"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								fillRule="evenodd"
+								d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+								clipRule="evenodd"
+							/>
+						</svg>
+					</div>
+					<h6 className="mb-2 font-semibold leading-5">
+						Security First
+					</h6>
+					<p className="mb-3 text-sm text-green-100">
+						All of our commands are tied to Discord permissions for
+						easy use.
+					</p>
+					<ul className="mb-4 -ml-1 space-y-2">
+						<li className="flex items-start">
+							<span className="mr-1">
+								<svg
+									className="w-5 h-5 mt-px text-green-400"
+									stroke="currentColor"
+									viewBox="0 0 52 52"
+								>
+									<polygon
+										strokeWidth="4"
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										fill="none"
+										points="29 13 14 29 25 29 23 39 38 23 27 23"
+									/>
+								</svg>
+							</span>
+							Role management
+						</li>
+						<li className="flex items-start">
+							<span className="mr-1">
+								<svg
+									className="w-5 h-5 mt-px text-green-400"
+									stroke="currentColor"
+									viewBox="0 0 52 52"
+								>
+									<polygon
+										strokeWidth="4"
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										fill="none"
+										points="29 13 14 29 25 29 23 39 38 23 27 23"
+									/>
+								</svg>
+							</span>
+							User punishments
+						</li>
+						<li className="flex items-start">
+							<span className="mr-1">
+								<svg
+									className="w-5 h-5 mt-px text-green-400"
+									stroke="currentColor"
+									viewBox="0 0 52 52"
+								>
+									<polygon
+										strokeWidth="4"
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										fill="none"
+										points="29 13 14 29 25 29 23 39 38 23 27 23"
+									/>
+								</svg>
+							</span>
+							Guild features
+						</li>
+					</ul>
+				</div>
+				<div>
+					<div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-gray-800">
+						<svg
+							className="w-8 h-8 text-green-300"
+							fill="currentColor"
+							viewBox="0 0 20 20"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path d="M3 12v3c0 1.657 3.134 3 7 3s7-1.343 7-3v-3c0 1.657-3.134 3-7 3s-7-1.343-7-3z" />
+							<path d="M3 7v3c0 1.657 3.134 3 7 3s7-1.343 7-3V7c0 1.657-3.134 3-7 3S3 8.657 3 7z" />
+							<path d="M17 5c0 1.657-3.134 3-7 3S3 6.657 3 5s3.134-3 7-3 7 1.343 7 3z" />
+						</svg>
+					</div>
+					<h6 className="mb-2 font-semibold leading-5">
+						Real-time Data
+					</h6>
+					<p className="mb-3 text-sm text-green-100">
+						Ferris' control panel offers real-time values for your
+						guild. Instantly see changes when they're made.
+					</p>
+					<ul className="mb-4 -ml-1 space-y-2">
+						<li className="flex items-start">
+							<span className="mr-1">
+								<svg
+									className="w-5 h-5 mt-px text-green-400"
+									stroke="currentColor"
+									viewBox="0 0 52 52"
+								>
+									<polygon
+										strokeWidth="4"
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										fill="none"
+										points="29 13 14 29 25 29 23 39 38 23 27 23"
+									/>
+								</svg>
+							</span>
+							Statistics
+						</li>
+						<li className="flex items-start">
+							<span className="mr-1">
+								<svg
+									className="w-5 h-5 mt-px text-green-400"
+									stroke="currentColor"
+									viewBox="0 0 52 52"
+								>
+									<polygon
+										strokeWidth="4"
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										fill="none"
+										points="29 13 14 29 25 29 23 39 38 23 27 23"
+									/>
+								</svg>
+							</span>
+							Settings
+						</li>
+						<li className="flex items-start">
+							<span className="mr-1">
+								<svg
+									className="w-5 h-5 mt-px text-green-400"
+									stroke="currentColor"
+									viewBox="0 0 52 52"
+								>
+									<polygon
+										strokeWidth="4"
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										fill="none"
+										points="29 13 14 29 25 29 23 39 38 23 27 23"
+									/>
+								</svg>
+							</span>
+							Commands
+						</li>
+					</ul>
+				</div>
+				<div className="hidden md:block">
+					<div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-gray-800">
+						<svg
+							className="w-8 h-8 text-green-300"
+							fill="currentColor"
+							viewBox="0 0 20 20"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								fillRule="evenodd"
+								d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
+								clipRule="evenodd"
+							/>
+						</svg>
+					</div>
+					<h6 className="mb-2 font-semibold leading-5">
+						Responsive Developers
+					</h6>
+					<p className="mb-3 text-sm text-green-100">
+						Join the Ferris Support Discord Server to contact the
+						developers of Ferris.
+					</p>
+					<ul className="mb-4 -ml-1 space-y-2">
+						<li className="flex items-start">
+							<span className="mr-1">
+								<svg
+									className="w-5 h-5 mt-px text-green-400"
+									stroke="currentColor"
+									viewBox="0 0 52 52"
+								>
+									<polygon
+										strokeWidth="4"
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										fill="none"
+										points="29 13 14 29 25 29 23 39 38 23 27 23"
+									/>
+								</svg>
+							</span>
+							Request features
+						</li>
+						<li className="flex items-start">
+							<span className="mr-1">
+								<svg
+									className="w-5 h-5 mt-px text-green-400"
+									stroke="currentColor"
+									viewBox="0 0 52 52"
+								>
+									<polygon
+										strokeWidth="4"
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										fill="none"
+										points="29 13 14 29 25 29 23 39 38 23 27 23"
+									/>
+								</svg>
+							</span>
+							Stats
+						</li>
+						<li className="flex items-start">
+							<span className="mr-1">
+								<svg
+									className="w-5 h-5 mt-px text-green-400"
+									stroke="currentColor"
+									viewBox="0 0 52 52"
+								>
+									<polygon
+										strokeWidth="4"
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										fill="none"
+										points="29 13 14 29 25 29 23 39 38 23 27 23"
+									/>
+								</svg>
+							</span>
+							Feedback
+						</li>
+					</ul>
+				</div>
+				<div className="hidden md:block">
+					<div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-gray-800">
+						<svg
+							className="w-8 h-8 text-green-300"
+							fill="currentColor"
+							viewBox="0 0 20 20"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								fillRule="evenodd"
+								d="M2 5a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm14 1a1 1 0 11-2 0 1 1 0 012 0zM2 13a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2zm14 1a1 1 0 11-2 0 1 1 0 012 0z"
+								clipRule="evenodd"
+							/>
+						</svg>
+					</div>
+					<h6 className="mb-2 font-semibold leading-5">
+						Build a platform
+					</h6>
+					<p className="mb-3 text-sm text-green-100">
+						Ferris offers a number of utilities for you to work on
+						building a better community.
+					</p>
+					<ul className="mb-4 -ml-1 space-y-2">
+						<li className="flex items-start">
+							<span className="mr-1">
+								<svg
+									className="w-5 h-5 mt-px text-green-400"
+									stroke="currentColor"
+									viewBox="0 0 52 52"
+								>
+									<polygon
+										strokeWidth="4"
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										fill="none"
+										points="29 13 14 29 25 29 23 39 38 23 27 23"
+									/>
+								</svg>
+							</span>
+							Commands
+						</li>
+						<li className="flex items-start">
+							<span className="mr-1">
+								<svg
+									className="w-5 h-5 mt-px text-green-400"
+									stroke="currentColor"
+									viewBox="0 0 52 52"
+								>
+									<polygon
+										strokeWidth="4"
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										fill="none"
+										points="29 13 14 29 25 29 23 39 38 23 27 23"
+									/>
+								</svg>
+							</span>
+							Events
+						</li>
+						<li className="flex items-start">
+							<span className="mr-1">
+								<svg
+									className="w-5 h-5 mt-px text-green-400"
+									stroke="currentColor"
+									viewBox="0 0 52 52"
+								>
+									<polygon
+										strokeWidth="4"
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										fill="none"
+										points="29 13 14 29 25 29 23 39 38 23 27 23"
+									/>
+								</svg>
+							</span>
+							Engagement
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>

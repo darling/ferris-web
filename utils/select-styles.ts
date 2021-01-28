@@ -1,16 +1,14 @@
-import { Styles } from 'react-select';
-
-export const selectStyleDark: Styles = {
-	option: (provided, state) => ({
+export const selectStyleDark: any = {
+	option: (provided: any, state: { isSelected: any }) => ({
 		...provided,
 		backgroundColor: state.isSelected ? '#4ADE80' : '#525252',
 		color: state.isSelected ? '#DCFCE7' : '#DCFCE7',
 	}),
-	menu: (provided) => ({
+	menu: (provided: any) => ({
 		...provided,
 		backgroundColor: '#525252',
 	}),
-	control: (provided) => ({
+	control: (provided: any) => ({
 		...provided,
 		backgroundColor: '#525252',
 		color: '#DCFCE7',
@@ -19,20 +17,20 @@ export const selectStyleDark: Styles = {
 		padding: 3,
 		fontSize: 15,
 	}),
-	singleValue: (provided) => ({
+	singleValue: (provided: any) => ({
 		...provided,
 		color: '#DCFCE7',
 	}),
-	dropdownIndicator: (provided) => ({
+	dropdownIndicator: (provided: any) => ({
 		...provided,
 		color: '#BBF7D0',
 		borderWidth: 0,
 	}),
-	indicatorSeparator: (provided) => ({
+	indicatorSeparator: (provided: any) => ({
 		...provided,
 		backgroundColor: '#DCFCE7',
 	}),
-	input: (provided) => ({
+	input: (provided: any) => ({
 		...provided,
 		backgroundColor: '#525252',
 		color: '#DCFCE7',

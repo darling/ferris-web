@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import SidebarEntry from './SidebarEntry';
 
@@ -12,7 +13,7 @@ const Sidebar = ({ entries, guildIcon, guildName }: Props) => {
 	const router = useRouter();
 
 	return (
-		<div className="flex-col md:w-1/5 md:mt-10">
+		<div className="flex flex-col w-full md:w-1/5 md:mt-10 pb-2 border-b-2 md:border-b-0">
 			<img
 				src={
 					guildIcon
@@ -30,9 +31,16 @@ const Sidebar = ({ entries, guildIcon, guildName }: Props) => {
 				{guildName || 'Control Panel'}
 			</h1>
 			<div
-				className={
-					'flex flex-col md:mr-2 md:mt-2 pb-2 bg-gray-800 rounded-xl shadow-2xl'
-				}
+				className={clsx(
+					'flex',
+					'flex-col',
+					'md:mr-2',
+					'md:mt-2',
+					'md:pb-2',
+					'md:bg-gray-800',
+					'md:rounded-xl',
+					'md:shadow-2xl'
+				)}
 			>
 				{entries.map((entry) => {
 					return (

@@ -71,7 +71,7 @@ export const HomeFeatures = () => {
 							data in less than a micro-second.
 						</p>
 					</div>
-					<div className="max-w-md">
+					<div className="max-w-md md:hidden">
 						<div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-gray-800">
 							<svg
 								className="w-8 h-8 text-green-300"
@@ -96,7 +96,7 @@ export const HomeFeatures = () => {
 							community.
 						</p>
 					</div>
-					<div className="max-w-md">
+					<div className="max-w-md md:hidden">
 						<div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-gray-800">
 							<svg
 								className="w-8 h-8 text-green-300"
@@ -118,6 +118,102 @@ export const HomeFeatures = () => {
 							Join the Ferris Support Discord Server to contact
 							the developers of Ferris. Get the features you want,
 							made for you, for your server.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+};
+
+export const HomeFirstContent = () => {
+	return (
+		<div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+			<div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
+				<h2 className="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-white sm:text-4xl md:mx-auto">
+					<span className="relative inline-block">
+						<svg
+							viewBox="0 0 52 24"
+							fill="currentColor"
+							className="absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-blue-gray-100 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block"
+						>
+							<defs>
+								<pattern
+									id="2feffae2-9edf-414e-ab8c-f0e6396a0fc1"
+									x="0"
+									y="0"
+									width=".135"
+									height=".30"
+								>
+									<circle cx="1" cy="1" r=".7" />
+								</pattern>
+							</defs>
+							<rect
+								fill="url(#2feffae2-9edf-414e-ab8c-f0e6396a0fc1)"
+								width="52"
+								height="24"
+							/>
+						</svg>
+						<span className="relative">Ferris</span>
+					</span>{' '}
+					will change the way that your run your community.
+				</h2>
+				<p className="text-base  text-green-200 md:text-lg">
+					Ferris was built with other bots and large Discord servers
+					in mind. With growing features, Ferris will be the solution
+					for community safety and growth.
+				</p>
+			</div>
+			<div className="grid max-w-screen-lg gap-8 lg:grid-cols-2 sm:mx-auto">
+				<div className="grid grid-cols-2 gap-5">
+					<img
+						className="object-cover w-full h-56 col-span-2 rounded shadow-lg"
+						src="https://i.imgur.com/sDxwzD7.png"
+						alt=""
+					/>
+					<img
+						className="object-cover w-full h-48 rounded shadow-lg"
+						src="https://i.imgur.com/N4XsOfG.png"
+						alt=""
+					/>
+					<img
+						className="object-cover w-full h-48 rounded shadow-lg"
+						src="https://i.imgur.com/a0Ww8ya.png"
+						alt=""
+					/>
+				</div>
+				<div className="flex flex-col justify-center">
+					<div className="pb-4 mb-4 border-b">
+						<h6 className="mb-2 font-semibold leading-5">
+							Discord first approach
+						</h6>
+						<p className="text-sm  text-green-200">
+							Commands are created to save time for tasks such as
+							banning, moderation. Putting Discord first means
+							that you don't have to think about permissions and
+							user interaction with the bot.
+						</p>
+					</div>
+					<div className="pb-4 mb-4 border-b">
+						<h6 className="mb-2 font-semibold leading-5">
+							Real-time architecture
+						</h6>
+						<p className="text-sm text-green-200">
+							Ferris is unique becuase of its real-time systems.
+							Warnings, punishments, logging is all accesible from
+							the control panel and will update with changes
+							within your Discord server.
+						</p>
+					</div>
+					<div>
+						<h6 className="mb-2 font-semibold leading-5">
+							Easy to use, free forever
+						</h6>
+						<p className="text-sm text-green-200">
+							The control panel and the bot commands are created
+							to be intuitive and easy to use, but powerful and
+							gives control to the users for managing their own
+							guilds.
 						</p>
 					</div>
 				</div>

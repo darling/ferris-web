@@ -20,11 +20,11 @@ const ControlIndex = () => {
 			return;
 		}
 
-		const ref = db.collection('users').doc(user.uid)
+		const ref = db.collection('users').doc(user.uid);
 
 		const close = ref.onSnapshot((snapshot) => {
 			console.log('fetching user guilds');
-			console.log(snapshot.data())
+			console.log(snapshot.data());
 			setGuilds(snapshot.data()?.guilds as GuildConfig);
 		});
 
@@ -43,38 +43,52 @@ const ControlIndex = () => {
 				<h1 className="font-bold text-4xl">
 					Welcome back, {user.displayName}!
 				</h1>
-				<h3>Hello! If you don't see any servers and think that's a mistake, please re-login! Thanks!</h3>
+				<h3>
+					Hello! If you don't see any servers and think that's a
+					mistake, please re-login! Thanks!
+				</h3>
 			</div>
 			<div className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 p-5 rounded-lg">
-				{guilds ? Object.entries(guilds).map((guild) => {
-					 return <Link key={guild[0]} href={`control/${guild[0]}`}>
-						<div className="hover:bg-gray-700 hover:text-green-200 hover:shadow-lg cursor-pointer transition-all duration-100 h-40 p-4 rounded-xl flex flex-col items-center content-center">
-							<img
-								src={
-									guild[1].icon
-										? `https://cdn.discordapp.com/icons/${
-												guild[0]
-										  }/${
+				{guilds ? (
+					Object.entries(guilds)
+						.sort((a, b) => Number(a[0]) - Number(b[0]))
+						.map((guild) => {
+							return (
+								<Link
+									key={guild[0]}
+									href={`control/${guild[0]}`}
+								>
+									<div className="hover:bg-gray-700 hover:text-green-200 hover:shadow-lg cursor-pointer transition-all duration-100 h-40 p-4 rounded-xl flex flex-col items-center content-center">
+										<img
+											src={
 												guild[1].icon
-										  }.${guildIconExtension(
-												guild[1].icon
-										  )}`
-										: `/img/placeholder-crystal.png`
-								}
-								alt="guild"
-								className="rounded-full h-24 w-24"
-							/>
-							<p className="mt-3">{guild[1].name}</p>
-						</div>
-					</Link>
-				}) : <div className="hover:bg-gray-700 hover:text-green-200 hover:shadow-lg transition-all duration-100 h-40 p-4 rounded-xl flex flex-col items-center content-center">
-				<img
-					src={`/img/placeholder-crystal.png`}
-					alt="guild"
-					className="rounded-full h-24 w-24"
-				/>
-				<p className="mt-3">No Guilds</p>
-			</div>}
+													? `https://cdn.discordapp.com/icons/${
+															guild[0]
+													  }/${
+															guild[1].icon
+													  }.${guildIconExtension(
+															guild[1].icon
+													  )}`
+													: `/img/placeholder-crystal.png`
+											}
+											alt="guild"
+											className="rounded-full h-24 w-24"
+										/>
+										<p className="mt-3">{guild[1].name}</p>
+									</div>
+								</Link>
+							);
+						})
+				) : (
+					<div className="hover:bg-gray-700 hover:text-green-200 hover:shadow-lg transition-all duration-100 h-40 p-4 rounded-xl flex flex-col items-center content-center">
+						<img
+							src={`/img/placeholder-crystal.png`}
+							alt="guild"
+							className="rounded-full h-24 w-24"
+						/>
+						<p className="mt-3">No Guilds</p>
+					</div>
+				)}
 			</div>
 		</Layout>
 	);

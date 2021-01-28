@@ -1,22 +1,25 @@
 const colors = require('tailwindcss/colors');
 
 module.exports = {
-	purge: {
-		content: ['./components/**/*.*', './pages/**/*.*'],
-	},
-	darkMode: false,
+	purge: [],
+	darkMode: false, // or 'media' or 'class'
 	theme: {
+		extend: {},
 		colors: {
-			gray: colors.trueGray,
 			green: colors.green,
 			red: colors.red,
+			gray: colors.trueGray,
+			yellow: colors.amber,
 			white: colors.white,
+		},
+		fontFamily: {
+			sans: ['Roboto', 'sans-serif'],
+			serif: ['Roboto Slab', 'serif'],
+			mono: ['Roboto Mono', 'mono'],
 		},
 	},
 	variants: {
-		extend: {
-			backgroundColor: ['checked', 'active'],
-		},
+		extend: {},
 	},
-	plugins: [],
+	plugins: [require('@tailwindcss/forms')],
 };

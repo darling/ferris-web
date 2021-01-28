@@ -1,7 +1,12 @@
 import React from 'react';
+
 import { Faq } from '../components/home/Faq';
-import { HomeFeatures } from '../components/home/Features';
-import { HomeEndHero, HomeHero } from '../components/home/Heros';
+import { HomeFirstContent } from '../components/home/Features';
+import {
+	HomeEndHero,
+	HomeFeatureFirst,
+	HomeHero,
+} from '../components/home/Heros';
 import Layout from '../components/Layout';
 import { useAuth } from '../contexts/auth';
 
@@ -32,7 +37,8 @@ const IndexPage = () => {
 					</svg>
 				</div>
 			</div>
-			<HomeFeatures />
+			<HomeFeatureFirst />
+			<HomeFirstContent />
 			<Faq />
 			<HomeEndHero />
 		</Layout>

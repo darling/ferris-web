@@ -1,50 +1,42 @@
 import { useContext } from 'react';
+
 import ControlPanel from '../../../components/ControlPanel';
 import { GuildContext } from '../../../contexts/guild';
-import { SmallHero } from './../../../components/SmallHero';
-
-const ControlBox = (props: any) => {
-	return (
-		<div className={`bg-gray-800 p-3 rounded-md mr-3 ${props.className}`}>
-			<h5 className="text-sm tracking-wider">{props.title}</h5>
-			<h4 className="text-3xl font-bold">{props.value}</h4>
-		</div>
-	);
-};
 
 const ControlHome = () => {
 	const guild = useContext(GuildContext);
+
 	return (
 		<ControlPanel>
-			<h1 className="font-bold tracking-wide align-middle text-4xl text-green-200">
+			<h1 className="font-bold tracking-wide align-middle text-3xl md:text-6xl text-green-200">
 				{'Control Home'}
 			</h1>
-			<div className="flex flex-row w-full">
-				<ControlBox
-					className="w-1/3"
-					title="Member Count"
-					value={guild?.member_count}
-				/>
-				<ControlBox
-					className="w-1/3"
-					title="Channel Count"
-					value={Object.keys(guild?.channels || {}).length}
-				/>
-				<ControlBox
-					className="w-1/3"
-					title="Roles"
-					value={Object.keys(guild?.roles || {}).length}
-				/>
+			<div className="flex flex-col md:flex-row gap-2">
+				<div className="flex-grow flex flex-col items-center md:bg-gray-800 p-4 rounded-lg">
+					<h2 className="">Member Count</h2>
+					<p className="font-mono font-bold text-6xl">
+						{guild?.member_count}
+					</p>
+				</div>
+				<div className="flex-grow flex flex-col items-center md:bg-gray-800 p-4 rounded-lg">
+					<h2 className="">Role Count</h2>
+					<p className="font-mono font-bold text-6xl">
+						{Object.keys(guild?.roles || {}).length}
+					</p>
+				</div>
+				<div className="flex-grow flex flex-col items-center md:bg-gray-800 p-4 rounded-lg">
+					<h2 className="">Channel Count</h2>
+					<p className="font-mono font-bold text-6xl">
+						{Object.keys(guild?.channels || {}).length}
+					</p>
+				</div>
 			</div>
-			<p>
-				As a small demo, the statistics above update in{' '}
-				<u>real time!</u> Try catching them change :)
+			<p className="md:w-1/2">
+				These statistics update in real-time! Try watching them change,
+				or change the settings for your server through the buttons on
+				the side-bar. <br />
+				<br /> Thank you for using Ferris!
 			</p>
-			<SmallHero
-				title="Thank you for trying out the panel!"
-				description="The only 'working' tab is the config tab, please try it out. Also, please check out our discord server for updates. The panel is so new that we had to put this here to show you that it's not empty."
-				href="/discord"
-			/>
 		</ControlPanel>
 	);
 };

@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import { useAuth } from '../../contexts/auth';
 
-const HeaderProfile = () => {
+const HeaderProfile = (props: any) => {
 	const user = useAuth();
 
 	if (user) {
 		return (
-			<div className="flex flex-row items-center">
+			<div className={'flex flex-row items-center ' + props.className}>
 				<Link href="/control">
 					<div className="hover:bg-gray-100 cursor-pointer bg-gray-300 text-gray-900 rounded py-1 px-2 mr-3 flex flex-row items-center transition-all duration-100">
 						<a className="">Control Panel</a>
@@ -31,7 +31,9 @@ const HeaderProfile = () => {
 							width="30"
 							height="30"
 							src={user.photoURL}
-							onError={(e: any) => { e.target.src = '/img/placeholder-crystal.png'}}
+							onError={(e: any) => {
+								e.target.src = '/img/placeholder-crystal.png';
+							}}
 							alt="user profile"
 						/>
 						<p className="mr-2">{user.displayName}</p>
