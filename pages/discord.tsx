@@ -3,7 +3,7 @@ import Layout from '../components/Layout';
 
 const Discord = () => {
 	useEffect(() => {
-		window.location.replace('https://discord.gg/qUzdFQ2wBG');
+		window.location.replace('https://discord.gg/ferris');
 	});
 	return <Layout></Layout>;
 };
