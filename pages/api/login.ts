@@ -88,7 +88,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			avatar: avatar,
 			guilds: guilds,
 		},
-		{ merge: true }
+		{ merge: false }
 	);
 
 	const token = await admin.auth().createCustomToken(uid);
