@@ -35,7 +35,7 @@ export const PaymentPricing = () => {
 							<p className="mt-4 text-lg text-white">
 								Ferris takes money to host, by supporting us we
 								can provide your server with the best experience
-								possible. All extra revinue is geared towards
+								possible. All extra revenue is geared towards
 								Ferris as a whole.
 							</p>
 						</div>
