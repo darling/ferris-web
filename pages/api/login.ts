@@ -86,9 +86,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			discrim: discriminator,
 			username: username,
 			avatar: avatar,
-			guilds: guilds,
+			guilds,
 		},
-		{ merge: false }
+		{
+			mergeFields: ['guilds', 'avatar', 'discrim', 'username'],
+		}
 	);
 
 	const token = await admin.auth().createCustomToken(uid);
