@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Layout from '../../components/Layout';
 import { useAuth } from '../../contexts/auth';
 import { db } from '../../utils/auth/firebase';
@@ -39,7 +39,7 @@ const ControlIndex = () => {
 
 	return (
 		<Layout title="Control Panel | Ferris Bot">
-			<div className="p-5">
+			<div className="p-5 mx-auto container">
 				<h1 className="font-bold text-4xl">
 					Welcome back, {user.displayName}!
 				</h1>
@@ -48,7 +48,7 @@ const ControlIndex = () => {
 					mistake, please re-login! Thanks!
 				</h3>
 			</div>
-			<div className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 p-5 rounded-lg">
+			<div className="container mx-auto grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 p-5 rounded-lg">
 				{guilds ? (
 					Object.entries(guilds)
 						.sort((a, b) => Number(a[0]) - Number(b[0]))

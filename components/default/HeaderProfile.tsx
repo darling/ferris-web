@@ -25,7 +25,7 @@ const HeaderProfile = (props: any) => {
 					</div>
 				</Link>
 				<Link href="/profile">
-					<div className="select-none cursor-pointer flex flex-row items-center p-1 rounded transition duration-200 hover:bg-gray-800">
+					<div className="select-none cursor-pointer flex flex-row items-center p-1 rounded transition duration-200">
 						<img
 							className="rounded mr-3"
 							width="30"

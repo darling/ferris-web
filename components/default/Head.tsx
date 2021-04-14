@@ -20,7 +20,10 @@ export const CustomHead = ({
 					'Ferris is a high-caliber moderation bot for Discord. Use Ferris to maintain and moderate your Discord server for free!'
 				}
 			/>
-
+			<title>
+				{title ||
+					'Ferris Bot — A Discord bot for protecting your community.'}
+			</title>
 			<meta property="og:url" content="https://www.ferris.gg" />
 			<meta property="og:type" content="website" />
 			<meta

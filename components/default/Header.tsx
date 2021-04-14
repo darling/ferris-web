@@ -15,7 +15,7 @@ const Header = () => {
 							width="100"
 							src="/img/logo.png"
 							alt="Logo"
-							className="cursor-pointer inline-flex items-center mr-8"
+							className="cursor-pointer inline-flex items-center mr-8 transition-colors duration-200 rounded-sm hover:bg-gray-800 p-3"
 						/>
 					</Link>
 					<ul className="items-center hidden space-x-8 lg:flex">
@@ -23,7 +23,7 @@ const Header = () => {
 							<Link href="/docs">
 								<a
 									aria-label="Documentation"
-									className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-green-400"
+									className="font-medium tracking-wide text-gray-500 transition-colors duration-200 hover:text-green-400"
 								>
 									Documentation
 								</a>
@@ -33,7 +33,7 @@ const Header = () => {
 							<Link href="/pricing">
 								<a
 									aria-label="Pricing Plans"
-									className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-green-400"
+									className="font-medium tracking-wide text-gray-500 transition-colors duration-200 hover:text-green-400"
 								>
 									Plans
 								</a>
@@ -43,7 +43,7 @@ const Header = () => {
 							<Link href="/discord">
 								<a
 									aria-label="Discord Server"
-									className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-green-400"
+									className="font-medium tracking-wide text-gray-500 transition-colors duration-200 hover:text-green-400"
 								>
 									Discord Server
 								</a>
@@ -53,7 +53,7 @@ const Header = () => {
 							<Link href="/add">
 								<a
 									aria-label="Add the bot"
-									className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-green-400"
+									className="font-medium tracking-wide text-gray-500 transition-colors duration-200 hover:text-green-400"
 								>
 									Add Ferris
 								</a>
@@ -168,7 +168,7 @@ const Header = () => {
 											</Link>
 										</li>
 										<li>
-											<HeaderProfile className="justify-between bg-gray-900 p-2 rounded-md shadow-md" />
+											<HeaderProfile className="justify-between text-green-900 shadow-none p-0 rounded-md" />
 										</li>
 									</ul>
 								</nav>

@@ -3,6 +3,7 @@ import Select from 'react-select';
 
 import { LoggingSettings } from '../../../components/control/Settings/LoggingSettings';
 import ControlPanel from '../../../components/ControlPanel';
+import { SectionHeading } from '../../../components/ui-atoms/SectionHeading';
 import { GuildContext } from '../../../contexts/guild';
 import { db } from '../../../utils/auth/firebase';
 import { selectStyleDark } from '../../../utils/select-styles';
@@ -78,9 +79,7 @@ const ControlConfig = () => {
 
 	return (
 		<ControlPanel>
-			<h1 className="font-bold tracking-wide align-middle text-4xl text-green-200">
-				{'Config Home'}
-			</h1>
+			<SectionHeading heading="Config" />
 			<div>
 				<div className="my-5">
 					<h2 className="text-3xl font-bold tracking-wider  mb-1">

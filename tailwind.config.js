@@ -6,11 +6,7 @@ module.exports = {
 	theme: {
 		extend: {},
 		colors: {
-			green: colors.green,
-			red: colors.red,
-			gray: colors.trueGray,
-			yellow: colors.amber,
-			white: colors.white,
+			...colors,
 		},
 		fontFamily: {
 			sans: ['Roboto', 'sans-serif'],

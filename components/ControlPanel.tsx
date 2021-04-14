@@ -1,6 +1,8 @@
 import { useContext } from 'react';
 import { useAuth } from '../contexts/auth';
 import { GuildContext } from '../contexts/guild';
+import { BetaWarningBanner } from './control/BetaWarningBanner';
+import { ControlBase } from './control/ControlBase';
 import Sidebar from './control/Sidebar';
 import Layout from './Layout';
 
@@ -24,7 +26,11 @@ const ControlPanel = (props: any) => {
 
 	if (!guild?.hasFerris) {
 		return (
-			<Layout>
+			<Layout
+				title={`${
+					guild?.name || 'Guild Management'
+				} | Ferris Control Panel`}
+			>
 				<div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
 					<div className="max-w-xl sm:mx-auto lg:max-w-2xl">
 						<div className="flex flex-col mb-16 sm:text-center sm:mb-0">
@@ -112,8 +118,32 @@ const ControlPanel = (props: any) => {
 
 	// In guild view
 	return (
-		<Layout>
-			<div className="flex flex-col items-start md:flex-row">
+		<Layout
+			title={`${
+				guild?.name || 'Guild Management'
+			} | Ferris Control Panel`}
+		>
+			<ControlBase
+				sidebar={
+					<Sidebar
+						entries={[
+							{ name: 'Home' },
+							{ name: 'Config', path: '/config' },
+							{ name: 'Warns', path: '/warns' },
+							{
+								name: 'Custom Commands',
+								path: '/custom-commands',
+							},
+						]}
+						guildName={guild?.name}
+						guildIcon={guild?.icon}
+					/>
+				}
+				optionalRight={<BetaWarningBanner />}
+			>
+				{props.children}
+			</ControlBase>
+			{/* <div className="flex flex-col items-start md:flex-row">
 				<Sidebar
 					entries={[
 						{ name: 'Home' },
@@ -128,7 +158,7 @@ const ControlPanel = (props: any) => {
 					{props.children}
 				</div>
 				<div></div>
-			</div>
+			</div> */}
 		</Layout>
 	);
 };

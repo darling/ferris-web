@@ -1,10 +1,12 @@
 import Layout from '../components/Layout';
-import { PricingCards } from '../components/PricingCards';
+import { PaymentComparison } from '../components/sections/PaymentComparison';
+import { PaymentPricing } from '../components/sections/PaymentPricing';
 
 export const Pricing = () => {
 	return (
 		<Layout>
-			<PricingCards />
+			<PaymentPricing />
+			<PaymentComparison />
 		</Layout>
 	);
 };
