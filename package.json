@@ -27,6 +27,7 @@
 		"lodash": "^4.17.20",
 		"next": "latest",
 		"next-mdx-remote": "^1.0.0",
+		"node-cache": "^5.1.2",
 		"postcss": "^8.2.4",
 		"postcss-flexbugs-fixes": "4",
 		"react": "^16.12.0",

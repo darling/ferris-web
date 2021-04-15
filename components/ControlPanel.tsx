@@ -6,7 +6,12 @@ import { ControlBase } from './control/ControlBase';
 import Sidebar from './control/Sidebar';
 import Layout from './Layout';
 
-const ControlPanel = (props: any) => {
+interface Props {
+	children?: any;
+	right?: any;
+}
+
+const ControlPanel = (props: Props) => {
 	const guild = useContext(GuildContext);
 	const user = useAuth();
 	// const router = useRouter();
@@ -139,26 +144,15 @@ const ControlPanel = (props: any) => {
 						guildIcon={guild?.icon}
 					/>
 				}
-				optionalRight={<BetaWarningBanner />}
+				optionalRight={
+					<>
+						<BetaWarningBanner />
+						{props.right}
+					</>
+				}
 			>
 				{props.children}
 			</ControlBase>
-			{/* <div className="flex flex-col items-start md:flex-row">
-				<Sidebar
-					entries={[
-						{ name: 'Home' },
-						{ name: 'Config', path: '/config' },
-						{ name: 'Warns', path: '/warns' },
-						{ name: 'Custom Commands', path: '/custom-commands' },
-					]}
-					guildName={guild?.name}
-					guildIcon={guild?.icon}
-				/>
-				<div className="mt-2 md:mx-2 sm:w-4/5 w-screen">
-					{props.children}
-				</div>
-				<div></div>
-			</div> */}
 		</Layout>
 	);
 };

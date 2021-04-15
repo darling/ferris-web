@@ -6,14 +6,17 @@ export async function fetchApi(url: string, opts?: any) {
 	const user = app.auth().currentUser;
 	const token = user && (await user.getIdToken());
 
-	const res = await fetch(`/api/${url}`, {
-		method,
-		...(body && { body: JSON.stringify(body) }),
-		headers: {
-			'Content-Type': 'application/json',
-			Authorization: `Bearer ${token}`,
-		},
-	});
+	const res = await fetch(
+		`/api/${url.startsWith('/') ? url.substr(1) : url}`,
+		{
+			method,
+			...(body && { body: JSON.stringify(body) }),
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${token}`,
+			},
+		}
+	);
 
 	const data = await res.json();
 

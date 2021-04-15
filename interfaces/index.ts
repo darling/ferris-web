@@ -22,6 +22,16 @@ export interface User {
 	premium: boolean;
 }
 
+export interface DiscordUser {
+	id: string;
+	username: string;
+	bot?: boolean;
+	public_flags: number;
+	avatar?: string;
+	discriminator: string;
+	cached: boolean;
+}
+
 export interface UserData {
 	avatar: string;
 	discrim: string;
