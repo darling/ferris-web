@@ -25,7 +25,7 @@ export const PaymentComparison = () => {
 						</div>
 
 						<table className="mt-8 w-full">
-							<caption className="bg-gray-50 border-t border-gray-200 py-3 px-4 text-sm font-medium text-gray-900 text-left">
+							<caption className="bg-gray-50 border-t border-gray-700 py-3 px-4 text-sm font-medium text-gray-900 text-left">
 								Features
 							</caption>
 							<thead>
@@ -39,7 +39,7 @@ export const PaymentComparison = () => {
 								</tr>
 							</thead>
 							<tbody className="divide-y divide-gray-200">
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -65,7 +65,7 @@ export const PaymentComparison = () => {
 									</td>
 								</tr>
 
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -91,7 +91,7 @@ export const PaymentComparison = () => {
 									</td>
 								</tr>
 
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -117,7 +117,7 @@ export const PaymentComparison = () => {
 									</td>
 								</tr>
 
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -146,7 +146,7 @@ export const PaymentComparison = () => {
 						</table>
 
 						<table className="w-full">
-							<caption className="bg-gray-50 border-t border-gray-200 py-3 px-4 text-sm font-medium text-gray-900 text-left">
+							<caption className="bg-gray-50 border-t border-gray-700 py-3 px-4 text-sm font-medium text-gray-900 text-left">
 								Reporting
 							</caption>
 							<thead>
@@ -160,7 +160,7 @@ export const PaymentComparison = () => {
 								</tr>
 							</thead>
 							<tbody className="divide-y divide-gray-200">
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -186,7 +186,7 @@ export const PaymentComparison = () => {
 									</td>
 								</tr>
 
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -212,7 +212,7 @@ export const PaymentComparison = () => {
 									</td>
 								</tr>
 
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -238,7 +238,7 @@ export const PaymentComparison = () => {
 									</td>
 								</tr>
 
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -268,7 +268,7 @@ export const PaymentComparison = () => {
 						</table>
 
 						<table className="w-full">
-							<caption className="bg-gray-50 border-t border-gray-200 py-3 px-4 text-sm font-medium text-gray-900 text-left">
+							<caption className="bg-gray-50 border-t border-gray-700 py-3 px-4 text-sm font-medium text-gray-900 text-left">
 								Support
 							</caption>
 							<thead>
@@ -282,7 +282,7 @@ export const PaymentComparison = () => {
 								</tr>
 							</thead>
 							<tbody className="divide-y divide-gray-200">
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -308,7 +308,7 @@ export const PaymentComparison = () => {
 									</td>
 								</tr>
 
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -334,7 +334,7 @@ export const PaymentComparison = () => {
 									</td>
 								</tr>
 
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -360,7 +360,7 @@ export const PaymentComparison = () => {
 									</td>
 								</tr>
 
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -389,7 +389,7 @@ export const PaymentComparison = () => {
 							</tbody>
 						</table>
 
-						<div className="border-t border-gray-200 px-4 pt-5">
+						<div className="border-t border-gray-700 px-4 pt-5">
 							<a
 								href="/"
 								className="block w-full bg-gray-800 border border-gray-800 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900"
@@ -423,7 +423,7 @@ export const PaymentComparison = () => {
 						</div>
 
 						<table className="mt-8 w-full">
-							<caption className="bg-gray-50 border-t border-gray-200 py-3 px-4 text-sm font-medium text-gray-900 text-left">
+							<caption className="bg-gray-50 border-t border-gray-700 py-3 px-4 text-sm font-medium text-gray-900 text-left">
 								Features
 							</caption>
 							<thead>
@@ -437,7 +437,7 @@ export const PaymentComparison = () => {
 								</tr>
 							</thead>
 							<tbody className="divide-y divide-gray-200">
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -463,7 +463,7 @@ export const PaymentComparison = () => {
 									</td>
 								</tr>
 
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -489,7 +489,7 @@ export const PaymentComparison = () => {
 									</td>
 								</tr>
 
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -515,7 +515,7 @@ export const PaymentComparison = () => {
 									</td>
 								</tr>
 
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -532,7 +532,7 @@ export const PaymentComparison = () => {
 						</table>
 
 						<table className="w-full">
-							<caption className="bg-gray-50 border-t border-gray-200 py-3 px-4 text-sm font-medium text-gray-900 text-left">
+							<caption className="bg-gray-50 border-t border-gray-700 py-3 px-4 text-sm font-medium text-gray-900 text-left">
 								Reporting
 							</caption>
 							<thead>
@@ -546,7 +546,7 @@ export const PaymentComparison = () => {
 								</tr>
 							</thead>
 							<tbody className="divide-y divide-gray-200">
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -572,7 +572,7 @@ export const PaymentComparison = () => {
 									</td>
 								</tr>
 
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -598,7 +598,7 @@ export const PaymentComparison = () => {
 									</td>
 								</tr>
 
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -624,7 +624,7 @@ export const PaymentComparison = () => {
 									</td>
 								</tr>
 
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -654,7 +654,7 @@ export const PaymentComparison = () => {
 						</table>
 
 						<table className="w-full">
-							<caption className="bg-gray-50 border-t border-gray-200 py-3 px-4 text-sm font-medium text-gray-900 text-left">
+							<caption className="bg-gray-50 border-t border-gray-700 py-3 px-4 text-sm font-medium text-gray-900 text-left">
 								Support
 							</caption>
 							<thead>
@@ -668,7 +668,7 @@ export const PaymentComparison = () => {
 								</tr>
 							</thead>
 							<tbody className="divide-y divide-gray-200">
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -694,7 +694,7 @@ export const PaymentComparison = () => {
 									</td>
 								</tr>
 
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -720,7 +720,7 @@ export const PaymentComparison = () => {
 									</td>
 								</tr>
 
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -746,7 +746,7 @@ export const PaymentComparison = () => {
 									</td>
 								</tr>
 
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -775,7 +775,7 @@ export const PaymentComparison = () => {
 							</tbody>
 						</table>
 
-						<div className="border-t border-gray-200 px-4 pt-5">
+						<div className="border-t border-gray-700 px-4 pt-5">
 							<a
 								href="/"
 								className="block w-full bg-gray-800 border border-gray-800 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900"
@@ -809,7 +809,7 @@ export const PaymentComparison = () => {
 						</div>
 
 						<table className="mt-8 w-full">
-							<caption className="bg-gray-50 border-t border-gray-200 py-3 px-4 text-sm font-medium text-gray-900 text-left">
+							<caption className="bg-gray-50 border-t border-gray-700 py-3 px-4 text-sm font-medium text-gray-900 text-left">
 								Features
 							</caption>
 							<thead>
@@ -823,7 +823,7 @@ export const PaymentComparison = () => {
 								</tr>
 							</thead>
 							<tbody className="divide-y divide-gray-200">
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -849,7 +849,7 @@ export const PaymentComparison = () => {
 									</td>
 								</tr>
 
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -875,7 +875,7 @@ export const PaymentComparison = () => {
 									</td>
 								</tr>
 
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -901,7 +901,7 @@ export const PaymentComparison = () => {
 									</td>
 								</tr>
 
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -918,7 +918,7 @@ export const PaymentComparison = () => {
 						</table>
 
 						<table className="w-full">
-							<caption className="bg-gray-50 border-t border-gray-200 py-3 px-4 text-sm font-medium text-gray-900 text-left">
+							<caption className="bg-gray-50 border-t border-gray-700 py-3 px-4 text-sm font-medium text-gray-900 text-left">
 								Reporting
 							</caption>
 							<thead>
@@ -932,7 +932,7 @@ export const PaymentComparison = () => {
 								</tr>
 							</thead>
 							<tbody className="divide-y divide-gray-200">
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -958,7 +958,7 @@ export const PaymentComparison = () => {
 									</td>
 								</tr>
 
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -984,7 +984,7 @@ export const PaymentComparison = () => {
 									</td>
 								</tr>
 
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -1010,7 +1010,7 @@ export const PaymentComparison = () => {
 									</td>
 								</tr>
 
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -1040,7 +1040,7 @@ export const PaymentComparison = () => {
 						</table>
 
 						<table className="w-full">
-							<caption className="bg-gray-50 border-t border-gray-200 py-3 px-4 text-sm font-medium text-gray-900 text-left">
+							<caption className="bg-gray-50 border-t border-gray-700 py-3 px-4 text-sm font-medium text-gray-900 text-left">
 								Support
 							</caption>
 							<thead>
@@ -1054,7 +1054,7 @@ export const PaymentComparison = () => {
 								</tr>
 							</thead>
 							<tbody className="divide-y divide-gray-200">
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -1080,7 +1080,7 @@ export const PaymentComparison = () => {
 									</td>
 								</tr>
 
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -1106,7 +1106,7 @@ export const PaymentComparison = () => {
 									</td>
 								</tr>
 
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -1132,7 +1132,7 @@ export const PaymentComparison = () => {
 									</td>
 								</tr>
 
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th
 										className="py-5 px-4 text-sm font-normal text-gray-500 text-left"
 										scope="row"
@@ -1161,7 +1161,7 @@ export const PaymentComparison = () => {
 							</tbody>
 						</table>
 
-						<div className="border-t border-gray-200 px-4 pt-5">
+						<div className="border-t border-gray-700 px-4 pt-5">
 							<a
 								href="/"
 								className="block w-full bg-gray-800 border border-gray-800 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900"
@@ -1211,7 +1211,7 @@ export const PaymentComparison = () => {
 									</th>
 								</tr>
 							</thead>
-							<tbody className="border-t border-gray-200 divide-y divide-gray-200">
+							<tbody className="border-t border-gray-700 divide-y divide-gray-200">
 								<tr>
 									<th
 										className="py-8 px-6 text-sm font-medium text-gray-900 text-left align-top"
@@ -2083,7 +2083,7 @@ export const PaymentComparison = () => {
 								</tr>
 							</tbody>
 							<tfoot>
-								<tr className="border-t border-gray-200">
+								<tr className="border-t border-gray-700">
 									<th className="sr-only" scope="row">
 										Choose your plan
 									</th>

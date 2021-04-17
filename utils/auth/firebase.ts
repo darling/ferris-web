@@ -24,6 +24,6 @@ if (process.env.NODE_ENV == 'development') {
 	db.useEmulator('localhost', 8080);
 }
 
-export { db };
+export { db, firebase };
 
 export default app;

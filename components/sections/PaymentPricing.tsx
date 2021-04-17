@@ -19,12 +19,12 @@ export const PaymentPricing = () => {
 							</p>
 						</div>
 						<Link href="/profile">
-							<a className="mt-8 w-full bg-green-400 border border-transparent px-5 py-3 inline-flex items-center justify-center text-base font-medium rounded-md text-white hover:bg-green-700 sm:mt-10 sm:w-auto xl:mt-0">
+							<a className="mt-8 w-full bg-green-400 border border-gray-700 border-transparent px-5 py-3 inline-flex items-center justify-center text-base font-medium rounded-md text-white hover:bg-green-700 sm:mt-10 sm:w-auto xl:mt-0">
 								Get started today
 							</a>
 						</Link>
 					</div>
-					<div className="border-t border-gray-200 pt-16 xl:grid xl:grid-cols-3 xl:gap-x-8">
+					<div className="border-t border-gray-700 pt-16 xl:grid xl:grid-cols-3 xl:gap-x-8">
 						<div>
 							<h2 className="text-base font-semibold text-green-400 tracking-wide uppercase">
 								POWER UP YOUR SERVER
@@ -40,7 +40,7 @@ export const PaymentPricing = () => {
 							</p>
 						</div>
 						<div className="mt-4 sm:mt-8 md:mt-10 md:grid md:grid-cols-2 md:gap-x-8 xl:mt-0 xl:col-span-2">
-							<ul className="divide-y divide-gray-200">
+							<ul className="divide-y divide-gray-700">
 								<li className="py-4 flex md:py-0 md:pb-4">
 									<svg
 										className="flex-shrink-0 h-6 w-6 text-green-500"
@@ -151,7 +151,7 @@ export const PaymentPricing = () => {
 									</span>
 								</li>
 							</ul>
-							{/* <ul className="border-t border-gray-200 divide-y divide-gray-200 md:border-t-0">
+							{/* <ul className="border-t divide-gray-700 divide-y divide-gray-700 md:border-t-0">
 								<li className="py-4 flex md:border-t-0 md:py-0 md:pb-4">
 									<svg
 										className="flex-shrink-0 h-6 w-6 text-green-500"

@@ -1,18 +1,19 @@
 export const selectStyleDark: any = {
 	option: (provided: any, state: { isSelected: any }) => ({
 		...provided,
-		backgroundColor: state.isSelected ? '#4ADE80' : '#525252',
+		backgroundColor: state.isSelected ? '#4ADE80' : '#27272A',
 		color: state.isSelected ? '#DCFCE7' : '#DCFCE7',
 	}),
 	menu: (provided: any) => ({
 		...provided,
-		backgroundColor: '#525252',
+		backgroundColor: '#27272A',
 	}),
 	control: (provided: any) => ({
 		...provided,
-		backgroundColor: '#525252',
+		backgroundColor: '#27272A',
 		color: '#DCFCE7',
-		borderWidth: 0,
+		borderWidth: 1,
+		borderColor: '#3F3F46',
 		borderRadius: 7,
 		padding: 3,
 		fontSize: 15,
@@ -23,16 +24,16 @@ export const selectStyleDark: any = {
 	}),
 	dropdownIndicator: (provided: any) => ({
 		...provided,
-		color: '#BBF7D0',
+		color: '#3F3F46',
 		borderWidth: 0,
 	}),
 	indicatorSeparator: (provided: any) => ({
 		...provided,
-		backgroundColor: '#DCFCE7',
+		backgroundColor: '#3F3F46',
 	}),
 	input: (provided: any) => ({
 		...provided,
-		backgroundColor: '#525252',
 		color: '#DCFCE7',
+		borderWidth: 0,
 	}),
 };

@@ -143,7 +143,7 @@ export const ControlWarningLog = (props: Props) => {
 
 	return (
 		<div>
-			<div className="pb-5 border-b border-gray-200">
+			<div className="pb-5 border-b border-gray-700">
 				<h3 className="text-lg leading-6 font-medium">Recent Warns</h3>
 			</div>
 			<div className="py-8">

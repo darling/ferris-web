@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
 import { stringify } from 'querystring';
 import { admin } from '../../utils/auth/firebase-admin';
+import { discordProfilePic } from '../../utils/discord-layer';
 
 const DISCORD_API_ENDPOINT = 'https://discord.com/api';
 const DISCORD_CLIENT_ID = '637804742935838751';
@@ -96,7 +97,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	const token = await admin.auth().createCustomToken(uid);
 
 	const avatarHash = discordInfo.data['avatar'];
-	const isGif = avatarHash.startsWith('a_');
 
 	await admin
 		.auth()
@@ -113,9 +113,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
 	await admin.auth().updateUser(uid, {
 		displayName: discordInfo.data['username'],
-		photoURL: `https://cdn.discordapp.com/avatars/${uid}/${avatarHash}.${
-			isGif ? 'gif' : 'png'
-		}`,
+		photoURL: discordProfilePic(uid, avatarHash),
 	});
 
 	res.setHeader('Content-Type', 'text/plain');

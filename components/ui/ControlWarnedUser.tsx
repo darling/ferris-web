@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { DiscordUser } from '../../interfaces';
-import { getUserInfo } from '../../utils/discord-layer';
+import { discordProfilePic, getUserInfo } from '../../utils/discord-layer';
 
 interface ControlProps {
 	children?: any;
@@ -41,13 +41,10 @@ export const ControlWarnedUserBar = (props: ControlProps) => {
 					<div className="flex-shrink-0 h-10 w-10">
 						<img
 							className="h-10 w-10 rounded-full"
-							src={`https://cdn.discordapp.com/avatars/${
-								userData.id
-							}/${userData.avatar}.${
-								userData.avatar?.startsWith('a_')
-									? 'gif'
-									: 'png'
-							}`}
+							src={discordProfilePic(
+								userData.id,
+								userData.avatar || '0'
+							)}
 							alt=""
 						/>
 					</div>
