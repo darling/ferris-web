@@ -1,20 +1,21 @@
+import { Switch } from '@headlessui/react';
+import classNames from 'classnames';
 import { groupBy, startCase } from 'lodash';
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
+
 import { GuildContext } from '../../../contexts/guild';
+import { GuildConfig } from '../../../interfaces/control';
 import { LoggingTypes, typesAsArray } from '../../../interfaces/logging';
 import { db } from '../../../utils/auth/firebase';
-import ToggleSwitch from './../../ui/ToggleSwitch';
+import { InfoWarningBubble } from '../../ui-atoms/InfoWarningBubble';
 import { SmallHero } from './../../SmallHero';
-import { GuildConfig } from '../../../interfaces/control';
+
+function startsWithVowel(word: string) {
+	return /[aeiou]/i.test(word[0]);
+}
 
 export const LoggingSettings = ({ config }: { config: GuildConfig }) => {
 	const guild = useContext(GuildContext);
-
-	const [button, setButtonState] = useState(config?.logging?.enabled);
-
-	useEffect(() => {
-		setButtonState(config?.logging?.enabled);
-	}, [config]);
 
 	function toggleEnabled(type: boolean) {
 		db.collection('configs')
@@ -52,7 +53,7 @@ export const LoggingSettings = ({ config }: { config: GuildConfig }) => {
 			});
 	}
 
-	if (!config?.logging) {
+	if (!config?.logging || !config?.logging?.subs) {
 		return (
 			<div className="sm:col-span-6">
 				<SmallHero
@@ -64,113 +65,209 @@ export const LoggingSettings = ({ config }: { config: GuildConfig }) => {
 		);
 	}
 
+	const enabled = config?.logging?.enabled || false;
+
 	return (
 		<div className="sm:col-span-6">
-			<div className="rounded-md bg-blue-50 p-4">
-				<div className="flex">
-					<div className="flex-shrink-0">
-						<svg
-							className="h-5 w-5 text-blue-400"
-							data-todo-x-description="Heroicon name: solid/information-circle"
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 20 20"
-							fill="currentColor"
+			<InfoWarningBubble>
+				Discord is still getting back to us on certian features. Please
+				understand if mute logs or punishment logs don't work yet.
+			</InfoWarningBubble>
+			<Switch.Group
+				as="div"
+				className="flex items-center justify-between my-2"
+			>
+				<Switch.Label
+					as="span"
+					className="flex-grow flex flex-col"
+					passive
+				>
+					<span className="text-sm font-medium text-gray-300">
+						Logging
+					</span>
+					<span className="text-sm text-gray-500">
+						Enable and disable logging entirely using this setting.
+					</span>
+				</Switch.Label>
+				<Switch
+					checked={enabled}
+					onChange={toggleEnabled}
+					className={classNames(
+						enabled ? 'bg-green-600' : 'bg-gray-200',
+						'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent border-gray-800 rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500'
+					)}
+				>
+					<span className="sr-only">Use setting</span>
+					<span
+						className={classNames(
+							enabled ? 'translate-x-5' : 'translate-x-0',
+							'pointer-events-none relative inline-block h-5 w-5 rounded-full bg-gray-800 shadow transform ring-0 transition ease-in-out duration-200'
+						)}
+					>
+						<span
+							className={classNames(
+								enabled
+									? 'opacity-0 ease-out duration-100'
+									: 'opacity-100 ease-in duration-200',
+								'absolute inset-0 h-full w-full flex items-center justify-center transition-opacity'
+							)}
 							aria-hidden="true"
 						>
-							<path
-								fillRule="evenodd"
-								d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-								clipRule="evenodd"
-							></path>
-						</svg>
-					</div>
-					<div className="ml-3 flex-1 md:flex md:justify-between">
-						<p className="text-sm text-blue-700">
-							Because of Discord's Support team, we are left
-							hanging on some features such as muting, and
-							specific logging. So just keep that in mind until
-							Discord comes around and enables some permissions.
-						</p>
-					</div>
-				</div>
-			</div>
-			<div className="rounded-md bg-blue-50 p-4 mt-2">
-				<div className="flex">
-					<div className="flex-shrink-0">
-						<svg
-							className="h-5 w-5 text-blue-400"
-							data-todo-x-description="Heroicon name: solid/information-circle"
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 20 20"
-							fill="currentColor"
+							<svg
+								className="bg-gray-800 h-3 w-3 text-gray-400"
+								fill="none"
+								viewBox="0 0 12 12"
+							>
+								<path
+									d="M4 8l2-2m0 0l2-2M6 6L4 4m2 2l2 2"
+									stroke="currentColor"
+									strokeWidth={2}
+									strokeLinecap="round"
+									strokeLinejoin="round"
+								/>
+							</svg>
+						</span>
+						<span
+							className={classNames(
+								enabled
+									? 'opacity-100 ease-in duration-200'
+									: 'opacity-0 ease-out duration-100',
+								'absolute inset-0 h-full w-full flex items-center justify-center transition-opacity'
+							)}
 							aria-hidden="true"
 						>
-							<path
-								fillRule="evenodd"
-								d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-								clipRule="evenodd"
-							></path>
-						</svg>
-					</div>
-					<div className="ml-3 flex-1 md:flex md:justify-between">
-						<p className="text-sm text-blue-700">
-							Also this (the logging) UI will be redone soon.
-						</p>
-					</div>
-				</div>
-			</div>
-			<p className="text-lg mt-2 tracking-wide mb-2 flex flex-row items-center">
-				<ToggleSwitch
-					toggleFunction={toggleEnabled}
-					initialState={config?.logging?.enabled}
-				/>
-				Logging is currently {button ? 'enabled' : 'disabled'}.{' '}
-			</p>
-			<div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-2/3 md:mx-0 md:w-full">
+							<svg
+								className="bg-gray-800 h-3 w-3 text-green-600"
+								fill="currentColor"
+								viewBox="0 0 12 12"
+							>
+								<path d="M3.707 5.293a1 1 0 00-1.414 1.414l1.414-1.414zM5 8l-.707.707a1 1 0 001.414 0L5 8zm4.707-3.293a1 1 0 00-1.414-1.414l1.414 1.414zm-7.414 2l2 2 1.414-1.414-2-2-1.414 1.414zm3.414 2l4-4-1.414-1.414-4 4 1.414 1.414z" />
+							</svg>
+						</span>
+					</span>
+				</Switch>
+			</Switch.Group>
+			<ul className="divide-y divide-gray-800">
 				{breakCategories(typesAsArray).map((category) => {
+					const categoryLabel = startCase(category[0].toLowerCase());
 					return (
-						<div
-							key={category[0]}
-							className="bg-gray-800 p-2 rounded-lg"
-						>
-							<p className="font-bold text-2xl tracking-wider">
-								{startCase(category[0].toLowerCase())}
-							</p>
-							<div className="flex flex-col gap-2 pt-2">
-								{category[1].map((logType) => {
-									return (
-										<div
-											key={logType}
-											className="w-full flex flex-row items-center justify-between bg-gray-700 rounded-xl p-2"
+						<li key={category[0]} className="py-4">
+							{categoryLabel}
+							{category[1].map((logType) => {
+								const enabled = config?.logging?.subs?.includes(
+									logType
+								);
+
+								const changeCallback = () => {
+									toggleLogConfigProperty(logType);
+								};
+
+								const eventLabel = startCase(
+									logType
+										.toLowerCase()
+										.replace(category[0].toLowerCase(), '')
+								);
+
+								if (enabled === undefined) return <>Error</>;
+
+								return (
+									<Switch.Group
+										key={logType}
+										as="div"
+										className="flex items-center justify-between my-2"
+									>
+										<Switch.Label
+											as="span"
+											className="flex-grow flex flex-col"
+											passive
 										>
-											<p>
-												{startCase(
-													logType
-														.toLowerCase()
-														.replace(
-															category[0].toLowerCase(),
-															''
-														)
+											<span className="text-sm font-medium text-gray-300">
+												{eventLabel}
+											</span>
+											<span className="text-sm text-gray-500">
+												When a
+												{startsWithVowel(categoryLabel)
+													? 'n'
+													: ''}{' '}
+												{categoryLabel.toLowerCase()}{' '}
+												gives a
+												{startsWithVowel(eventLabel)
+													? 'n'
+													: ''}{' '}
+												"{eventLabel.replace('_', '')}"
+												event.
+											</span>
+										</Switch.Label>
+										<Switch
+											checked={enabled}
+											onChange={changeCallback}
+											className={classNames(
+												enabled
+													? 'bg-green-600'
+													: 'bg-gray-200',
+												'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent border-gray-800 rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500'
+											)}
+										>
+											<span className="sr-only">
+												Use setting
+											</span>
+											<span
+												className={classNames(
+													enabled
+														? 'translate-x-5'
+														: 'translate-x-0',
+													'pointer-events-none relative inline-block h-5 w-5 rounded-full bg-gray-800 shadow transform ring-0 transition ease-in-out duration-200'
 												)}
-											</p>
-											<ToggleSwitch
-												toggleFunction={() => {
-													toggleLogConfigProperty(
-														logType
-													);
-												}}
-												initialState={config?.logging?.subs?.includes(
-													logType
-												)}
-											/>
-										</div>
-									);
-								})}
-							</div>
-						</div>
+											>
+												<span
+													className={classNames(
+														enabled
+															? 'opacity-0 ease-out duration-100'
+															: 'opacity-100 ease-in duration-200',
+														'absolute inset-0 h-full w-full flex items-center justify-center transition-opacity'
+													)}
+													aria-hidden="true"
+												>
+													<svg
+														className="bg-gray-800 h-3 w-3 text-gray-400"
+														fill="none"
+														viewBox="0 0 12 12"
+													>
+														<path
+															d="M4 8l2-2m0 0l2-2M6 6L4 4m2 2l2 2"
+															stroke="currentColor"
+															strokeWidth={2}
+															strokeLinecap="round"
+															strokeLinejoin="round"
+														/>
+													</svg>
+												</span>
+												<span
+													className={classNames(
+														enabled
+															? 'opacity-100 ease-in duration-200'
+															: 'opacity-0 ease-out duration-100',
+														'absolute inset-0 h-full w-full flex items-center justify-center transition-opacity'
+													)}
+													aria-hidden="true"
+												>
+													<svg
+														className="bg-gray-800 h-3 w-3 text-green-600"
+														fill="currentColor"
+														viewBox="0 0 12 12"
+													>
+														<path d="M3.707 5.293a1 1 0 00-1.414 1.414l1.414-1.414zM5 8l-.707.707a1 1 0 001.414 0L5 8zm4.707-3.293a1 1 0 00-1.414-1.414l1.414 1.414zm-7.414 2l2 2 1.414-1.414-2-2-1.414 1.414zm3.414 2l4-4-1.414-1.414-4 4 1.414 1.414z" />
+													</svg>
+												</span>
+											</span>
+										</Switch>
+									</Switch.Group>
+								);
+							})}
+						</li>
 					);
 				})}
-			</div>
+			</ul>
 		</div>
 	);
 };

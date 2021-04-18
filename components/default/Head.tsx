@@ -13,6 +13,7 @@ export const CustomHead = ({
 }: Props) => {
 	return (
 		<Head>
+			<link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 			<meta
 				name="description"
 				content={

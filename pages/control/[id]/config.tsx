@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Select from 'react-select';
 
 import { LoggingSettings } from '../../../components/control/Settings/LoggingSettings';

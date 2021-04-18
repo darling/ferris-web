@@ -79,38 +79,31 @@ const Profile = () => {
 						title="Need to change Discord accounts?"
 						buttonAction={signOut}
 						buttonTitle="Log Out"
-						buttonColor="red"
+						buttonCss="red"
 					>
 						It's alright, we'll be here when you get back.
 					</CardWithAction>
 					{subscriptions?.map((sub: Stripe.Subscription) => {
 						return (
-							<div
-								key={sub.id}
-								className="flex flex-col bg-gray-800 p-3 rounded-lg gap-2"
+							<CardWithAction
+								title="Manage Subscription."
+								buttonTitle="Manage on Stripe"
+								buttonCss="blue"
+								buttonAction={billingPortal}
+								disabled={loading}
 							>
-								<CardWithAction
-									title="Manage Subscription."
-									buttonTitle="Manage on Stripe"
-									buttonColor="blue"
-									buttonAction={billingPortal}
-									disabled={loading}
-								>
-									Your subscription will automatically renew
-									on{' '}
-									<span className="font-bold">
-										{parseTime(
-											sub.current_period_end
-										).toDateString()}
-									</span>
-									. The amount is $
-									{(
-										(sub.items.data[0].plan.amount || 0) /
-										100
-									).toFixed(2)}
-									.
-								</CardWithAction>
-							</div>
+								Your subscription will automatically renew on{' '}
+								<span className="font-bold">
+									{parseTime(
+										sub.current_period_end
+									).toDateString()}
+								</span>
+								. The amount is $
+								{(
+									(sub.items.data[0].plan.amount || 0) / 100
+								).toFixed(2)}
+								.
+							</CardWithAction>
 						);
 					})}
 					<div hidden={!!subscriptions?.length || false}>
@@ -147,11 +140,7 @@ const CardWithAction = (props: any) => (
 							type="button"
 							onClick={props.buttonAction}
 							disabled={props.disabled}
-							className={`inline-flex items-center px-4 py-2 border border-transparent shadow-sm font-medium rounded-md text-white bg-${
-								props.buttonColor || 'green'
-							}-400 hover:bg-${
-								props.buttonColor || 'green'
-							}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm`}
+							className={`inline-flex items-center px-4 py-2 border border-transparent shadow-sm font-medium rounded-md text-white bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm`}
 						>
 							{props.buttonTitle}
 						</button>

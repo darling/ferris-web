@@ -7,10 +7,16 @@ module.exports = {
 	theme: {
 		extend: {},
 		colors: {
-			...colors,
+			green: colors.green,
+			gray: colors.gray,
+			red: colors.rose,
+			blue: colors.blue,
+			indigo: colors.green,
+			white: colors.white,
+			black: colors.black,
 		},
 		fontFamily: {
-			sans: ['Roboto', 'sans-serif'],
+			sans: ['Inter var', 'sans-serif'],
 			serif: ['Roboto Slab', 'serif'],
 			mono: ['Roboto Mono', 'mono'],
 		},
