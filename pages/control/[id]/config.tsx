@@ -1,12 +1,11 @@
-import firebase from 'firebase';
-import { useContext, useEffect, useState } from 'react';
-import Select from 'react-select';
+import { useContext } from 'react';
 
+import { RoleSelectBox } from '../../../components/control/RoleSelectBox';
 import { LoggingSettings } from '../../../components/control/Settings/LoggingSettings';
 import ControlPanel from '../../../components/ControlPanel';
-import { GuildContext } from '../../../contexts/guild';
+import { ConfigContext, GuildContext } from '../../../contexts/guild';
+import { GuildConfig } from '../../../interfaces/control';
 import { db } from '../../../utils/auth/firebase';
-import { selectStyleDark } from '../../../utils/select-styles';
 
 const FormSection = (props: {
 	children: any;
@@ -45,72 +44,17 @@ const FormLabel = (props: { children: any; htmlFor: any }) => {
 
 const ControlConfig = () => {
 	const guild = useContext(GuildContext);
-	const [config, setConfig] = useState<any>();
-	const [mutedRole, setMutedRole] = useState<
-		| {
-				label: string;
-				value: string;
-		  }
-		| undefined
-	>();
+	const config = useContext(ConfigContext);
 
-	const selectableRoles = Object.keys(guild?.roles || {}).map((roleId) => {
-		const role = guild?.roles?.[roleId];
-		return {
-			label: role?.name,
-			value: roleId,
-		};
-	});
+	const roles = guild?.roles || {};
 
-	const [autoRole, setAutoRole] = useState<
-		| {
-				label: string;
-				value: string;
-		  }
-		| undefined
-	>();
+	const autoRole = config?.auto_role
+		? { label: roles[config.auto_role].name, value: config.auto_role }
+		: undefined;
 
-	useEffect(() => {
-		if (!guild?.id) return;
-		console.log('FETCHING CONFIG', guild?.id);
-		const close = db
-			.collection('configs')
-			.doc(guild.id)
-			.onSnapshot(
-				(snapshot) => {
-					console.log('NEW DATA', snapshot.data());
-					const newConfig = { ...snapshot.data() };
-					setConfig(newConfig || null);
-					if (newConfig?.auto_role) {
-						const role = guild?.roles?.[newConfig.auto_role];
-						if (role) {
-							setAutoRole({
-								label: role.name,
-								value: newConfig.auto_role,
-							});
-						}
-					} else {
-						setAutoRole(undefined);
-					}
-					if (newConfig?.muted_role) {
-						const role = guild?.roles?.[newConfig.muted_role];
-						if (role) {
-							setMutedRole({
-								label: role.name,
-								value: newConfig.muted_role,
-							});
-						}
-					} else {
-						setMutedRole(undefined);
-					}
-				},
-				(e) => {
-					console.error(e);
-				}
-			);
-
-		return close;
-	}, [guild?.id]);
+	const mutedRole = config?.muted_role
+		? { label: roles[config.muted_role].name, value: config.muted_role }
+		: undefined;
 
 	function changePrefix(event: any) {
 		event.preventDefault();
@@ -168,56 +112,16 @@ const ControlConfig = () => {
 				>
 					<div className="sm:col-span-3">
 						<FormLabel htmlFor="autorole">Autorole</FormLabel>
-						<Select
-							styles={selectStyleDark}
-							className="w-full sm:grid-cols-6"
-							value={autoRole}
-							isClearable={true}
-							onChange={(newRole) => {
-								if (!newRole) {
-									db.collection('configs').doc(guild?.id).set(
-										{
-											auto_role: firebase.firestore.FieldValue.delete(),
-										},
-										{ merge: true }
-									);
-								} else {
-									db.collection('configs').doc(guild?.id).set(
-										{
-											auto_role: newRole?.value,
-										},
-										{ merge: true }
-									);
-								}
-							}}
-							options={selectableRoles || []}
+						<RoleSelectBox
+							roleData={autoRole}
+							firebaseKey={'auto_role'}
 						/>
 					</div>
 					<div className="sm:col-span-3">
 						<FormLabel htmlFor="mutedrole">Muted Role</FormLabel>
-						<Select
-							styles={selectStyleDark}
-							className="w-full sm:grid-cols-6"
-							value={mutedRole}
-							isClearable={true}
-							onChange={(newRole) => {
-								if (!newRole) {
-									db.collection('configs').doc(guild?.id).set(
-										{
-											muted_role: firebase.firestore.FieldValue.delete(),
-										},
-										{ merge: true }
-									);
-								} else {
-									db.collection('configs').doc(guild?.id).set(
-										{
-											muted_role: newRole?.value,
-										},
-										{ merge: true }
-									);
-								}
-							}}
-							options={selectableRoles || []}
+						<RoleSelectBox
+							roleData={mutedRole}
+							firebaseKey={'muted_role'}
 						/>
 					</div>
 				</FormSection>
@@ -225,7 +129,7 @@ const ControlConfig = () => {
 					title="Logging Settings"
 					description="These are just options dedicated to logging options."
 				>
-					<LoggingSettings config={config} />
+					<LoggingSettings config={config as GuildConfig} />
 				</FormSection>
 			</div>
 		</ControlPanel>

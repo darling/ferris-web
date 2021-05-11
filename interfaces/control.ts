@@ -28,14 +28,21 @@ export interface Channel {
 }
 
 export interface GuildConfig {
+	prefix?: string;
+	// Admins need to be a list of ids
+	admins?: string[];
 	auto_role?: string;
+	muted_role?: string;
+	// Same with mods
+	mods?: string[];
+	members_can_use_bot?: boolean;
+	automod?: IAutoModSettings;
 	logging?: {
 		channel: string;
 		enabled: boolean;
 		subs: LoggingTypes[];
 		webhook_id: string;
 	};
-	prefix: string;
 	custom?: {
 		[key: string]: {
 			channel_list?: string[];
@@ -46,6 +53,38 @@ export interface GuildConfig {
 	};
 }
 
+export interface IAutoModSettings extends IAutoModFilters {
+	channels?: string[];
+	channels_whitelist?: boolean;
+	roles?: string[];
+	roles_whitelist?: boolean;
+	enabled?: boolean;
+}
+
+export interface IAutoModFilters {
+	word_filter?: {
+		tags?: IBannedWord[];
+		enabled?: boolean;
+	};
+	link_filter?: {
+		tags?: ITaggedLinks[];
+		enabled?: boolean;
+	};
+}
+
+export interface ITaggedLinks extends IAutomodTag {
+	// This tag is just and only just the domain ie "google.com"
+	slug?: string;
+	domainOnly?: boolean;
+}
+export interface IBannedWord extends IAutomodTag {
+	strict?: boolean;
+	case_sensitive?: boolean;
+}
+
+export interface IAutomodTag {
+	tag: string;
+}
 export interface Embed {
 	title?: string;
 	description?: string;
@@ -75,10 +114,11 @@ export interface Embed {
 }
 
 export interface GuildWarns {
-	[id: string]: Warn;
+	[timestamp: string]: Warn;
 }
 
 export interface Warn {
 	by: string;
+	automated?: boolean;
 	reason?: string;
 }

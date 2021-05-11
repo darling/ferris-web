@@ -3,12 +3,12 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import auth from '../../utils/auth/api-auth';
 import NodeCache from 'node-cache';
 
-const cache = new NodeCache({ stdTTL: 600 });
+const cache = new NodeCache({ stdTTL: 6000 });
 
 cache.set(
 	'637804742935838751',
 	{
-		avatar: '08731c864258b776329c00edf6afeed9',
+		avatar: 'https://cdn.ferris.gg/img/placeholder-crystal.png',
 		bot: true,
 		discriminator: '4559',
 		id: '637804742935838751',
@@ -22,7 +22,7 @@ cache.set(
 cache.set(
 	'141075183271280641',
 	{
-		avatar: '7fc8737ec329d9a24730b2a54e75be49',
+		avatar: 'https://cdn.ferris.gg/img/placeholder-crystal.png',
 		discriminator: '0001',
 		id: '141075183271280641',
 		public_flags: 0,
@@ -55,7 +55,17 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 				const data = userRes.data;
 
 				cache.set(id, { ...data, cached: true });
-				output = { ...data, cached: false };
+				output = {
+					...data,
+					avatar: `https://cdn.discordapp.com/avatars/${data.id}/${
+						data.avatar
+					}.${
+						(`${data.avatar}` as string).startsWith('a_')
+							? 'gif'
+							: 'png'
+					}`,
+					cached: false,
+				};
 			} else {
 				output = (await cache.get(id)) || {
 					error: 'THIS SHOULD NEVER COME UP',

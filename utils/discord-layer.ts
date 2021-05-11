@@ -1,20 +1,26 @@
 import { DiscordUser } from '../interfaces';
 import { fetchApi } from './auth/fetch';
 
-const usersCollection = new Map<string, any>();
+// const usersCollection = new Map<
+// 	string,
+// 	(DiscordUser & { loading: false }) | { loading: true }
+// >();
 
 export const getUserInfo = async (id: string): Promise<DiscordUser> => {
-	const isLocal = usersCollection.has(id);
+	const isLocal = !!localStorage.getItem(id);
 
 	if (isLocal) {
-		return usersCollection.get(id);
+		return JSON.parse(localStorage.getItem(id) || '') as DiscordUser;
 	}
 
 	console.log('REQUEST', id);
 
 	const res = await fetchApi('/discord-profile', { body: { id } });
 
-	usersCollection.set(res.data.id, { ...res.data, cached: true });
+	localStorage.setItem(
+		res.data.id,
+		JSON.stringify({ ...res.data, cached: true })
+	);
 
 	return res.data;
 };

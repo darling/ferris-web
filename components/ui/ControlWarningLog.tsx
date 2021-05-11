@@ -18,9 +18,8 @@ interface LogProps {
 }
 
 const WarningLog = (props: LogProps) => {
-	const [userData, setUserData] = useState<DiscordUser | undefined>(
-		undefined
-	);
+	const [userData, setUserData] =
+		useState<DiscordUser | undefined>(undefined);
 
 	const [byData, setByData] = useState<DiscordUser | undefined>(undefined);
 
@@ -62,11 +61,7 @@ const WarningLog = (props: LogProps) => {
 					<div className="relative">
 						<img
 							className="h-10 w-10 rounded-full bg-gray-800 flex items-center justify-center ring-8 ring-gray-900"
-							src={`https://cdn.discordapp.com/avatars/${
-								byData.id
-							}/${byData.avatar}.${
-								byData.avatar?.startsWith('a_') ? 'gif' : 'png'
-							}`}
+							src={byData.avatar}
 							alt=""
 						/>
 

@@ -12,7 +12,7 @@ const Sidebar = ({ entries, guildIcon, guildName }: Props) => {
 	const router = useRouter();
 
 	return (
-		<div className="flex flex-col">
+		<div className="flex flex-col mb-4">
 			<div className="mb-2 px-3 py-2">
 				<img
 					src={

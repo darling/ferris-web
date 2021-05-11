@@ -21,7 +21,7 @@ const ControlWarns = () => {
 			.collection('guilds')
 			.doc(guild.id)
 			.collection('warnings')
-			.limit(5)
+			.limit(20)
 			.onSnapshot({
 				next: (snapshot) => {
 					let dupedList: any = {};

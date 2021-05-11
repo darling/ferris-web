@@ -1,6 +1,9 @@
-import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import React, { useContext, useEffect, useState } from 'react';
+
+import { GuildContext } from '../../contexts/guild';
 import { DiscordUser } from '../../interfaces';
-import { discordProfilePic, getUserInfo } from '../../utils/discord-layer';
+import { getUserInfo } from '../../utils/discord-layer';
 
 interface ControlProps {
 	children?: any;
@@ -14,9 +17,9 @@ interface ControlProps {
 }
 
 export const ControlWarnedUserBar = (props: ControlProps) => {
-	const [userData, setUserData] = useState<DiscordUser | undefined>(
-		undefined
-	);
+	const [userData, setUserData] =
+		useState<DiscordUser | undefined>(undefined);
+	const guild = useContext(GuildContext);
 
 	useEffect(() => {
 		if (!props.id) {
@@ -41,10 +44,7 @@ export const ControlWarnedUserBar = (props: ControlProps) => {
 					<div className="flex-shrink-0 h-10 w-10">
 						<img
 							className="h-10 w-10 rounded-full"
-							src={discordProfilePic(
-								userData.id,
-								userData.avatar || '0'
-							)}
+							src={userData.avatar}
 							alt=""
 						/>
 					</div>
@@ -65,18 +65,20 @@ export const ControlWarnedUserBar = (props: ControlProps) => {
 					{userData.bot ? 'BOT' : ''}
 				</div>
 			</td>
-			{/* <td className="px-6 py-4 whitespace-nowrap">
-				<span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-					Active
-				</span>
-			</td> */}
 			<td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
 				{Object.keys(props.warnData).length}
 			</td>
 			<td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-				<a href="#" className="text-blue-600 hover:text-indigo-900">
-					NOT ADDED YET
-				</a>
+				<Link
+					href={{
+						pathname: '/control/[id]/warns/[user]',
+						query: { id: guild?.id, user: userData.id },
+					}}
+				>
+					<a className="bg-blue-400 hover:bg-blue-600 p-2 rounded-md text-blue-50">
+						View Warns
+					</a>
+				</Link>
 			</td>
 		</tr>
 	);

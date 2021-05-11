@@ -135,6 +135,7 @@ const ControlPanel = (props: Props) => {
 							{ name: 'Home' },
 							{ name: 'Config', path: '/config' },
 							{ name: 'Warns', path: '/warns' },
+							{ name: 'Automod', path: '/automod' },
 							{
 								name: 'Custom Commands',
 								path: '/custom-commands',
@@ -146,8 +147,8 @@ const ControlPanel = (props: Props) => {
 				}
 				optionalRight={
 					<>
-						<BetaWarningBanner />
 						{props.right}
+						<BetaWarningBanner />
 					</>
 				}
 			>

@@ -14,7 +14,7 @@ export const ControlBase = (props: any) => {
 								</nav>
 							</div>
 							<main className="lg:col-span-9 xl:col-span-6">
-								<div className=" px-4 sm:px-0">
+								<div className="px-4 sm:px-0">
 									{props.children}
 								</div>
 							</main>

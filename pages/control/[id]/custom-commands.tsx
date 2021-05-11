@@ -1,37 +1,18 @@
 import clsx from 'clsx';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 
 import EmbedCreator from '../../../components/control/EmbedCreator';
 import ControlPanel from '../../../components/ControlPanel';
-import { GuildContext } from '../../../contexts/guild';
-import { Embed, GuildConfig } from '../../../interfaces/control';
+import { ConfigContext, GuildContext } from '../../../contexts/guild';
+import { Embed } from '../../../interfaces/control';
 import app, { db } from '../../../utils/auth/firebase';
 
 const CustomCommands = () => {
 	const guild = useContext(GuildContext);
-	const [config, setConfig] = useState<GuildConfig>();
+	const config = useContext(ConfigContext);
 	const [currentCommand, setCurrentCommand] = useState<string>();
 
 	const commandList = Object.keys(config?.custom || {});
-
-	useEffect(() => {
-		if (!guild?.id) return;
-		console.log('FETCHING CONFIG', guild?.id);
-		const close = db
-			.collection('configs')
-			.doc(guild.id)
-			.onSnapshot(
-				(snapshot) => {
-					const newConfig = { ...snapshot.data() };
-					setConfig(newConfig as GuildConfig);
-				},
-				(e) => {
-					console.error(e);
-				}
-			);
-
-		return close;
-	}, [guild?.id]);
 
 	const handleCreate = (embed: Embed, name: string): void => {
 		let input: any = {};
