@@ -3,7 +3,6 @@ import {
 	AdjustmentsIcon,
 	CheckIcon,
 	ChevronDownIcon,
-	LinkIcon,
 	TagIcon,
 } from '@heroicons/react/solid';
 import classNames from 'classnames';
