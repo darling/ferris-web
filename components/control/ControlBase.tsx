@@ -14,9 +14,7 @@ export const ControlBase = (props: any) => {
 								</nav>
 							</div>
 							<main className="lg:col-span-9 xl:col-span-6">
-								<div className="px-4 sm:px-0">
-									{props.children}
-								</div>
+								<div className="">{props.children}</div>
 							</main>
 							<aside className="hidden xl:block xl:col-span-4">
 								<div className=" sticky top-6 space-y-4">
