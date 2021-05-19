@@ -1,0 +1,386 @@
+[
+	{
+		"name": "autorole",
+		"arguments": [
+			{
+				"name": "role",
+				"type": "role",
+				"required": false
+			}
+		],
+		"botGuildPerms": ["MANAGE_ROLES"],
+		"userGuildPerms": ["MANAGE_ROLES"],
+		"guildOnly": true,
+		"iconName": "role",
+		"description": ""
+	},
+	{
+		"name": "setprefix",
+		"aliases": ["prefix"],
+		"guildOnly": true,
+		"arguments": [
+			{
+				"name": "newPrefix",
+				"type": "string",
+				"required": false
+			}
+		],
+		"userGuildPerms": ["MANAGE_GUILD"],
+		"description": ""
+	},
+	{
+		"name": "avatar",
+		"aliases": ["pp", "a", "profilepicture", "av"],
+		"arguments": [
+			{
+				"name": "user",
+				"type": "member",
+				"required": false
+			}
+		],
+		"description": ""
+	},
+	{
+		"name": "createrole",
+		"aliases": ["cr"],
+		"arguments": [
+			{
+				"name": "roleName",
+				"type": "string"
+			},
+			{
+				"name": "color",
+				"type": "string",
+				"required": false
+			}
+		],
+		"guildOnly": true,
+		"userGuildPerms": ["MANAGE_ROLES"],
+		"botGuildPerms": ["MANAGE_ROLES"],
+		"iconName": "add",
+		"description": ""
+	},
+	{
+		"name": "deleterole",
+		"aliases": ["dr"],
+		"arguments": [
+			{
+				"name": "role",
+				"type": "role"
+			}
+		],
+		"guildOnly": true,
+		"userGuildPerms": ["MANAGE_ROLES"],
+		"botGuildPerms": ["MANAGE_ROLES"],
+		"iconName": "cancel",
+		"description": ""
+	},
+	{
+		"name": "help",
+		"arguments": [
+			{
+				"name": "command",
+				"type": "command",
+				"lowercase": true,
+				"required": false
+			}
+		],
+		"description": "The help command tells you everything you need to know about Ferris and how to use the program. You can also use `help <command>` to get information (like this description now) on the specific command.\n\nMore information about the commands can be found on the [Ferris website](https://ferris.gg/docs)."
+	},
+	{
+		"name": "hoistrole",
+		"arguments": [
+			{
+				"name": "role",
+				"type": "role"
+			}
+		],
+		"permissionLevels": [5],
+		"userGuildPerms": ["MANAGE_ROLES"],
+		"botGuildPerms": ["MANAGE_ROLES"],
+		"description": ""
+	},
+	{
+		"name": "invite",
+		"arguments": [],
+		"iconName": "link",
+		"description": ""
+	},
+	{
+		"name": "ping",
+		"arguments": [],
+		"description": ""
+	},
+	{
+		"name": "privacy",
+		"arguments": [],
+		"description": ""
+	},
+	{
+		"name": "removerole",
+		"aliases": ["rr"],
+		"userGuildPerms": ["MANAGE_ROLES"],
+		"botGuildPerms": ["MANAGE_ROLES"],
+		"arguments": [
+			{
+				"name": "member",
+				"type": "member",
+				"required": true
+			},
+			{
+				"name": "role",
+				"type": "role",
+				"required": true
+			}
+		],
+		"guildOnly": true,
+		"iconName": "cancel",
+		"description": ""
+	},
+	{
+		"name": "rolecolor",
+		"aliases": ["rc"],
+		"arguments": [
+			{
+				"name": "role",
+				"type": "role",
+				"required": true
+			},
+			{
+				"name": "color",
+				"type": "string",
+				"required": true
+			}
+		],
+		"guildOnly": true,
+		"description": ""
+	},
+	{
+		"name": "setrole",
+		"aliases": ["sr"],
+		"userGuildPerms": ["MANAGE_MESSAGES"],
+		"botGuildPerms": ["MANAGE_MESSAGES"],
+		"arguments": [
+			{
+				"name": "member",
+				"type": "member",
+				"required": true
+			},
+			{
+				"name": "role",
+				"type": "role",
+				"required": true
+			}
+		],
+		"guildOnly": true,
+		"iconName": "add",
+		"description": ""
+	},
+	{
+		"name": "test",
+		"arguments": [],
+		"description": ""
+	},
+	{
+		"name": "whois",
+		"arguments": [
+			{
+				"name": "user",
+				"type": "member",
+				"required": false
+			}
+		],
+		"description": ""
+	},
+	{
+		"name": "resumelogging",
+		"guildOnly": true,
+		"arguments": [],
+		"userGuildPerms": ["MANAGE_GUILD"],
+		"iconName": "log",
+		"description": ""
+	},
+	{
+		"name": "setlogchannel",
+		"arguments": [
+			{
+				"name": "newLogChannel",
+				"type": "textchannel",
+				"required": true
+			}
+		],
+		"guildOnly": true,
+		"botGuildPerms": ["MANAGE_WEBHOOKS"],
+		"botChannelPerms": ["MANAGE_WEBHOOKS"],
+		"userGuildPerms": ["MANAGE_GUILD"],
+		"iconName": "log",
+		"description": ""
+	},
+	{
+		"name": "stoplogging",
+		"guildOnly": true,
+		"arguments": [],
+		"userGuildPerms": ["MANAGE_GUILD"],
+		"iconName": "log",
+		"description": ""
+	},
+	{
+		"name": "ban",
+		"arguments": [
+			{
+				"name": "member",
+				"type": "member",
+				"required": true
+			},
+			{
+				"name": "reason",
+				"type": "...string",
+				"required": false
+			}
+		],
+		"botGuildPerms": ["BAN_MEMBERS"],
+		"userGuildPerms": ["BAN_MEMBERS"],
+		"iconName": "law",
+		"description": ""
+	},
+	{
+		"name": "kick",
+		"arguments": [
+			{
+				"name": "member",
+				"type": "member",
+				"required": true
+			},
+			{
+				"name": "reason",
+				"type": "...string",
+				"required": false
+			}
+		],
+		"guildOnly": true,
+		"botGuildPerms": ["KICK_MEMBERS"],
+		"userGuildPerms": ["KICK_MEMBERS"],
+		"iconName": "law",
+		"description": ""
+	},
+	{
+		"name": "mute",
+		"guildOnly": true,
+		"arguments": [
+			{
+				"name": "user",
+				"type": "member",
+				"required": true
+			},
+			{
+				"name": "time",
+				"type": "duration",
+				"required": true
+			},
+			{
+				"name": "reason",
+				"type": "...string",
+				"required": false
+			}
+		],
+		"userGuildPerms": ["MANAGE_ROLES"],
+		"botGuildPerms": ["MANAGE_ROLES"],
+		"description": ""
+	},
+	{
+		"name": "muterole",
+		"arguments": [
+			{
+				"name": "role",
+				"type": "role",
+				"required": false
+			}
+		],
+		"botGuildPerms": ["MANAGE_ROLES"],
+		"userGuildPerms": ["MANAGE_ROLES"],
+		"guildOnly": true,
+		"iconName": "mute",
+		"description": ""
+	},
+	{
+		"name": "unmute",
+		"guildOnly": true,
+		"arguments": [
+			{
+				"name": "user",
+				"type": "member",
+				"required": true
+			}
+		],
+		"userGuildPerms": ["MANAGE_ROLES"],
+		"botGuildPerms": ["MANAGE_ROLES"],
+		"iconName": "mute",
+		"description": ""
+	},
+	{
+		"name": "purge",
+		"aliases": ["p"],
+		"userGuildPerms": ["MANAGE_MESSAGES"],
+		"botGuildPerms": ["MANAGE_MESSAGES"],
+		"arguments": [
+			{
+				"name": "amtOfMessages",
+				"type": "number",
+				"required": true
+			}
+		],
+		"guildOnly": true,
+		"description": ""
+	},
+	{
+		"name": "delwarn",
+		"guildOnly": true,
+		"arguments": [
+			{
+				"name": "member",
+				"type": "member",
+				"required": true
+			},
+			{
+				"name": "warning",
+				"type": "number",
+				"required": true
+			}
+		],
+		"permissionLevels": [1],
+		"iconName": "warn",
+		"description": ""
+	},
+	{
+		"name": "listwarns",
+		"arguments": [
+			{
+				"name": "user",
+				"type": "member",
+				"required": false
+			}
+		],
+		"aliases": ["warns"],
+		"permissionLevels": [1],
+		"iconName": "warn",
+		"description": ""
+	},
+	{
+		"name": "warn",
+		"guildOnly": true,
+		"permissionLevels": [1],
+		"arguments": [
+			{
+				"name": "user",
+				"type": "member",
+				"required": true
+			},
+			{
+				"name": "reason",
+				"type": "...string",
+				"required": false
+			}
+		],
+		"description": ""
+	}
+]

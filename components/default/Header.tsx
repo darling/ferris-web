@@ -1,13 +1,25 @@
+import classNames from 'classnames';
 import Link from 'next/link';
-import { useState } from 'react';
+import { FC, useState } from 'react';
+
 import HeaderProfile from './HeaderProfile';
 
-const Header = () => {
+const LINKS = [
+	{ name: 'Documentation', href: '/docs' },
+	{ name: 'Plans', href: '/pricing' },
+	{ name: 'Discord Server', href: '/discord' },
+	{ name: 'Add Ferris', href: '/add' },
+];
+
+const Header: FC<{ bgClassName?: string; textClassName?: string }> = ({
+	bgClassName = 'bg-gray-900',
+	textClassName = 'hover:text-green-400 text-gray-500',
+}) => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 	return (
-		<div className="px-4 py-5 mx-auto container md:px-24 lg:px-8">
-			<div className="relative flex items-center justify-between">
+		<div className={bgClassName}>
+			<div className="px-4 py-5 mx-auto container md:px-24 lg:px-5 relative flex items-center justify-between">
 				<div className="flex items-center">
 					<Link href="/" aria-label="Ferris">
 						<img
@@ -19,46 +31,21 @@ const Header = () => {
 						/>
 					</Link>
 					<ul className="items-center hidden space-x-8 lg:flex">
-						<li>
-							<Link href="/docs">
-								<a
-									aria-label="Documentation"
-									className="font-medium tracking-wide text-gray-500 transition-colors duration-200 hover:text-green-400"
-								>
-									Documentation
-								</a>
-							</Link>
-						</li>
-						<li>
-							<Link href="/pricing">
-								<a
-									aria-label="Pricing Plans"
-									className="font-medium tracking-wide text-gray-500 transition-colors duration-200 hover:text-green-400"
-								>
-									Plans
-								</a>
-							</Link>
-						</li>
-						<li>
-							<Link href="/discord">
-								<a
-									aria-label="Discord Server"
-									className="font-medium tracking-wide text-gray-500 transition-colors duration-200 hover:text-green-400"
-								>
-									Discord Server
-								</a>
-							</Link>
-						</li>
-						<li>
-							<Link href="/add">
-								<a
-									aria-label="Add the bot"
-									className="font-medium tracking-wide text-gray-500 transition-colors duration-200 hover:text-green-400"
-								>
-									Add Ferris
-								</a>
-							</Link>
-						</li>
+						{LINKS.map((link) => (
+							<li>
+								<Link href={link.href}>
+									<a
+										aria-label={link.name}
+										className={
+											'font-medium tracking-wide transition-colors duration-200 ' +
+											textClassName
+										}
+									>
+										{link.name}
+									</a>
+								</Link>
+							</li>
+						))}
 					</ul>
 				</div>
 				<ul className="items-center hidden space-x-8 lg:flex">
@@ -71,7 +58,16 @@ const Header = () => {
 						className="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-green-50 focus:bg-green-50"
 						onClick={() => setIsMenuOpen(true)}
 					>
-						<svg className="w-5 text-gray-600" viewBox="0 0 24 24">
+						<svg
+							className={classNames(
+								'w-5 hover:text-gray-800',
+								textClassName
+									.split(' ')
+									.filter((t) => t.startsWith('text-'))
+									.join()
+							)}
+							viewBox="0 0 24 24"
+						>
 							<path
 								fill="currentColor"
 								d="M23,13H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,13,23,13z"

@@ -32,7 +32,8 @@ export const RoleSelectBox = (props: RoleSelectProps) => {
 						.doc(guild?.id)
 						.set(
 							{
-								[props.firebaseKey]: firebase.firestore.FieldValue.delete(),
+								[props.firebaseKey]:
+									firebase.firestore.FieldValue.delete(),
 							},
 							{ merge: true }
 						);
@@ -86,7 +87,7 @@ export const RoleSelectBox = (props: RoleSelectProps) => {
 										classNames(
 											selected ? 'hidden' : '',
 											active
-												? 'text-gray-200 bg-indigo-600'
+												? 'text-gray-200 bg-green-600'
 												: 'text-gray-200',
 											'cursor-default select-none relative py-2 pl-3 pr-9'
 										)
@@ -101,7 +102,7 @@ export const RoleSelectBox = (props: RoleSelectProps) => {
 										className={({ active }) =>
 											classNames(
 												active
-													? 'text-gray-300 bg-indigo-600'
+													? 'text-gray-300 bg-green-600'
 													: 'text-gray-300',
 												'cursor-default select-none relative py-2 pl-3 pr-9'
 											)
@@ -130,7 +131,7 @@ export const RoleSelectBox = (props: RoleSelectProps) => {
 															className={classNames(
 																active
 																	? 'text-white'
-																	: 'text-indigo-600',
+																	: 'text-green-600',
 																'absolute inset-y-0 right-0 flex items-center pr-4'
 															)}
 														>

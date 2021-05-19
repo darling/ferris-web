@@ -7,6 +7,8 @@ type Props = {
 	children?: ReactNode;
 	title?: string;
 	colorOverride?: string;
+	headerClassName?: string;
+	linkClassName?: string;
 	header?: boolean;
 };
 
@@ -14,17 +16,26 @@ const Layout = ({
 	children,
 	title = 'Ferris Bot — A Discord bot for protecting your community.',
 	colorOverride,
+	headerClassName,
+	linkClassName,
 	header = true,
 }: Props) => {
 	return (
 		<div
 			className={
-				(colorOverride || 'bg-gray-900 text-green-100 ') +
-				'overflow-hidden'
+				(colorOverride || 'bg-gray-900 text-green-100') +
+				' overflow-hidden'
 			}
 		>
 			<CustomHead title={title} />
-			{header ? <Header /> : <></>}
+			{header ? (
+				<Header
+					bgClassName={headerClassName}
+					textClassName={linkClassName}
+				/>
+			) : (
+				<></>
+			)}
 			<div className="mx-auto min-h-screen">{children}</div>
 			<Footer />
 		</div>
