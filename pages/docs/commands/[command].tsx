@@ -22,11 +22,11 @@ const CommandPage: FC<{
 }> = (props) => {
 	return (
 		<DocsLayout
-			sidebar={
-				<pre className="whitespace-pre-wrap">
-					<code>{JSON.stringify(props.command, null, 2)}</code>
-				</pre>
-			}
+		// sidebar={
+		// 	<pre className="whitespace-pre-wrap">
+		// 		<code>{JSON.stringify(props.command, null, 2)}</code>
+		// 	</pre>
+		// }
 		>
 			<Section>Description</Section>
 			<Markdown
