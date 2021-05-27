@@ -26,7 +26,9 @@ export interface DiscordUser {
 	id: string;
 	username: string;
 	bot?: boolean;
-	public_flags: number;
+	locale?: string;
+	flags?: number;
+	public_flags?: number;
 	avatar?: string;
 	discriminator: string;
 	cached: boolean;

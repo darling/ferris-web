@@ -21,7 +21,7 @@ const app = firebase;
 var db = app.firestore();
 
 if (process.env.NODE_ENV == 'development') {
-	db.useEmulator('localhost', 8080);
+	db.useEmulator('localhost', 8000);
 }
 
 export { db, firebase };

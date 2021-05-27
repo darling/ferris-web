@@ -22,9 +22,12 @@ export interface Role {
 }
 
 export interface Channel {
-	name: string;
-	position: string;
+	name?: string;
+	position?: string;
 	type: string;
+	id: string;
+	topic?: string;
+	nsfw?: string;
 }
 
 export interface GuildConfig {
