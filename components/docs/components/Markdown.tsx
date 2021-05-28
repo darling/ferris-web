@@ -38,6 +38,18 @@ const HyperLink: FC<any> = (props) => {
 	);
 };
 
+const Image: FC<any> = (props) => {
+	console.log(props);
+	return (
+		<>
+			<img className="rounded-xl sm:mt-8 mt-4 w-full" src={props.src} />
+			<span className="italic text-sm text-gray-700 sm:mb-8 mb-4 ">
+				{props.alt}
+			</span>
+		</>
+	);
+};
+
 export const Markdown: FC<{ data: string }> = (props) => {
 	return (
 		<div className="flex flex-col gap-4 pb-4">
@@ -51,6 +63,7 @@ export const Markdown: FC<{ data: string }> = (props) => {
 						blockquote: Quote,
 						a: HyperLink,
 						h2: Section,
+						img: Image,
 					},
 					Fragment: React.Fragment,
 					createElement: React.createElement,

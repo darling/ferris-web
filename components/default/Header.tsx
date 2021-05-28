@@ -32,7 +32,7 @@ const Header: FC<{ bgClassName?: string; textClassName?: string }> = ({
 					</Link>
 					<ul className="items-center hidden space-x-8 lg:flex">
 						{LINKS.map((link) => (
-							<li>
+							<li key={link.name}>
 								<Link href={link.href}>
 									<a
 										aria-label={link.name}
