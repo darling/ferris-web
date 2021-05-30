@@ -54,7 +54,7 @@
 		],
 		"guildOnly": true,
 		"iconName": "role",
-		"description": "Add or Remove roles that users can assign to themselves",
+		"description": "Add or Remove roles that users can assign to themselves. You can use `;selfrole add | remove | list | display` to add, remove, list, and display the roles.\n\nDisplay gives a button that users can use to get the roles themselves without any commands at all.",
 		"subcommands": [
 			{
 				"name": "add",
@@ -103,11 +103,26 @@
 					}
 				],
 				"aliases": ["d"],
-				"description": "This action will list a role dialogue from the selfrole list that users can use to get the role without typing any commands.",
+				"description": "This will list a role dialogue from the selfrole list that users can use to get the role without typing any commands.",
 				"botGuildPerms": ["MANAGE_ROLES", "MANAGE_GUILD"],
 				"userGuildPerms": ["MANAGE_ROLES", "MANAGE_GUILD"]
 			}
 		]
+	},
+	{
+		"name": "display",
+		"arguments": [
+			{
+				"name": "role",
+				"type": "role",
+				"description": "The role that will be on display.",
+				"required": true
+			}
+		],
+		"aliases": ["d"],
+		"description": "This will list a role dialogue from the selfrole list that users can use to get the role without typing any commands.",
+		"botGuildPerms": ["MANAGE_ROLES", "MANAGE_GUILD"],
+		"userGuildPerms": ["MANAGE_ROLES", "MANAGE_GUILD"]
 	},
 	{
 		"name": "setprefix",
