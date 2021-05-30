@@ -77,6 +77,7 @@ export const helpEmbed = async (body: any) => {
 					],
 				},
 			],
+			flags: 64,
 		},
 	};
 };
