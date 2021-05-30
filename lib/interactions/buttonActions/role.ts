@@ -1,7 +1,8 @@
 import axios from 'axios';
+
 import { GuildConfig } from '../../../interfaces/control';
 import { admin } from '../../../utils/auth/firebase-admin';
-import { DISCORD_URL_DATA, URL_DATA } from '../../axios';
+import { URL_DATA } from '../../axios';
 import { buttonActions } from '../button';
 
 const buttonRole = async (body: any): Promise<{ data: any }> => {
