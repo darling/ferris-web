@@ -56,6 +56,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 				break;
 			case 3: // TODO: I HATE THE FACT THAT TYPINGS DON'T EXIST
 				response = await runButton(body);
+				if (!response) return res.status(200).json({ type: 6 });
 				return res.status(200).json(response);
 			default:
 				break;

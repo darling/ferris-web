@@ -5,7 +5,7 @@ import { admin } from '../../../utils/auth/firebase-admin';
 import { URL_DATA } from '../../axios';
 import { buttonActions } from '../button';
 
-const buttonRole = async (body: any): Promise<{ data: any }> => {
+const buttonRole = async (body: any): Promise<{ data: any } | undefined> => {
 	const snapshot = await admin
 		.firestore()
 		.collection('configs')
@@ -28,7 +28,7 @@ const buttonRole = async (body: any): Promise<{ data: any }> => {
 			URL_DATA
 		);
 
-	return { data: body.message };
+	return;
 };
 
 buttonActions.set('ROLE', buttonRole);

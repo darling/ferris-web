@@ -1,13 +1,13 @@
 export const buttonActions = new Map<
 	string,
-	(body: any) => Promise<{ data: any }>
+	(body: any) => Promise<{ data: any } | undefined>
 >();
 
 require('./buttonActions');
 
 export const runButton = async (
 	body: any
-): Promise<{ type: Number; data: any }> => {
+): Promise<{ type: Number; data: any } | undefined> => {
 	if (body.type !== 3 || !body.data)
 		return { type: 7, data: { content: 'Error, improper type. BUTTON' } };
 
@@ -20,7 +20,8 @@ export const runButton = async (
 
 	if (run) {
 		const data = await run(body);
-		return { type: 7, ...data };
+		if (data) return { type: 7, ...data };
+		return;
 	} else {
 		return {
 			type: 7,
