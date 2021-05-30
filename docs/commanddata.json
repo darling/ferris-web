@@ -12,7 +12,102 @@
 		"userGuildPerms": ["MANAGE_ROLES"],
 		"guildOnly": true,
 		"iconName": "role",
-		"description": ""
+		"description": "Manage the role that is given to users to join the Discord."
+	},
+	{
+		"name": "give",
+		"aliases": ["get", "g"],
+		"arguments": [
+			{
+				"name": "role",
+				"type": "role"
+			}
+		],
+		"guildOnly": true,
+		"iconName": "role",
+		"description": "Give yourselves any roles that are on the self-role list.",
+		"botGuildPerms": ["MANAGE_ROLES"]
+	},
+	{
+		"name": "remove",
+		"aliases": ["rem", "r"],
+		"arguments": [
+			{
+				"name": "role",
+				"type": "role"
+			}
+		],
+		"guildOnly": true,
+		"iconName": "role",
+		"botGuildPerms": ["MANAGE_ROLES"],
+		"description": "Remove yourselves of any roles that are on the self-role list."
+	},
+	{
+		"name": "selfrole",
+		"aliases": ["selfroles", "self"],
+		"arguments": [
+			{
+				"name": "action",
+				"type": "subcommand",
+				"required": true
+			}
+		],
+		"guildOnly": true,
+		"iconName": "role",
+		"description": "Add or Remove roles that users can assign to themselves",
+		"subcommands": [
+			{
+				"name": "add",
+				"arguments": [
+					{
+						"name": "role",
+						"type": "role",
+						"description": "The role that will be set that users can give to themselves.",
+						"required": true
+					}
+				],
+				"aliases": ["a", "set"],
+				"description": "This action will add roles to the selfrole list.",
+				"botGuildPerms": ["MANAGE_ROLES", "MANAGE_GUILD"],
+				"userGuildPerms": ["MANAGE_ROLES", "MANAGE_GUILD"]
+			},
+			{
+				"name": "remove",
+				"arguments": [
+					{
+						"name": "role",
+						"type": "role",
+						"description": "The role that will be removed from the selfrole list.",
+						"required": true
+					}
+				],
+				"aliases": ["r", "del", "rem"],
+				"description": "This action will remove roles from the selfrole list.",
+				"botGuildPerms": ["MANAGE_ROLES", "MANAGE_GUILD"],
+				"userGuildPerms": ["MANAGE_ROLES", "MANAGE_GUILD"]
+			},
+			{
+				"name": "list",
+				"arguments": [],
+				"aliases": ["l"],
+				"description": "This action will list roles from the selfrole list."
+			},
+			{
+				"name": "display",
+				"arguments": [
+					{
+						"name": "role",
+						"type": "role",
+						"description": "The role that will be on display.",
+						"required": true
+					}
+				],
+				"aliases": ["d"],
+				"description": "This action will list a role dialogue from the selfrole list that users can use to get the role without typing any commands.",
+				"botGuildPerms": ["MANAGE_ROLES", "MANAGE_GUILD"],
+				"userGuildPerms": ["MANAGE_ROLES", "MANAGE_GUILD"]
+			}
+		]
 	},
 	{
 		"name": "setprefix",
@@ -26,7 +121,7 @@
 			}
 		],
 		"userGuildPerms": ["MANAGE_GUILD"],
-		"description": ""
+		"description": "This command allows you to **change** the Ferris bot prefix to __any character__ that you would like. This is great to make sure **2 bots** don't have the __same__ prefix."
 	},
 	{
 		"name": "avatar",
@@ -38,7 +133,7 @@
 				"required": false
 			}
 		],
-		"description": ""
+		"description": "The avatar command allows you to** get the image** of any Discord user's __profile picture.__ This is a** copyable image format** that can be used for __anyone__ on the server."
 	},
 	{
 		"name": "createrole",
@@ -58,7 +153,7 @@
 		"userGuildPerms": ["MANAGE_ROLES"],
 		"botGuildPerms": ["MANAGE_ROLES"],
 		"iconName": "add",
-		"description": ""
+		"description": "This command simply **creates** a new role with __no__ additional permissions. This command is great for **setting up roles** and making them __on the go. __"
 	},
 	{
 		"name": "deleterole",
@@ -73,7 +168,7 @@
 		"userGuildPerms": ["MANAGE_ROLES"],
 		"botGuildPerms": ["MANAGE_ROLES"],
 		"iconName": "cancel",
-		"description": ""
+		"description": "This command can be used to **permanently delete** a role you __no longer__ need. It will **delete the role** and __remove that role__ from all members."
 	},
 	{
 		"name": "help",
@@ -98,23 +193,23 @@
 		"permissionLevels": [5],
 		"userGuildPerms": ["MANAGE_ROLES"],
 		"botGuildPerms": ["MANAGE_ROLES"],
-		"description": ""
+		"description": "This command allows you to** hoist/de-hoist** any role on the __members list.__ This means that you can **control** if they display __above or with__ the regular members."
 	},
 	{
 		"name": "invite",
 		"arguments": [],
 		"iconName": "link",
-		"description": ""
+		"description": "This command will respond with an **invite** to add Ferris to your __own server. __ Share us with your friends!"
 	},
 	{
 		"name": "ping",
 		"arguments": [],
-		"description": ""
+		"description": "**PONG!** This can also be used to see if Ferris died."
 	},
 	{
 		"name": "privacy",
 		"arguments": [],
-		"description": ""
+		"description": "This command will lead you to the **Ferris privacy policy**. Stay Safe! :shield:"
 	},
 	{
 		"name": "removerole",
@@ -135,7 +230,7 @@
 		],
 		"guildOnly": true,
 		"iconName": "cancel",
-		"description": ""
+		"description": "This command allows you to **remove a role** from a user. It is __very simple to use__ and removes it with a **simple command**, rather than managing roles."
 	},
 	{
 		"name": "rolecolor",
@@ -153,7 +248,7 @@
 			}
 		],
 		"guildOnly": true,
-		"description": ""
+		"description": "This command allows you to **change the color** of any role in your server. Make your roles __colorful__ and not just play gray!"
 	},
 	{
 		"name": "setrole",
@@ -174,12 +269,7 @@
 		],
 		"guildOnly": true,
 		"iconName": "add",
-		"description": ""
-	},
-	{
-		"name": "test",
-		"arguments": [],
-		"description": ""
+		"description": "This command allows you to **assign a member** a specified __role(s).__  This applies a **role to a user** using a command __without needing to manually do it. __"
 	},
 	{
 		"name": "whois",
@@ -190,7 +280,7 @@
 				"required": false
 			}
 		],
-		"description": ""
+		"description": "The `whois` command allows you to **gain information** on any member in the server __including yourself!__ This includes __roles, join date, and more! __"
 	},
 	{
 		"name": "resumelogging",
@@ -198,7 +288,7 @@
 		"arguments": [],
 		"userGuildPerms": ["MANAGE_GUILD"],
 		"iconName": "log",
-		"description": ""
+		"description": "This command can be used to **continue** logging after using the `stoplogging` command. This allows the bot to __continue keeping track__ of logs in your server."
 	},
 	{
 		"name": "setlogchannel",
@@ -214,7 +304,7 @@
 		"botChannelPerms": ["MANAGE_WEBHOOKS"],
 		"userGuildPerms": ["MANAGE_GUILD"],
 		"iconName": "log",
-		"description": ""
+		"description": "This command can be used to set your **preferred** logging channel. This channel will be used to __keep logs of day-to-day activities__ such as message deletions, joins, and mod logs."
 	},
 	{
 		"name": "stoplogging",
@@ -222,7 +312,7 @@
 		"arguments": [],
 		"userGuildPerms": ["MANAGE_GUILD"],
 		"iconName": "log",
-		"description": ""
+		"description": "This command can be used to **temporarily disable** logging. You can __resume__ logging with the `resumelogging` command."
 	},
 	{
 		"name": "ban",
@@ -241,7 +331,7 @@
 		"botGuildPerms": ["BAN_MEMBERS"],
 		"userGuildPerms": ["BAN_MEMBERS"],
 		"iconName": "law",
-		"description": ""
+		"description": "*Thanos snap*. This command** permanently** removes a user from the server. They will be __unable to rejoin__ the server unless unbanned."
 	},
 	{
 		"name": "kick",
@@ -261,7 +351,7 @@
 		"botGuildPerms": ["KICK_MEMBERS"],
 		"userGuildPerms": ["KICK_MEMBERS"],
 		"iconName": "law",
-		"description": ""
+		"description": "This command** removes** a user from the server. They can simply __rejoin__ the server with another invite link."
 	},
 	{
 		"name": "mute",
@@ -285,7 +375,7 @@
 		],
 		"userGuildPerms": ["MANAGE_ROLES"],
 		"botGuildPerms": ["MANAGE_ROLES"],
-		"description": ""
+		"description": "The mute command can be used to **prevent a user from talking**. They will be __unable__ to message in chats until they are un-muted."
 	},
 	{
 		"name": "muterole",
@@ -300,7 +390,7 @@
 		"userGuildPerms": ["MANAGE_ROLES"],
 		"guildOnly": true,
 		"iconName": "mute",
-		"description": ""
+		"description": "This command allows you to assign a **mute role** to the `mute` command. This role will __prevent__ them from messaging in chats, hence, muting them."
 	},
 	{
 		"name": "unmute",
@@ -315,7 +405,7 @@
 		"userGuildPerms": ["MANAGE_ROLES"],
 		"botGuildPerms": ["MANAGE_ROLES"],
 		"iconName": "mute",
-		"description": ""
+		"description": "This command can be used to **remove** the mute role from a user. This is used after the `mute` command to __allow a user access__ to message in chats."
 	},
 	{
 		"name": "purge",
@@ -330,7 +420,7 @@
 			}
 		],
 		"guildOnly": true,
-		"description": ""
+		"description": "This command allows you to **mass delete messages** in your server. This is great for __removing spam and unwanted messages.__"
 	},
 	{
 		"name": "delwarn",
@@ -349,7 +439,7 @@
 		],
 		"permissionLevels": [1],
 		"iconName": "warn",
-		"description": ""
+		"description": "This command **removes a warn** from a user's record. If they have been previously warned and you want it to be __removed__, you can use this delete warn command to do the job!"
 	},
 	{
 		"name": "listwarns",
@@ -363,7 +453,7 @@
 		"aliases": ["warns"],
 		"permissionLevels": [1],
 		"iconName": "warn",
-		"description": ""
+		"description": "This command shows a** list of warns** on a user's record. This shows how many __previous infractions__ someone has and if they have a bad reputation."
 	},
 	{
 		"name": "warn",
@@ -381,6 +471,6 @@
 				"required": false
 			}
 		],
-		"description": ""
+		"description": "This command **adds a warning** to a user's record. This can be used to __note minor rule infractions__ and misbehavior."
 	}
 ]
