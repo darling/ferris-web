@@ -54,6 +54,7 @@ export interface GuildConfig {
 			embed?: Embed;
 		};
 	};
+	selfrole?: string[];
 }
 
 export interface IAutoModSettings extends IAutoModFilters {

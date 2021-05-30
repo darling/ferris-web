@@ -11,7 +11,7 @@ export const runButton = async (
 	if (body.type !== 3 || !body.data)
 		return { type: 7, data: { content: 'Error, improper type. BUTTON' } };
 
-	const instanceName = body.data.custom_id;
+	const instanceName = /^[^ ]+/.exec(body.data.custom_id)?.shift();
 
 	if (!instanceName)
 		return { type: 7, data: { content: 'Error, nonexistant buttonID' } };
