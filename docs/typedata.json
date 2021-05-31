@@ -1,54 +1,58 @@
 [
-  {
-    "name": "boolean",
-    "description": "Booleans are variables that can have two values: true or false."
-  },
-  {
-    "name": "categorychannel",
-    "description": "A category channel is a reference to the channel categories. You can reference them using their built in ID."
-  },
-  {
-    "name": "command",
-    "description": "A command within Ferris."
-  },
-  {
-    "name": "...string",
-    "description": "This is a long string that can have many words. Type as much as you want and Ferris will record it all."
-  },
-  {
-    "name": "duration",
-    "description": "A duration is made up of two numbers. The first number is how many units of time, and the second number is how long each unit of time lasts."
-  },
-  {
-    "name": "guild",
-    "description": "Guilds are servers on Discord. They have their own ID."
-  },
-  {
-    "name": "member",
-    "description": "A member is someone who is in your guild. You can mention them (ping) or type their ID."
-  },
-  {
-    "name": "newschannel",
-    "description": "You cannot mention a voice channel while using Discord. But if you use its ID, Ferris will accept it."
-  },
-  {
-    "name": "number",
-    "description": "A number is a mathematical object used to measure and count."
-  },
-  {
-    "name": "role",
-    "description": "Target a Role by mentioning the ID or the role itself (ping)."
-  },
-  {
-    "name": "string",
-    "description": "The string type is a single word separated by spaces. You can put anything in the string input but if you put another space, it will end. You can not ping or mention items in the string input."
-  },
-  {
-    "name": "subcommand",
-    "description": "A sub-command has its own options, requirements, and logic. Ferris doesn't have built in documentation for them but they should be intuitive to use and help you use them as you go. "
-  },
-  {
-    "name": "textchannel",
-    "description": "This is your standard textchannel on the Discord app. Ferris will accept mentions and ids."
-  }
+	{
+		"name": "boolean",
+		"description": "Booleans are variables that can have two values: true or false."
+	},
+	{
+		"name": "categorychannel",
+		"description": "A category channel is a reference to the channel categories. You can reference them using their built in ID."
+	},
+	{
+		"name": "command",
+		"description": "A command within Ferris."
+	},
+	{
+		"name": "...roles",
+		"description": "This is a long list of roles. Add as much as you want and Ferris will record it all."
+	},
+	{
+		"name": "...string",
+		"description": "This is a long string that can have many words. Type as much as you want and Ferris will record it all."
+	},
+	{
+		"name": "duration",
+		"description": "A duration is made up of two numbers. The first number is how many units of time, and the second number is how long each unit of time lasts."
+	},
+	{
+		"name": "guild",
+		"description": "Guilds are servers on Discord. They have their own ID."
+	},
+	{
+		"name": "member",
+		"description": "A member is someone who is in your guild. You can mention them (ping) or type their ID."
+	},
+	{
+		"name": "newschannel",
+		"description": "You cannot mention a voice channel while using Discord. But if you use its ID, Ferris will accept it."
+	},
+	{
+		"name": "number",
+		"description": "A number is a mathematical object used to measure and count."
+	},
+	{
+		"name": "role",
+		"description": "Target a Role by mentioning the ID or the role itself (ping)."
+	},
+	{
+		"name": "string",
+		"description": "The string type is a single word separated by spaces. You can put anything in the string input but if you put another space, it will end. You can not ping or mention items in the string input."
+	},
+	{
+		"name": "subcommand",
+		"description": "A sub-command has its own options, requirements, and logic. Ferris doesn't have built in documentation for them but they should be intuitive to use and help you use them as you go. "
+	},
+	{
+		"name": "textchannel",
+		"description": "This is your standard textchannel on the Discord app. Ferris will accept mentions and ids."
+	}
 ]

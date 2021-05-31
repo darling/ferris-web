@@ -7,6 +7,13 @@ export const URL_DATA: AxiosRequestConfig = {
 			: 'https://iron.ferris.gg',
 };
 
+export const SELF_URL_DATA: AxiosRequestConfig = {
+	baseURL:
+		process.env.NODE_ENV == 'development'
+			? 'http://localhost:3000'
+			: 'https://ferris.gg',
+};
+
 export const DISCORD_URL_DATA: AxiosRequestConfig = {
 	baseURL: 'https://discord.com/api',
 	headers: {

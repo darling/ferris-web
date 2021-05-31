@@ -1,13 +1,15 @@
+import { Interaction, InteractionResponse } from '../discord_types';
+
 export const buttonActions = new Map<
 	string,
-	(body: any) => Promise<{ data: any } | undefined>
+	(body: Interaction) => Promise<InteractionResponse>
 >();
 
 require('./buttonActions');
 
 export const runButton = async (
-	body: any
-): Promise<{ type: Number; data: any } | undefined> => {
+	body: Interaction
+): Promise<InteractionResponse> => {
 	if (body.type !== 3 || !body.data)
 		return { type: 7, data: { content: 'Error, improper type. BUTTON' } };
 
@@ -20,8 +22,7 @@ export const runButton = async (
 
 	if (run) {
 		const data = await run(body);
-		if (data) return { type: 7, ...data };
-		return;
+		return data;
 	} else {
 		return {
 			type: 7,

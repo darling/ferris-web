@@ -1,4 +1,5 @@
 import { admin } from '../../../utils/auth/firebase-admin';
+import { Embed, Interaction, InteractionResponse } from '../../discord_types';
 import { slashCommands } from '../command';
 
 const buttons = [
@@ -8,7 +9,9 @@ const buttons = [
 	{ label: 'Join our Discord!', url: 'https://ferris.gg/discord' },
 ];
 
-export const helpEmbed = async (body: any) => {
+export const helpEmbed = async (
+	body: Interaction
+): Promise<InteractionResponse> => {
 	let desc: string;
 
 	if (body.guild_id) {
@@ -22,13 +25,15 @@ export const helpEmbed = async (body: any) => {
 			guildData.data()?.['prefix'] || ';'
 		}\`\n\nPlease make sure to check out our links in order to learn more about Ferris!`;
 	} else {
-		desc = `Thanks for your interest in our bot, ${body.user.username}!\n\nFerris is a high-caliber moderation bot used to improve Discord servers and help communities stay safe.\n\nPlease make sure to check out our links in order to learn more about Ferris!\n`;
+		desc = `Thanks for your interest in our bot, ${
+			body.user?.username || 'friend'
+		}!\n\nFerris is a high-caliber moderation bot used to improve Discord servers and help communities stay safe.\n\nPlease make sure to check out our links in order to learn more about Ferris!\n`;
 		buttons.forEach((button) => {
 			desc += `\n[${button.label}](${button.url})`;
 		});
 	}
 
-	const embed = {
+	const embed: Embed = {
 		title: 'Need help using Ferris?',
 		description: desc,
 		color: 53380,
