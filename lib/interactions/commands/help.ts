@@ -10,7 +10,7 @@ const buttons = [
 ];
 
 export const helpEmbed = async (
-	body: Interaction
+	body: Partial<Interaction>
 ): Promise<InteractionResponse> => {
 	let desc: string;
 

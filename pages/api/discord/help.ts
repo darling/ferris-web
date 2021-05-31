@@ -5,8 +5,8 @@ import { helpEmbed } from '../../../lib/interactions/commands/help';
 export default async (req: NextApiRequest, res: NextApiResponse) => {
 	if (req.body.guild_id && req.body.channel && process.env.DISCORD_TOKEN) {
 		const { data } = await helpEmbed({ guild_id: req.body.guild_id });
-		const components = data.components;
-		const embed = data.embeds.pop();
+		const components = data?.components;
+		const embed = data?.embeds?.pop();
 		await axios.post(
 			`https://discord.com/api/channels/${req.body.channel}/messages`,
 			{ embed, components },
