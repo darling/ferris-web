@@ -1,4 +1,4 @@
-export type Snowflake = `${bigint}`;
+export type Snowflake = string;
 export interface GatewayPayload<T = any | null> {
 	/** opcode for the payload */
 	op: GatewayOpcode;
