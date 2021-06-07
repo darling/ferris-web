@@ -1,9 +1,9 @@
 import axios from 'axios';
-import admin from 'firebase-admin';
 import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 import { DISCORD_URL_DATA } from '../../lib/axios';
 import { CreateMessageParams } from '../../lib/discord_types';
+import { admin } from '../../utils/auth/firebase-admin';
 
 import stripeAdmin from '../../utils/stripe';
 
