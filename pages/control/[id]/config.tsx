@@ -1,6 +1,7 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 
 import { RoleSelectBox } from '../../../components/control/RoleSelectBox';
+import { RoleToggleList } from '../../../components/control/RoleToggleList';
 import { LoggingSettings } from '../../../components/control/Settings/LoggingSettings';
 import ControlPanel from '../../../components/ControlPanel';
 import { ConfigContext, GuildContext } from '../../../contexts/guild';
@@ -124,6 +125,17 @@ const ControlConfig = () => {
 							firebaseKey={'muted_role'}
 						/>
 					</div>
+				</FormSection>
+				<FormSection
+					title="Selfroles"
+					description="Users can grab the listed roles at any time."
+				>
+					<div className="sm:col-span-3">
+						<FormLabel htmlFor="autorole">
+							Manage Selfroles
+						</FormLabel>
+					</div>
+					<RoleToggleList className="sm:col-span-6" />
 				</FormSection>
 				<FormSection
 					title="Logging Settings"

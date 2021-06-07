@@ -154,9 +154,8 @@ export const LoggingSettings = ({ config }: { config: GuildConfig }) => {
 						<li key={category[0]} className="py-4">
 							{categoryLabel}
 							{category[1].map((logType) => {
-								const enabled = config?.logging?.subs?.includes(
-									logType
-								);
+								const enabled =
+									config?.logging?.subs?.includes(logType);
 
 								const changeCallback = () => {
 									toggleLogConfigProperty(logType);

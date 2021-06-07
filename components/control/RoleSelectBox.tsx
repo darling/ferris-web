@@ -2,7 +2,7 @@ import { Listbox, Transition } from '@headlessui/react';
 import { SelectorIcon, CheckIcon } from '@heroicons/react/solid';
 import classNames from 'classnames';
 import firebase from 'firebase';
-import React, { useContext, Fragment } from 'react';
+import React, { useContext, Fragment, FC } from 'react';
 import { GuildContext } from '../../contexts/guild';
 import { db } from '../../utils/auth/firebase';
 
