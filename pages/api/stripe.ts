@@ -2,7 +2,7 @@ import axios from 'axios';
 import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 import { DISCORD_URL_DATA } from '../../lib/axios';
-import { CreateMessageParams } from '../../lib/discord_types';
+import { Channel, CreateMessageParams } from '../../lib/discord_types';
 import { admin } from '../../utils/auth/firebase-admin';
 
 import stripeAdmin from '../../utils/stripe';
@@ -75,6 +75,19 @@ const webhookHandlers: { [key: string]: any } = {
 
 		await ref.update({ premium: false });
 
+		const message: Partial<CreateMessageParams> = {
+			embed: {
+				title: 'Deleted Subscription',
+				description: `${uid} (<@${uid}>) has deleted their subscription.`,
+			},
+		};
+
+		await axios.post(
+			'/channels/761480013835927572/messages',
+			message,
+			DISCORD_URL_DATA
+		);
+
 		return;
 	},
 	'invoice.payment_succeeded': async (data: Stripe.Invoice) => {
@@ -97,6 +110,28 @@ const webhookHandlers: { [key: string]: any } = {
 		await axios.post(
 			'/channels/761480013835927572/messages',
 			message,
+			DISCORD_URL_DATA
+		);
+
+		const dm_message: Partial<CreateMessageParams> = {
+			embed: {
+				title: 'Charge Succeeded',
+				description: `Thank you so much!\n\nFeel free to join our Discord for benefits as well as future website benefits.\n\nThank you for supporting us, <@${uid}>`,
+				image: { url: 'https://cdn.ferris.gg/img/ferris-hero.png' },
+			},
+		};
+
+		const dm_channel = await axios.post<Channel>(
+			'/users/@me/channels',
+			{
+				recipient_id: uid,
+			},
+			DISCORD_URL_DATA
+		);
+
+		await axios.post(
+			`/channels/${dm_channel.data.id}/messages`,
+			dm_message,
 			DISCORD_URL_DATA
 		);
 
