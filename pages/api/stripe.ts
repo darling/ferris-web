@@ -113,12 +113,31 @@ const webhookHandlers: { [key: string]: any } = {
 			DISCORD_URL_DATA
 		);
 
-		const dm_message: Partial<CreateMessageParams> = {
+		const dm_message = {
 			embed: {
 				title: 'Charge Succeeded',
 				description: `Thank you so much!\n\nFeel free to join our Discord for benefits as well as future website benefits.\n\nThank you for supporting us, <@${uid}>`,
 				image: { url: 'https://cdn.ferris.gg/img/ferris-hero.png' },
 			},
+			components: [
+				{
+					type: 1,
+					components: [
+						{
+							type: 2,
+							style: 5,
+							url: 'https://ferris.gg/',
+							label: 'Homepage',
+						},
+						{
+							type: 2,
+							style: 5,
+							url: 'https://ferris.gg/discord',
+							label: 'Our Discord',
+						},
+					],
+				},
+			],
 		};
 
 		const dm_channel = await axios.post<Channel>(
