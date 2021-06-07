@@ -116,7 +116,9 @@ const webhookHandlers: { [key: string]: any } = {
 		const dm_message = {
 			embed: {
 				title: 'Charge Succeeded',
-				description: `Thank you so much!\n\nFeel free to join our Discord for benefits as well as future website benefits.\n\nThank you for supporting us, <@${uid}>`,
+				description: `Thank you so much!\n\nFeel free to join our Discord for benefits as well as future website benefits.\n\n${
+					data.lines.data.pop()?.description
+				}\n\nThank you for supporting us, <@${uid}>`,
 				image: { url: 'https://cdn.ferris.gg/img/ferris-hero.png' },
 			},
 			components: [
