@@ -1,6 +1,9 @@
+import axios from 'axios';
 import admin from 'firebase-admin';
 import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
+import { DISCORD_URL_DATA } from '../../lib/axios';
+import { CreateMessageParams } from '../../lib/discord_types';
 
 import stripeAdmin from '../../utils/stripe';
 
@@ -41,11 +44,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		if (webhookHandlers[event.type]) {
 			await webhookHandlers[event.type](event.data.object);
 		}
-		res.send({ received: true });
 	} catch (e) {
 		console.error(e);
 		res.status(400).send('Error: ' + e.message);
 	}
+
+	res.send({ received: true });
 };
 
 const webhookHandlers: { [key: string]: any } = {
@@ -82,6 +86,19 @@ const webhookHandlers: { [key: string]: any } = {
 		const ref = admin.firestore().collection('users').doc(uid);
 
 		await ref.update({ premium: true });
+
+		const message: Partial<CreateMessageParams> = {
+			embed: {
+				title: 'New Purchase',
+				description: `${uid} (<@${uid}>) has a payment succeeded.`,
+			},
+		};
+
+		await axios.post(
+			'/channels/761480013835927572/messages',
+			message,
+			DISCORD_URL_DATA
+		);
 
 		return;
 	},

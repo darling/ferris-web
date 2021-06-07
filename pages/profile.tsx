@@ -12,7 +12,7 @@ function signOut() {
 }
 
 const Profile = () => {
-	const stripe = useStripe();
+	const stripe: any = useStripe();
 	const user = useAuth();
 
 	const [subscriptions, setSubscriptions] = useState<Stripe.Subscription[]>();
