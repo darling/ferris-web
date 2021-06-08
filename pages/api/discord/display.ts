@@ -40,7 +40,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 					title: `Press a button to get a role!`,
 					description: `${descFormatlist}${
 						role_list.length == 1 ? ' is' : '\n\n ...are'
-					} availiable.\n\nJust click the button below to get the role (or remove the role).`,
+					} available.\n\nJust click the button below to get the role (or remove the role).`,
 				},
 				components: [
 					{
