@@ -13,11 +13,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		return;
 	}
 
-	await axios.post(
+	const results = await axios.post(
 		`/channels/${req.query.channel_id}/messages`,
 		req.body,
 		DISCORD_URL_DATA
 	);
 
-	return res.status(200).json({ message: 'sent' });
+	if (results.status !== 200) {
+		return res.status(results.status).json(results.data);
+	} else {
+		return res.status(200).json({ message: 'sent' });
+	}
 };
