@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { useRouter } from 'next/router';
 import { DISCORD_URL_DATA } from '../../../../lib/axios';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
