@@ -13,6 +13,25 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		return;
 	}
 
+	if (
+		![
+			'811237223432716288',
+			'811230822740656160',
+			'811481583852453899',
+			'811229604102012989',
+			'811229489827676210',
+			'811083847391117312',
+			'749118105942229024',
+			'787926485209972798',
+			'761480630021783563',
+			'761480669078749195',
+			'787917171640631298',
+			'851673889908981801',
+		].includes(req.query.channel_id as string)
+	) {
+		return res.status(403).json('Access Denied');
+	}
+
 	const results = await axios.post(
 		`/channels/${req.query.channel_id}/messages`,
 		req.body,
