@@ -9,15 +9,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		return;
 	}
 
-	const router = useRouter();
-
-	if (!router.query.channel_id) {
+	if (!req.query.channel_id) {
 		res.status(400).end();
 		return;
 	}
 
 	await axios.post(
-		`/channels/${router.query.channel_id}/messages`,
+		`/channels/${req.query.channel_id}/messages`,
 		req.body,
 		DISCORD_URL_DATA
 	);
