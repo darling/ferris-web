@@ -19,7 +19,6 @@ export interface User {
 	lastLoginAt: string;
 	createdAt: string;
 	photoURL: string;
-	premium: boolean;
 }
 
 export interface DiscordUser {
@@ -39,4 +38,6 @@ export interface UserData {
 	discrim: string;
 	guilds: UserGuilds;
 	username: string;
+	premium: true;
+	stripeCustomerId?: string;
 }
