@@ -34,7 +34,7 @@ export const MainHero = () => {
 									</a>
 								</Link>
 								<h1 className="mt-4 text-4xl tracking-tight font-extrabold text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
-									<span className="block">Protect your</span>
+									<span className="block">Boost your</span>
 									<span className="block text-green-400">
 										Discord Community
 									</span>
