@@ -1,142 +1,52 @@
+import React, { FC, ReactElement } from 'react';
+import rereact from 'rehype-react';
+import parse from 'remark-parse';
+import rehtml from 'remark-rehype';
+import unified from 'unified';
+
 import Layout from '../components/Layout';
 
+const components: { [key: string]: FC } = {
+	p: (p) => <p className="py-2 text-gray-300">{p.children}</p>,
+	a: (p: any) => (
+		<a className="text-green-300 underline" href={p.href}>
+			{p.children}
+		</a>
+	),
+	ul: (p) => (
+		<ul className="list-disc list-inside py-4 text-gray-300">
+			{p.children}
+		</ul>
+	),
+	li: (p) => (
+		<li className="py-2 hover:text-gray-500 transition duration-200">
+			{p.children}
+		</li>
+	),
+	h2: (p) => <h2 className="text-xl text-gray-200 py-4">{p.children}</h2>,
+	h1: (p) => (
+		<h1 className="font-bold text-3xl text-white py-4">{p.children}</h1>
+	),
+};
+
 const Terms = () => {
+	const data =
+		'# Terms and Conditions of Ferris.gg\n\nThe following terms and conditions (collectively, these "Terms and Conditions") apply to your use of [https://ferris.gg/](https://ferris.gg/), including any content, functionality and services offered on or via [https://ferris.gg/](https://ferris.gg/) (the "Website").\n\nPlease read the Terms and Conditions carefully before you start using [https://ferris.gg/](https://ferris.gg/), because by using the Website you accept and agree to be bound and abide by these Terms and Conditions.\n\nThese Terms and Conditions are effective as of Jun 28, 2021. We expressly reserve the right to change these Terms and Conditions from time to time without notice to you. You acknowledge and agree that it is your responsibility to review this Website and these Terms and Conditions from time to time and to familiarize yourself with any modifications. Your continued use of this Website after such modifications will constitute acknowledgement of the modified Terms and Conditions and agreement to abide and be bound by the modified Terms and Conditions.\n\n## Conduct on Website\n\nYour use of the Website is subject to all applicable laws and regulations, and you are solely responsible for the substance of your communications through the Website.\n\nBy posting information in or otherwise using any communications service, chat room, message board, newsgroup, software library, or other interactive service that may be available to you on or through this Website, you agree that you will not upload, share, post, or otherwise distribute or facilitate distribution of any content — including text, communications, software, images, sounds, data, or other information — that:\n\n*   Is unlawful, threatening, abusive, harassing, defamatory, libelous, deceptive, fraudulent, invasive of another\'s privacy, tortious, contains explicit or graphic descriptions or accounts of sexual acts (including but not limited to sexual language of a violent or threatening nature directed at another individual or group of individuals), or otherwise violates our rules or policies\n*   Victimizes, harasses, degrades, or intimidates an individual or group of individuals on the basis of religion, gender, sexual orientation, race, ethnicity, age, or disability\n*   Infringes on any patent, trademark, trade secret, copyright, right of publicity, or other proprietary right of any party\n*   Constitutes unauthorized or unsolicited advertising, junk or bulk email (also known as "spamming"), chain letters, any other form of unauthorized solicitation, or any form of lottery or gambling\n*   Contains software viruses or any other computer code, files, or programs that are designed or intended to disrupt, damage, or limit the functioning of any software, hardware, or telecommunications equipment or to damage or obtain unauthorized access to any data or other information of any third party\n*   Impersonates any person or entity, including any of our employees or representatives\n\nWe neither endorse nor assume any liability for the contents of any material uploaded or submitted by third party users of the Website. We generally do not pre-screen, monitor, or edit the content posted by users of communications services, chat rooms, message boards, newsgroups, software libraries, or other interactive services that may be available on or through this Website.\n\nHowever, we and our agents have the right at their sole discretion to remove any content that, in our judgment, does not comply with these Terms of Use and any other rules of user conduct for our Website, or is otherwise harmful, objectionable, or inaccurate. We are not responsible for any failure or delay in removing such content. You hereby consent to such removal and waive any claim against us arising out of such removal of content.\n\nYou agree that we may at any time, and at our sole discretion, terminate your membership, account, or other affiliation with our site without prior notice to you for violating any of the above provisions.\n\nIn addition, you acknowledge that we will cooperate fully with investigations of violations of systems or network security at other sites, including cooperating with law enforcement authorities in investigating suspected criminal violations.\n\n## Intellectual Property\n\nBy accepting these Terms and Conditions, you acknowledge and agree that all content presented to you on this Website is protected by copyrights, trademarks, service marks, patents or other proprietary rights and laws, and is the sole property of [https://ferris.gg/](https://ferris.gg/).\n\nYou are only permitted to use the content as expressly authorized by us or the specific content provider. Except for a single copy made for personal use only, you may not copy, reproduce, modify, republish, upload, post, transmit, or distribute any documents or information from this Website in any form or by any means without prior written permission from us or the specific content provider, and you are solely responsible for obtaining permission before reusing any copyrighted material that is available on this Website.\n\n## Third Party Websites\n\nThis Website may link you to other sites on the Internet or otherwise include references to information, documents, software, materials and/or services provided by other parties. These websites may contain information or material that some people may find inappropriate or offensive.\n\nThese other websites and parties are not under our control, and you acknowledge that we are not responsible for the accuracy, copyright compliance, legality, decency, or any other aspect of the content of such sites, nor are we responsible for errors or omissions in any references to other parties or their products and services. The inclusion of such a link or reference is provided merely as a convenience and does not imply endorsement of, or association with, the Website or party by us, or any warranty of any kind, either express or implied.\n\n## Disclaimer of Warranties, Limitations of Liability and Indemnification\n\nYour use of [https://ferris.gg/](https://ferris.gg/) is at your sole risk. The Website is provided "as is" and "as available". We disclaim all warranties of any kind, express or implied, including, without limitation, the warranties of merchantability, fitness for a particular purpose and non-infringement.\n\nWe are not liable for damages, direct or consequential, resulting from your use of the Website, and you agree to defend, indemnify and hold us harmless from any claims, losses, liability costs and expenses (including but not limites to attorney\'s fees) arising from your violation of any third-party\'s rights. You acknowledge that you have only a limited, non-exclusive, nontransferable license to use the Website. Because the Website is not error or bug free, you agree that you will use it carefully and avoid using it ways which might result in any loss of your or any third party\'s property or information.\n\n## Term and termination\n\nThis Terms and Conditions will become effective in relation to you when you create a [https://ferris.gg/](https://ferris.gg/) account or when you start using the [https://ferris.gg/](https://ferris.gg/) and will remain effective until terminated by you or by us.\n\n[https://ferris.gg/](https://ferris.gg/) reserves the right to terminate this Terms and Conditions or suspend your account at any time in case of unauthorized, or suspected unauthorized use of the Website whether in contravention of this Terms and Conditions or otherwise. If [https://ferris.gg/](https://ferris.gg/) terminates this Terms and Conditions, or suspends your account for any of the reasons set out in this section, [https://ferris.gg/](https://ferris.gg/) shall have no liability or responsibility to you.\n\n## Assignment\n\n[https://ferris.gg/](https://ferris.gg/) may assign this Terms and Conditions or any part of it without restrictions. You may not assign this Terms and Conditions or any part of it to any third party.\n\n## Governing Law\n\nThese Terms and Conditions and any dispute or claim arising out of, or related to them, shall be governed by and construed in accordance with the internal laws of the US without giving effect to any choice or conflict of law provision or rule.\n\nAny legal suit, action or proceeding arising out of, or related to, these Terms of Service or the Website shall be instituted exclusively in the federal courts of US.';
+
 	return (
 		<Layout>
-			<div className="md:w-2/4 mx-auto my-16 text-gray-100">
-				<h1 className="text-2xl font-bold mb-5">
-					Website Terms and Conditions of Use
-				</h1>
-
-				<h2 className="text-lg mb-3">1. Terms</h2>
-
-				<p>
-					By accessing this Website, accessible from
-					https://ferris.gg/, you are agreeing to be bound by these
-					Website Terms and Conditions of Use and agree that you are
-					responsible for the agreement with any applicable local
-					laws. If you disagree with any of these terms, you are
-					prohibited from accessing this site. The materials contained
-					in this Website are protected by copyright and trade mark
-					law.
-				</p>
-
-				<h2 className="text-lg mt-2 mb-3">2. Use License</h2>
-
-				<p className="mb-4">
-					Permission is granted to temporarily download one copy of
-					the materials on ferris.gg's Website for personal,
-					non-commercial transitory viewing only. This is the grant of
-					a license, not a transfer of title, and under this license
-					you may not:
-				</p>
-
-				<ul className="mb-4 list-disc">
-					<li>modify or copy the materials;</li>
-					<li>
-						use the materials for any commercial purpose or for any
-						public display;
-					</li>
-					<li>
-						attempt to reverse engineer any software contained on
-						ferris.gg's Website;
-					</li>
-					<li>
-						remove any copyright or other proprietary notations from
-						the materials; or
-					</li>
-					<li>
-						transferring the materials to another person or "mirror"
-						the materials on any other server.
-					</li>
-				</ul>
-
-				<p className="mb-4">
-					This will let ferris.gg to terminate upon violations of any
-					of these restrictions. Upon termination, your viewing right
-					will also be terminated and you should destroy any
-					downloaded materials in your possession whether it is
-					printed or electronic format. These Terms of Service has
-					been created with the help of the{' '}
-					<a href="https://www.termsofservicegenerator.net">
-						Terms Of Service Generator
-					</a>{' '}
-					and the{' '}
-					<a href="https://www.generateprivacypolicy.com">
-						Privacy Policy Generator
-					</a>
-					.
-				</p>
-
-				<h2 className="text-lg mt-2 mb-3">3. Disclaimer</h2>
-
-				<p>
-					All the materials on ferris.gg’s Website are provided "as
-					is". ferris.gg makes no warranties, may it be expressed or
-					implied, therefore negates all other warranties.
-					Furthermore, ferris.gg does not make any representations
-					concerning the accuracy or reliability of the use of the
-					materials on its Website or otherwise relating to such
-					materials or any sites linked to this Website.
-				</p>
-
-				<h2 className="text-lg mt-2 mb-3">4. Limitations</h2>
-
-				<p>
-					ferris.gg or its suppliers will not be hold accountable for
-					any damages that will arise with the use or inability to use
-					the materials on ferris.gg’s Website, even if ferris.gg or
-					an authorize representative of this Website has been
-					notified, orally or written, of the possibility of such
-					damage. Some jurisdiction does not allow limitations on
-					implied warranties or limitations of liability for
-					incidental damages, these limitations may not apply to you.
-				</p>
-
-				<h2 className="text-lg mt-2 mb-3">5. Revisions and Errata</h2>
-
-				<p>
-					The materials appearing on ferris.gg’s Website may include
-					technical, typographical, or photographic errors. ferris.gg
-					will not promise that any of the materials in this Website
-					are accurate, complete, or current. ferris.gg may change the
-					materials contained on its Website at any time without
-					notice. ferris.gg does not make any commitment to update the
-					materials.
-				</p>
-
-				<h2 className="text-lg mt-2 mb-3">6. Links</h2>
-
-				<p>
-					ferris.gg has not reviewed all of the sites linked to its
-					Website and is not responsible for the contents of any such
-					linked site. The presence of any link does not imply
-					endorsement by ferris.gg of the site. The use of any linked
-					website is at the user’s own risk.
-				</p>
-
-				<h2 className="text-lg mt-2 mb-3">
-					7. Site Terms of Use Modifications
-				</h2>
-
-				<p>
-					ferris.gg may revise these Terms of Use for its Website at
-					any time without prior notice. By using this Website, you
-					are agreeing to be bound by the current version of these
-					Terms and Conditions of Use.
-				</p>
-
-				<h2 className="text-lg mt-2 mb-3">8. Your Privacy</h2>
-
-				<p>Please read our Privacy Policy.</p>
-
-				<h2 className="text-lg mt-2 mb-3">9. Governing Law</h2>
-
-				<p>
-					Any claim related to ferris.gg's Website shall be governed
-					by the laws of us without regards to its conflict of law
-					provisions.
-				</p>
+			<div className="container px-4 lg:max-w-4xl mx-auto break-words">
+				{(unified()
+					.use(parse)
+					.use(rehtml)
+					.use(rereact, {
+						components: components,
+						Fragment: React.Fragment,
+						createElement: React.createElement,
+					})
+					.processSync(data).result as ReactElement) || (
+					<p>Error - Unable to parse</p>
+				)}
 			</div>
 		</Layout>
 	);
