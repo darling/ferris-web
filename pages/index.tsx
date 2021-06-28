@@ -1,8 +1,8 @@
-import { MainHero } from '../components/sections/MainHero';
+import React from 'react';
+import { HomeFeatures } from '../components/home/Features';
 import Layout from '../components/Layout';
 import { HomeCTA } from '../components/sections/HomeCTA';
-import { HomeSideBySide } from '../components/sections/HomeSideBySide';
-import { HomeTestimonial } from '../components/sections/HomeTestimonial';
+import { MainHero } from '../components/sections/MainHero';
 import { useAuth } from '../contexts/auth';
 
 const IndexPage = () => {
@@ -16,8 +16,7 @@ const IndexPage = () => {
 			}
 		>
 			<MainHero />
-			<HomeSideBySide />
-			<HomeTestimonial />
+			<HomeFeatures />
 			<HomeCTA />
 		</Layout>
 	);

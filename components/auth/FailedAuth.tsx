@@ -3,7 +3,7 @@ import Layout from '../Layout';
 
 export const FailedAuth = () => {
 	useEffect(() => {
-		window.location.replace('https://ferris.gg/login');
+		window.location.replace(`http://${window.location.host}/login`);
 	});
 
 	return (

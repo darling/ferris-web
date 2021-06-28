@@ -72,8 +72,8 @@ const CustomCommands = () => {
 											db.collection('configs')
 												.doc(`${guild?.id}`)
 												.update({
-													['custom.' +
-													commandName]: app.firestore.FieldValue.delete(),
+													['custom.' + commandName]:
+														app.firestore.FieldValue.delete(),
 												});
 										}}
 									>

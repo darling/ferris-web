@@ -1,7 +1,7 @@
-import { ErrorHero } from "../components/ErrorHero";
+import { ErrorHero } from '../components/ErrorHero';
 
 const code404 = () => {
-  return <ErrorHero />;
+	return <ErrorHero />;
 };
 
 export default code404;

@@ -1,10 +1,12 @@
+import classNames from 'classnames';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+
+import { FailedAuth } from '../../components/auth/FailedAuth';
 import Layout from '../../components/Layout';
 import { useAuth } from '../../contexts/auth';
-import { db } from '../../utils/auth/firebase';
-import { FailedAuth } from '../../components/auth/FailedAuth';
 import { GuildConfig } from '../../interfaces/control';
+import { db } from '../../utils/auth/firebase';
 
 function guildIconExtension(hash: string): string {
 	return hash.startsWith('a_') ? 'gif' : 'png';
@@ -39,16 +41,20 @@ const ControlIndex = () => {
 
 	return (
 		<Layout title="Control Panel | Ferris Bot">
-			<div className="p-5 mx-auto container">
-				<h1 className="font-bold text-4xl">
-					Welcome back, {user.displayName}!
-				</h1>
-				<h3>
-					Hello! If you don't see any servers and think that's a
-					mistake, please re-login! Thanks!
-				</h3>
+			<div className="pb-32 bg-green-500">
+				<header className="py-10">
+					<div className="container mx-auto px-4 sm:px-6 lg:px-8">
+						<h1
+							className={classNames(
+								'text-3xl font-bold text-green-100'
+							)}
+						>
+							Choose a community, {user?.displayName}
+						</h1>
+					</div>
+				</header>
 			</div>
-			<div className="container mx-auto grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 p-5 rounded-lg">
+			<div className="container mx-auto grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 p-5 rounded-lg -mt-32">
 				{guilds ? (
 					Object.entries(guilds)
 						.sort((a, b) => Number(a[0]) - Number(b[0]))
@@ -58,7 +64,7 @@ const ControlIndex = () => {
 									key={guild[0]}
 									href={`control/${guild[0]}`}
 								>
-									<div className="hover:bg-gray-700 hover:text-green-200 hover:shadow-lg cursor-pointer transition-all duration-100 h-40 p-4 rounded-xl flex flex-col items-center content-center">
+									<div className="hover:bg-gray-700 bg-gray-800 hover:text-green-200 hover:shadow-lg cursor-pointer transition-all duration-100 h-40 p-4 rounded-xl flex flex-col items-center content-center">
 										<img
 											src={
 												guild[1].icon
@@ -74,7 +80,9 @@ const ControlIndex = () => {
 											alt="guild"
 											className="rounded-full h-24 w-24"
 										/>
-										<p className="mt-3">{guild[1].name}</p>
+										<span className="mt-3  font-bold">
+											{guild[1].name}
+										</span>
 									</div>
 								</Link>
 							);
@@ -89,6 +97,9 @@ const ControlIndex = () => {
 						<p className="mt-3">No Guilds</p>
 					</div>
 				)}
+			</div>
+			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
+				<img src="/img/cta.png" alt="cta" className="max-h-96" />
 			</div>
 		</Layout>
 	);

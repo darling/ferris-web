@@ -1,12 +1,13 @@
 import Layout from '../components/Layout';
-import { PaymentComparison } from '../components/sections/PaymentComparison';
-import { PaymentPricing } from '../components/sections/PaymentPricing';
+import PaymentPricing from '../components/sections/PaymentPricing';
 
 export const Pricing = () => {
 	return (
-		<Layout>
+		<Layout
+			headerClassName="bg-green-500 text-gray-800"
+			linkClassName="text-gray-100"
+		>
 			<PaymentPricing />
-			<PaymentComparison />
 		</Layout>
 	);
 };

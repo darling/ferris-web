@@ -18,7 +18,7 @@ const Header: FC<{ bgClassName?: string; textClassName?: string }> = ({
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 	return (
-		<div className={bgClassName}>
+		<div className={bgClassName + ' transition duration-200'}>
 			<div className="px-4 py-5 mx-auto container md:px-24 lg:px-5 relative flex items-center justify-between">
 				<div className="flex items-center">
 					<Link href="/" aria-label="Ferris">
