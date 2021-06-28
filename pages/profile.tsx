@@ -101,6 +101,14 @@ const Profile = () => {
 			colorOverride={`text-${color}-200 bg-gray-900`}
 		>
 			<div className={`pb-32 bg-${color}-500`}>
+				<span className="bg-green-500"></span>
+				<span className="bg-yellow-500"></span>
+				<span className="text-green-300"></span>
+				<span className="text-yellow-300"></span>
+				<span className="text-green-200"></span>
+				<span className="text-yellow-200"></span>
+				<span className="text-green-50"></span>
+				<span className="text-yellow-50"></span>
 				<header className="py-10">
 					<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 						<h1
