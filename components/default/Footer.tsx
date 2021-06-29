@@ -8,6 +8,7 @@ const navigation = {
 		{ name: 'Privacy', href: '/privacy' },
 		{ name: 'TOS', href: '/terms' },
 		{ name: 'Documentation', href: '/docs' },
+		{ name: 'Thank You!', href: '/thankyou' },
 	],
 	social: [
 		{
