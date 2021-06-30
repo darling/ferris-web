@@ -65,6 +65,30 @@ const webhookHandlers: { [key: string]: any } = {
 		console.log('payment_intent.payment_failed', data);
 		return;
 	},
+	'customer.subscription.updated': async (data: Stripe.Subscription) => {
+		console.log('customer.subscription.updated', data);
+		const customer = (await stripeAdmin.customers.retrieve(
+			data.customer as string
+		)) as Stripe.Customer;
+		const uid = customer.metadata.firebaseUID;
+
+		const message: Partial<CreateMessageParams> = {
+			embed: {
+				title: 'Updated Subscription',
+				description: `${uid} (<@${uid}>) ${
+					data.cancel_at_period_end ? 'canceled' : 'uncanceled'
+				} their description. `,
+			},
+		};
+
+		await axios.post(
+			'/channels/859930076849897475/messages',
+			message,
+			DISCORD_URL_DATA
+		);
+
+		return;
+	},
 	'customer.subscription.deleted': async (data: Stripe.Subscription) => {
 		console.log('customer.subscription.deleted', data);
 		const customer = (await stripeAdmin.customers.retrieve(
