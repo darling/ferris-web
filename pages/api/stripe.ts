@@ -116,10 +116,11 @@ const webhookHandlers: { [key: string]: any } = {
 		const dm_message = {
 			embed: {
 				title: 'Charge Succeeded',
-				description: `Thank you so much!\n\nFeel free to join our Discord for benefits as well as future website benefits.\n\n${
+				description: `Hi <@${uid}>,\n\nThanks for supporting <:Ferris:843674766976221194> **Ferris**!\n\nFeel free to join our [support server](https://ferris.gg/discord) for exclusive updates and a complete premium experience.\n\n${
 					data.lines.data.pop()?.description
-				}\n\nThank you for supporting us, <@${uid}>`,
-				image: { url: 'https://cdn.ferris.gg/img/ferris-hero.png' },
+				}\n\nIf you have any questions or concerns, feel free to reach out to any of us on the team and we will help you out.\n\n~ Safe`,
+				thumbnail: { url: 'https://cdn.ferris.gg/img/ferris-hero.png' },
+				color: 3591282,
 			},
 			components: [
 				{
@@ -136,6 +137,12 @@ const webhookHandlers: { [key: string]: any } = {
 							style: 5,
 							url: 'https://ferris.gg/discord',
 							label: 'Our Discord',
+						},
+						{
+							type: 2,
+							style: 5,
+							url: 'https://ferris.gg/profile',
+							label: 'Manage Sub',
 						},
 					],
 				},
