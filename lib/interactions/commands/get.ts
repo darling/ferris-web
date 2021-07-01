@@ -43,6 +43,7 @@ export const getEmbed = async (
 						},
 					},
 				],
+				flags: 64,
 			},
 		};
 	}
@@ -78,6 +79,7 @@ export const getEmbed = async (
 	return {
 		type: 4,
 		data: {
+			flags: 64,
 			embeds: [embed],
 			components: [
 				{

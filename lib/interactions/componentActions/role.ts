@@ -71,11 +71,17 @@ const selectRole = async (body: Interaction): Promise<InteractionResponse> => {
 		} catch (error) {
 			console.error(error.response.data);
 		}
-		return { type: 7, data: { embeds: [embed], components: [] } };
+		return {
+			type: 7,
+			data: { flags: 64, embeds: [embed], components: [] },
+		};
 	} else {
 		return {
 			type: 4,
-			data: { content: "Some of these roles aren't obtainable anymore." },
+			data: {
+				flags: 64,
+				content: "Some of these roles aren't obtainable anymore.",
+			},
 		};
 	}
 
