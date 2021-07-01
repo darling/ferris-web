@@ -1,24 +1,27 @@
 import { Interaction, InteractionResponse } from '../discord_types';
 
-export const buttonActions = new Map<
+export const componentActions = new Map<
 	string,
 	(body: Interaction) => Promise<InteractionResponse>
 >();
 
-require('./buttonActions');
+require('./componentActions');
 
-export const runButton = async (
+export const runComponent = async (
 	body: Interaction
 ): Promise<InteractionResponse> => {
 	if (body.type !== 3 || !body.data)
-		return { type: 7, data: { content: 'Error, improper type. BUTTON' } };
+		return {
+			type: 7,
+			data: { content: 'Error, improper type. COMPONENT' },
+		};
 
 	const instanceName = /^[^ ]+/.exec(body.data.custom_id)?.shift();
 
 	if (!instanceName)
-		return { type: 7, data: { content: 'Error, nonexistant buttonID' } };
+		return { type: 7, data: { content: 'Error, nonexistant componentID' } };
 
-	const run = buttonActions.get(instanceName);
+	const run = componentActions.get(instanceName);
 
 	if (run) {
 		const data = await run(body);

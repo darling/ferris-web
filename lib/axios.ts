@@ -5,6 +5,7 @@ export const URL_DATA: AxiosRequestConfig = {
 		process.env.NODE_ENV == 'development'
 			? 'http://localhost:8080'
 			: 'https://iron.ferris.gg',
+	headers: { 'Content-Type': 'application/json' },
 };
 
 export const SELF_URL_DATA: AxiosRequestConfig = {
@@ -12,6 +13,7 @@ export const SELF_URL_DATA: AxiosRequestConfig = {
 		process.env.NODE_ENV == 'development'
 			? 'http://localhost:3000'
 			: 'https://ferris.gg',
+	headers: { 'Content-Type': 'application/json' },
 };
 
 export const DISCORD_URL_DATA: AxiosRequestConfig = {

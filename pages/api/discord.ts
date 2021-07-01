@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import nacl from 'tweetnacl';
 
-import { runButton } from '../../lib/interactions/button';
+import { runComponent } from '../../lib/interactions/button';
 import { runCommand } from '../../lib/interactions/command';
 
 const PUBLIC_KEY =
@@ -55,8 +55,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 				response = await runCommand(body);
 				return res.status(200).json(response);
 				break;
-			case 3: // TODO: I HATE THE FACT THAT TYPINGS DON'T EXIST
-				response = await runButton(body);
+			case 3:
+				response = await runComponent(body);
 				if (!response) return res.status(200).json({ type: 6 });
 				return res.status(200).json(response);
 			default:
