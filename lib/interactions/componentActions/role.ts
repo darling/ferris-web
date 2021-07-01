@@ -8,7 +8,9 @@ import { Embed, Interaction, InteractionResponse } from '../../discord_types';
 import { componentActions } from '../button';
 
 const embed: Embed = {
-	title: 'You should have your roles!',
+	title: 'Success!',
+	description:
+		'You should recieve a dm with the record of what roles were toggled for you.',
 	color: 8843180,
 	thumbnail: { url: 'https://cdn.ferris.gg/img/commands/add.png' },
 };
