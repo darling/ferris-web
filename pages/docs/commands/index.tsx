@@ -4,7 +4,7 @@ import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import React, { FC, useState } from 'react';
 
-import { DocsLayout, Section } from '../../../components/docs/DocsLayout';
+import { DocsLayout } from '../../../components/docs/DocsLayout';
 import commanddata from '../../../docs/commanddata.json';
 import { CommandArgument, ICommand } from '../../../interfaces/command';
 

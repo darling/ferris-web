@@ -2,10 +2,10 @@ import classNames from 'classnames';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import React, { FC } from 'react';
-import { CommandArgList } from '../../../components/docs/components/CommandArgList';
 
+import { CommandArgList } from '../../../components/docs/components/CommandArgList';
 import { Markdown } from '../../../components/docs/components/Markdown';
-import { DocsLayout, Section } from '../../../components/docs/DocsLayout';
+import { DocsLayout } from '../../../components/docs/DocsLayout';
 import commanddata from '../../../docs/commanddata.json';
 import { ICommand } from '../../../interfaces/command';
 
