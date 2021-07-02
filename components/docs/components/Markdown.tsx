@@ -53,7 +53,7 @@ const HyperLink: FC<any> = (props) => {
 export const Markdown: FC<{ data: string }> = (props) => {
 	return (
 		// gap-4 pb-4
-		<div className="flex flex-col prose prose-indigo">
+		<div className="flex flex-col max-w-full prose prose-indigo">
 			{(unified()
 				.use(parse)
 				.use(rehtml)

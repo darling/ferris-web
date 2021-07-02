@@ -28,46 +28,48 @@ const CommandPage: FC<{
 		// 	</pre>
 		// }
 		>
-			<Section>Description</Section>
-			<Markdown
-				data={
-					props.command.description ||
-					'No description written. Are you supposed to be here?'
-				}
-			/>
-			{props.command.arguments ? (
-				<>
-					<Section
-						className={classNames('mt-4', {
-							hidden: props.command.arguments.length < 1,
-						})}
-					>
-						Arguments
-					</Section>
-					<div
-						className={classNames(
-							{
+			<div className="max-w-full prose prose-indigo">
+				<h2>Description</h2>
+				<Markdown
+					data={
+						props.command.description ||
+						'No description written. Are you supposed to be here?'
+					}
+				/>
+				{props.command.arguments ? (
+					<>
+						<h2
+							className={classNames('mt-4', {
 								hidden: props.command.arguments.length < 1,
-							},
-							'mt-4'
-						)}
-					>
-						<InlineCode>
-							;{props.command.name}
-							{props.command.arguments.map((arg) => {
-								return (
-									<span key={arg.name}>
-										{' ('}
-										{arg.name}
-										{')'}
-									</span>
-								);
 							})}
-						</InlineCode>
-						<CommandArgList command={props.command} />
-					</div>
-				</>
-			) : null}
+						>
+							Arguments
+						</h2>
+						<div
+							className={classNames(
+								{
+									hidden: props.command.arguments.length < 1,
+								},
+								'mt-4'
+							)}
+						>
+							<InlineCode>
+								;{props.command.name}
+								{props.command.arguments.map((arg) => {
+									return (
+										<span key={arg.name}>
+											{' ('}
+											{arg.name}
+											{')'}
+										</span>
+									);
+								})}
+							</InlineCode>
+							<CommandArgList command={props.command} />
+						</div>
+					</>
+				) : null}
+			</div>
 		</DocsLayout>
 	);
 };

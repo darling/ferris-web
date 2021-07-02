@@ -130,7 +130,7 @@ export const DocsLayout: FC<DocProps> = ({ children, title, sidebar }) => {
 						<Breadcrumbs />
 						<h1
 							className={classNames(
-								'text-3xl font-bold text-green-100',
+								'text-3xl md:text-4xl lg:text-5xl font-bold text-green-100 mt-4',
 								{
 									'animate-pulse':
 										pageTitle === 'Documentation',
@@ -176,6 +176,25 @@ export const DocsLayout: FC<DocProps> = ({ children, title, sidebar }) => {
 							</section>
 						</div>
 					</div>
+				</div>
+				<div className="pt-32 -mt-32 bg-indigo-500">
+					<header className="py-10">
+						<div className="container mx-auto px-4 sm:px-6 lg:px-8">
+							<nav className="" aria-label="Back">
+								<Link
+									href={router.asPath.replace(pageTitle, '')}
+								>
+									<a className="flex items-center text-sm font-medium text-gray-200 hover:text-white">
+										<ChevronLeftIcon
+											className="flex-shrink-0 -ml-1 mr-1 h-5 w-5 text-green-200"
+											aria-hidden="true"
+										/>
+										Back
+									</a>
+								</Link>
+							</nav>
+						</div>
+					</header>
 				</div>
 			</main>
 		</Layout>
