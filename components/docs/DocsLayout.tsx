@@ -177,7 +177,7 @@ export const DocsLayout: FC<DocProps> = ({ children, title, sidebar }) => {
 						</div>
 					</div>
 				</div>
-				<div className="pt-32 -mt-32 bg-indigo-500">
+				<div className="pt-32 -mt-32 bg-gray-800">
 					<header className="py-10">
 						<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 							<nav className="" aria-label="Back">
