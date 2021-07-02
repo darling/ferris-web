@@ -34,7 +34,7 @@ const actions = [
 		icon: TerminalIcon,
 		iconForeground: 'text-red-700',
 		iconBackground: 'bg-red-50',
-		desc: "If you’re looking to take over the world... oh? Starting small? Then, your server, click here to access Ferris' best features the easy way.",
+		desc: "If you’re looking to take over the world... oh? Starting small? Click here to access Ferris' best features the easy way.",
 	},
 	{
 		title: 'Discord Server',
