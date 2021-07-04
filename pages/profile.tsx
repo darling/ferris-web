@@ -9,6 +9,7 @@ import { useAuth } from '../contexts/auth';
 import { UserData, UserSwap } from '../interfaces';
 import { fetchApi } from '../utils/auth/fetch';
 import app, { db, swap } from '../utils/auth/firebase';
+import { xpToNextLvl } from '../utils/xp';
 
 function signOut() {
 	app.auth().signOut();
@@ -21,7 +22,7 @@ function signOut() {
 
 const stats = [
 	{ name: 'User Level', key: 'level' },
-	{ name: 'xp (to next level)', key: 'xp' },
+	{ name: 'XP', key: 'xp' },
 	{ name: 'Credits', key: 'credit' },
 ];
 
@@ -218,8 +219,15 @@ const Profile = () => {
 							<dt className="text-sm font-medium text-gray-200 truncate">
 								{item.name}
 							</dt>
-							<dd className="mt-1 text-3xl font-semibold text-green-200">
-								{currencyData?.[item.key]}
+							<dd className="mt-1 text-3xl font-semibold text-green-200 font-mono">
+								{currencyData?.[item.key] || 0}
+								{item.key == 'xp' ? ( // HACKY EDIT FOR QUICK LEVEL CHECKING
+									<span className="text-gray-200 text-sm">
+										/{xpToNextLvl(currencyData?.level || 0)}
+									</span>
+								) : (
+									''
+								)}
 							</dd>
 						</div>
 					))}
