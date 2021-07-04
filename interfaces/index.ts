@@ -45,5 +45,6 @@ export interface UserData {
 export interface UserSwap {
 	xp?: number;
 	level?: number;
-	currency?: number;
+	credit?: number;
+	[key: string]: any;
 }

@@ -6,9 +6,9 @@ import Stripe from 'stripe';
 
 import Layout from '../components/Layout';
 import { useAuth } from '../contexts/auth';
-import { UserData } from '../interfaces';
+import { UserData, UserSwap } from '../interfaces';
 import { fetchApi } from '../utils/auth/fetch';
-import app, { db } from '../utils/auth/firebase';
+import app, { db, swap } from '../utils/auth/firebase';
 
 function signOut() {
 	app.auth().signOut();
@@ -19,11 +19,18 @@ function signOut() {
 // 	regular: 'bg-green-500 text-green-300 text-green-200 text-green-50',
 // };
 
+const stats = [
+	{ name: 'User Level', key: 'level' },
+	{ name: 'xp (to next level)', key: 'xp' },
+	{ name: 'Credits', key: 'credit' },
+];
+
 const Profile = () => {
 	const stripe: any = useStripe();
 	const user = useAuth();
 
 	const [userData, setUserData] = useState<UserData>();
+	const [currencyData, setCurrencyData] = useState<UserSwap>();
 	const [subscriptions, setSubscriptions] = useState<Stripe.Subscription[]>();
 	const [loading, setLoading] = useState(false);
 
@@ -39,10 +46,16 @@ const Profile = () => {
 				setUserData(snap.data() as UserData);
 			});
 
+		swap.ref(`/users/${user.uid}`).on('value', (snapshot) => {
+			console.log(snapshot.val());
+			setCurrencyData(snapshot.val());
+		});
+
 		console.log(userData);
 
 		return () => {
 			close();
+			swap.ref(`/users/${user.uid}`).off();
 		};
 	}, [user]);
 
@@ -142,6 +155,7 @@ const Profile = () => {
 					</div>
 				</header>
 			</div>
+
 			<div className="container mx-auto sm:rounded-lg -mt-32 bg-gray-800">
 				<div className="p-4 sm:p-6 lg:p-8">
 					<h2 className="text-white font-bold text-2xl">
@@ -191,59 +205,38 @@ const Profile = () => {
 					</div>
 				</div>
 			</div>
-
 			<div className="container mx-auto sm:rounded-lg bg-gray-800 p-4 sm:p-6 lg:p-8 my-4">
 				<h2 className="text-white font-bold text-2xl">
-					Manage your data?
+					Some fun stats
 				</h2>
-				<CardWithAction
-					title="Delete your guild data"
-					buttonAction={deleteGuildCache}
-					buttonTitle={!userData?.guilds ? 'Deleted' : 'Delete'}
-					buttonCss="bg-red-500"
-					disabled={!userData?.guilds}
-				>
-					We cache which guilds you can manage, although it's
-					regularly cleaned out with logging in/out. We want to give
-					you the controls to delete it.
-				</CardWithAction>
-				<CardWithAction
-					title="Delete your currency/xp data"
-					buttonAction={deleteUserCurrency}
-					buttonTitle={currencyDeleted ? 'Deleted' : 'Delete'}
-					buttonCss="bg-red-500"
-					disabled={currencyDeleted}
-				>
-					We have an xp/data feature that increments on the basis of
-					our XP algorithm. You can delete this data but you will lose
-					your level and xp, as well as the currency that you have.
-				</CardWithAction>
-				<div className="prose-sm prose-green text-gray-200">
+				<dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
+					{stats.map((item) => (
+						<div
+							key={item.name}
+							className="px-4 py-5 bg-gray-700 shadow rounded-lg overflow-hidden sm:p-6"
+						>
+							<dt className="text-sm font-medium text-gray-200 truncate">
+								{item.name}
+							</dt>
+							<dd className="mt-1 text-3xl font-semibold text-green-200">
+								{currencyData?.[item.key]}
+							</dd>
+						</div>
+					))}
+				</dl>
+				<div className="prose text-gray-200 mt-5">
 					<p>
-						Want to delete ALL your data? We don't keep much, if not
-						anything other than your username and guilds, read more
-						at the{' '}
-						<Link href="/privacy">
-							<a>Privacy Policy</a>
-						</Link>
-						.
+						Wow a new feature is coming up.. I wonder if these stats
+						will be useful :){' '}
 					</p>
 					<p>
-						The reason we don't have the delete button set up is
-						because I have no idea how to handle deleting if someone
-						has payment info or the specifics surrounding that.
-					</p>
-					<p>
-						We're working on making it automagic, feel free to ping{' '}
-						<span className="text-green-300">@Safe</span> or email
-						<span className="text-green-300">
-							{' '}
-							privacy@ey.lc
-						</span>{' '}
-						to auto remove your data asap.
+						<span className="text-xs">
+							(and yeah, they update in real-time)
+						</span>
 					</p>
 				</div>
 			</div>
+
 			<div className="container mx-auto sm:rounded-lg bg-gray-800 p-4 sm:p-6 lg:p-8 my-4">
 				<div className="space-y-4 text-gray-200">
 					<h2 className="font-bold text-2xl pb-4 text-white">
@@ -268,6 +261,61 @@ const Profile = () => {
 					<p>
 						<span className="text-green-300">Safe</span> and the
 						<span className="text-green-300"> Ferris</span> Team
+					</p>
+				</div>
+			</div>
+			<div className="container mx-auto sm:rounded-lg bg-gray-800 p-4 sm:p-6 lg:p-8 my-4">
+				<h2 className="text-white font-bold text-2xl">
+					Manage your data
+				</h2>
+				<CardWithAction
+					title="Delete your guild data"
+					buttonAction={deleteGuildCache}
+					buttonTitle={!userData?.guilds ? 'Deleted' : 'Delete'}
+					buttonCss="bg-red-500"
+					disabled={!userData?.guilds}
+				>
+					We cache which guilds you can manage, although it's
+					regularly cleaned out with logging in/out. We want to give
+					you the controls to delete it.
+				</CardWithAction>
+				<CardWithAction
+					title="Delete your currency/xp data"
+					buttonAction={deleteUserCurrency}
+					buttonTitle={currencyDeleted ? 'Deleted' : 'Delete'}
+					buttonCss="bg-red-500"
+					disabled={currencyDeleted}
+				>
+					We have an xp/data feature that increments on the basis of
+					our XP algorithm. You can delete this data but you will lose
+					your level and xp, as well as the currency that you have.
+				</CardWithAction>
+				<h3 className="text-white font-bold text-2xl mb-6">
+					Want to delete <span className="text-red-300">all</span>{' '}
+					your data?
+				</h3>
+				<div className="prose prose-green text-gray-200">
+					<p>
+						We don't keep much, if not anything other than your
+						username, level, and guilds, read more at the{' '}
+						<Link href="/privacy">
+							<a>Privacy Policy</a>
+						</Link>
+						.
+					</p>
+					<p>
+						The reason we don't have the delete button set up is
+						because I have no idea how to handle deleting if someone
+						has payment info or the specifics surrounding that.
+					</p>
+					<p>
+						We're working on making it automagic, feel free to ping{' '}
+						<span className="text-green-300">@Safe</span> or email
+						<span className="text-green-300">
+							{' '}
+							privacy@ey.lc
+						</span>{' '}
+						to auto remove your data asap.
 					</p>
 				</div>
 			</div>
