@@ -1,6 +1,10 @@
 import React from 'react';
 import Layout from '../components/Layout';
-import { AboutBanner, AboutTeam } from '../components/sections/AboutBanner';
+import {
+	AboutBanner,
+	AboutFaq,
+	AboutTeam,
+} from '../components/sections/AboutBanner';
 
 const AboutPage = () => (
 	<Layout
@@ -10,6 +14,7 @@ const AboutPage = () => (
 	>
 		<AboutBanner />
 		<AboutTeam />
+		<AboutFaq />
 	</Layout>
 );
 

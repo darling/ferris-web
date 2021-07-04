@@ -1,3 +1,6 @@
+import { ExternalLinkIcon } from '@heroicons/react/solid';
+import Link from 'next/link';
+
 export const AboutBanner = () => (
 	<>
 		<div className="bg-green-500">
@@ -11,7 +14,7 @@ export const AboutBanner = () => (
 					</p>
 					<p className="max-w-xl mt-5 mx-auto text-xl text-gray-100">
 						We're just a small team of friends looking to make a
-						Discord Bot to improve communities.
+						service to improve communities.
 					</p>
 				</div>
 			</div>
@@ -28,9 +31,9 @@ export const AboutTeam = () => (
 						<h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
 							Meet the team
 						</h2>
-						<p className="text-xl text-gray-300">
-							We (the team) make Ferris work. Feel free to join
-							the Discord and say "hi" anytime.
+						<p className=" text-gray-300">
+							We make Ferris work. Feel free to join the Discord
+							and say "hi" anytime.
 						</p>
 					</div>
 					<div className="lg:col-span-2">
@@ -83,6 +86,51 @@ export const AboutTeam = () => (
 								</div>
 							</li>
 						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</>
+);
+
+export const AboutFaq = () => (
+	<>
+		<div className="relative bg-gray-800">
+			<div className="h-56 bg-green-400 sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2">
+				<img
+					className="w-full h-full object-cover"
+					src="/img/security.png"
+					alt=""
+				/>
+			</div>
+			<div className="relative max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+				<div className="md:ml-auto md:w-1/2 md:pl-10">
+					<h2 className="text-base font-semibold uppercase tracking-wider text-gray-300">
+						Build your community
+					</h2>
+					<p className="mt-2 text-green-100 text-3xl font-extrabold tracking-tight sm:text-4xl">
+						See what we have to offer
+					</p>
+					<p className="mt-3  text-gray-300">
+						Every feature of Ferris is given love and built to be
+						used. Try it out and see exactly what we stand for.
+					</p>
+					<p className="mt-3  text-gray-300">
+						If anything is wrong, or if you need support, feel free
+						to reach out to us.
+					</p>
+					<div className="mt-8">
+						<div className="inline-flex rounded-md shadow">
+							<Link href="/control">
+								<a className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-50">
+									Get Started
+									<ExternalLinkIcon
+										className="-mr-1 ml-3 h-5 w-5 text-gray-400"
+										aria-hidden="true"
+									/>
+								</a>
+							</Link>
+						</div>
 					</div>
 				</div>
 			</div>
