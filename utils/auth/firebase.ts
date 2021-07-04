@@ -19,11 +19,13 @@ if (!firebase.apps.length) {
 const app = firebase;
 
 var db = app.firestore();
+var swap = app.database();
 
 if (process.env.NODE_ENV == 'development') {
 	db.useEmulator('localhost', 8000);
+	swap.useEmulator('localhost', 9000);
 }
 
-export { db, firebase };
+export { db, swap, firebase };
 
 export default app;

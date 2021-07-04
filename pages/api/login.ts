@@ -83,7 +83,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
 	await admin
 		.database()
-		.ref(`/users/${uid}`)
+		.ref(`/extData/${uid}`)
 		.set({ token: DISCORD_ACCESS_TOKEN });
 
 	const { discriminator, username, avatar } = discordInfo.data;

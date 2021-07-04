@@ -88,13 +88,12 @@ const ControlIndex = () => {
 							);
 						})
 				) : (
-					<div className="hover:bg-gray-700 hover:text-green-200 hover:shadow-lg transition-all duration-100 h-40 p-4 rounded-xl flex flex-col items-center content-center">
-						<img
-							src={`/img/placeholder-crystal.png`}
-							alt="guild"
-							className="rounded-full h-24 w-24"
-						/>
-						<p className="mt-3">No Guilds</p>
+					<div className="bg-gray-800 hover:bg-gray-700 hover:text-green-200 hover:shadow-lg transition-all duration-100 h-40 p-4 rounded-xl flex flex-col prose text-green-300">
+						<p>Uh oh!</p>
+						<p>
+							If you weren't expecting this, try to sign in once
+							again!
+						</p>
 					</div>
 				)}
 			</div>

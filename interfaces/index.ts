@@ -41,3 +41,9 @@ export interface UserData {
 	premium: true;
 	stripeCustomerId?: string;
 }
+
+export interface UserSwap {
+	xp?: number;
+	level?: number;
+	currency?: number;
+}
