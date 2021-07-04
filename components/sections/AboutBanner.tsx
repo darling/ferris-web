@@ -1,17 +1,17 @@
 export const AboutBanner = () => (
 	<>
-		<div className="bg-gray-800">
+		<div className="bg-green-500">
 			<div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
 				<div className="text-center">
-					<h2 className="text-base font-semibold text-green-400 tracking-wide uppercase">
+					<h2 className="text-base font-semibold text-white tracking-wide uppercase">
 						Ferris.gg
 					</h2>
 					<p className="mt-1 text-4xl font-extrabold sm:text-5xl sm:tracking-tight lg:text-6xl">
 						About Us
 					</p>
-					<p className="max-w-xl mt-5 mx-auto text-xl text-gray-300">
-						We're just a small team of one developer and friends
-						looking to make a Discord Bot to improve communities.
+					<p className="max-w-xl mt-5 mx-auto text-xl text-gray-100">
+						We're just a small team of friends looking to make a
+						Discord Bot to improve communities.
 					</p>
 				</div>
 			</div>
@@ -28,7 +28,7 @@ export const AboutTeam = () => (
 						<h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
 							Meet the team
 						</h2>
-						<p className="text-xl text-gray-500">
+						<p className="text-xl text-gray-300">
 							We (the team) make Ferris work. Feel free to join
 							the Discord and say "hi" anytime.
 						</p>
@@ -39,12 +39,12 @@ export const AboutTeam = () => (
 								<div className="flex items-center space-x-4 lg:space-x-6">
 									<img
 										className="w-16 h-16 rounded-full lg:w-20 lg:h-20"
-										src="https://files.catbox.moe/ea498k.jpg"
+										src="https://i.imgur.com/Ag9ATAr.gif"
 										alt=""
 									/>
 									<div className="font-medium text-lg leading-6 space-y-1">
-										<h3>Safe#0001</h3>
-										<p className="text-green-600">
+										<h3>Safe</h3>
+										<p className="text-green-300">
 											Lead Developer / Founder
 										</p>
 									</div>
@@ -55,12 +55,12 @@ export const AboutTeam = () => (
 								<div className="flex items-center space-x-4 lg:space-x-6">
 									<img
 										className="w-16 h-16 rounded-full lg:w-20 lg:h-20"
-										src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
+										src="https://i.imgur.com/gSAwGmP.gif"
 										alt=""
 									/>
 									<div className="font-medium text-lg leading-6 space-y-1">
-										<h3>ImMatt#0001</h3>
-										<p className="text-green-600">
+										<h3>Matt</h3>
+										<p className="text-green-300">
 											Co-Founder / Developer
 										</p>
 									</div>
@@ -75,8 +75,8 @@ export const AboutTeam = () => (
 										alt=""
 									/>
 									<div className="font-medium text-lg leading-6 space-y-1">
-										<h3>Cut#0001</h3>
-										<p className="text-green-600">
+										<h3>Cut</h3>
+										<p className="text-green-300">
 											Manager
 										</p>
 									</div>
