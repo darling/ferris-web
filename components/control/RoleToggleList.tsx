@@ -36,7 +36,14 @@ export const RoleToggleList: FC<{ className?: string }> = (props) => {
 							<Disclosure.Panel className="grid grid-cols-1 sm:gap-y-6 gap-x-4 sm:grid-cols-2">
 								{Object.keys(guild?.roles || {}).map(
 									(role_id) => {
-										if (role_id === guild?.id) return <></>;
+										if (role_id === guild?.id)
+											return (
+												<div key={role_id} hidden>
+													This is hidden because react
+													has a meltdown for missed{' '}
+													items
+												</div>
+											);
 
 										const enabled =
 											!!config?.selfrole?.includes(
@@ -45,11 +52,11 @@ export const RoleToggleList: FC<{ className?: string }> = (props) => {
 
 										return (
 											<div
-												key={role_id}
 												className={classNames(
 													'bg-gray-800 p-2 sm:rounded-md odd:bg-gray-700 sm:odd:bg-gray-800',
 													'flex flex-row items-center justify-between'
 												)}
+												key={role_id}
 											>
 												<span>
 													{guild?.roles?.[role_id]

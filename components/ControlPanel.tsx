@@ -1,10 +1,9 @@
 import Link from 'next/link';
-import { useContext } from 'react';
+import React, { useContext } from 'react';
+
 import { useAuth } from '../contexts/auth';
 import { GuildContext } from '../contexts/guild';
-import { BetaWarningBanner } from './control/BetaWarningBanner';
-import { ControlBase } from './control/ControlBase';
-import Sidebar from './control/Sidebar';
+import { ControlSideBar } from './control/ControlSidebar';
 import Layout from './Layout';
 
 interface Props {
@@ -91,38 +90,17 @@ const ControlPanel = (props: Props) => {
 
 	// In guild view
 	return (
-		<Layout
-			title={`${
-				guild?.name || 'Guild Management'
-			} | Ferris Control Panel`}
-		>
-			<ControlBase
-				sidebar={
-					<Sidebar
-						entries={[
-							{ name: 'Home' },
-							{ name: 'Config', path: '/config' },
-							{ name: 'Warns', path: '/warns' },
-							{ name: 'Automod', path: '/automod' },
-							{
-								name: 'Custom Commands',
-								path: '/custom-commands',
-							},
-						]}
-						guildName={guild?.name}
-						guildIcon={guild?.icon}
-					/>
-				}
-				optionalRight={
-					<>
-						{props.right}
-						<BetaWarningBanner />
-					</>
-				}
+		<>
+			<Layout
+				title={`${
+					guild?.name || 'Guild Management'
+				} | Ferris Control Panel`}
+				header={false}
+				footer={false}
 			>
-				{props.children}
-			</ControlBase>
-		</Layout>
+				<ControlSideBar>{props.children}</ControlSideBar>
+			</Layout>
+		</>
 	);
 };
 

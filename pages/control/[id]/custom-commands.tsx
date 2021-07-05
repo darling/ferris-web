@@ -1,6 +1,11 @@
-import clsx from 'clsx';
-import { useContext, useState } from 'react';
+import { PencilAltIcon, TrashIcon } from '@heroicons/react/outline';
+import classNames from 'classnames';
+import React, { useContext, useState } from 'react';
 
+import {
+	ControlContent,
+	ControlMainTitle,
+} from '../../../components/control/ControlSidebar';
 import EmbedCreator from '../../../components/control/EmbedCreator';
 import ControlPanel from '../../../components/ControlPanel';
 import { ConfigContext, GuildContext } from '../../../contexts/guild';
@@ -29,77 +34,71 @@ const CustomCommands = () => {
 
 	return (
 		<ControlPanel>
-			<h1 className="font-bold tracking-wide align-middle text-4xl text-green-200">
-				{'Custom Commands'}
-			</h1>
-			<div className="flex flex-col gap-2 bg-gray-800 p-3 rounded-lg shadow-md my-2">
-				{commandList.map((commandName) => {
-					return (
-						<div
-							key={commandName}
-							className="bg-gray-900 p-2 rounded-md"
-						>
-							<div className="flex flex-row items-center justify-between">
-								<h2 className="text-2xl font-bold font-mono">
-									<span className="text-green-400">
-										{config?.prefix || ';'}
-									</span>
-									{commandName}
-								</h2>
-								<div className="flex flex-row gap-2">
-									<button
-										onClick={() => {
-											setCurrentCommand(commandName);
-										}}
-									>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											fill="none"
-											viewBox="0 0 24 24"
-											stroke="currentColor"
-											className="w-8 h-8 text-green-200"
+			<ControlMainTitle>
+				Custom Commands for {guild?.name}
+			</ControlMainTitle>
+			<ControlContent>
+				<h3 className="text-lg leading-6 font-medium text-green-200">
+					Manage Existing Commands
+				</h3>
+				<ul className="divide-y divide-gray-700">
+					{commandList.map((commandName) => {
+						return (
+							<li key={commandName} className="py-4">
+								<div className="flex items-center space-x-4">
+									<div className="flex-1 min-w-0">
+										<p className="font-mono text-white truncate">
+											<span className="text-green-300">
+												{config?.prefix || ';'}
+											</span>
+											{commandName}
+										</p>
+										<p className="text-sm text-gray-500 truncate">
+											command
+										</p>
+									</div>
+									<div className="space-x-2">
+										<button
+											onClick={() => {
+												setCurrentCommand(commandName);
+											}}
+											type="button"
+											className="inline-flex items-center px-3 py-2 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
 										>
-											<path
-												strokeLinecap="round"
-												strokeLinejoin="round"
-												strokeWidth={2}
-												d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+											<PencilAltIcon
+												className="-ml-0.5 mr-2 h-4 w-4"
+												aria-hidden="true"
 											/>
-										</svg>
-									</button>
-									<button
-										onClick={() => {
-											db.collection('configs')
-												.doc(`${guild?.id}`)
-												.update({
-													['custom.' + commandName]:
-														app.firestore.FieldValue.delete(),
-												});
-										}}
-									>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											fill="none"
-											viewBox="0 0 24 24"
-											stroke="currentColor"
-											className="w-8 h-8 text-red-600"
+											Edit
+										</button>
+										<button
+											onClick={() => {
+												db.collection('configs')
+													.doc(`${guild?.id}`)
+													.update({
+														['custom.' +
+														commandName]:
+															app.firestore.FieldValue.delete(),
+													});
+											}}
+											type="button"
+											className="inline-flex items-center px-3 py-2 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
 										>
-											<path
-												strokeLinecap="round"
-												strokeLinejoin="round"
-												strokeWidth={2}
-												d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+											<TrashIcon
+												className="-ml-0.5 mr-2 h-4 w-4"
+												aria-hidden="true"
 											/>
-										</svg>
-									</button>
+											Delete
+										</button>
+									</div>
 								</div>
-							</div>
-						</div>
-					);
-				})}
-			</div>
-			<div className="bg-gray-800 p-2 rounded-md">
-				<h2 className="text-2xl md:text-4xl font-bold">
+							</li>
+						);
+					})}
+				</ul>
+			</ControlContent>
+			<ControlContent>
+				<h3 className="text-lg leading-6 font-medium text-green-200">
 					{!!currentCommand ? (
 						<>
 							Manage{' '}
@@ -111,26 +110,23 @@ const CustomCommands = () => {
 					) : (
 						'Create a new command'
 					)}
-				</h2>
-				<EmbedCreator
-					editExisting={currentCommand}
-					onSubmit={handleCreate}
-				/>
-				<button
-					className={clsx(
-						'bg-red-500',
-						'text-white',
-						'p-3',
-						'rounded-md',
-						'w-full',
-						'mt-2'
-					)}
-					hidden={!currentCommand}
-					onClick={() => setCurrentCommand(undefined)}
-				>
-					Cancel editing
-				</button>
-			</div>
+				</h3>
+				<div className="mt-6 grid grid-cols-1 gap-y-4 gap-x-4 sm:grid-cols-6">
+					<EmbedCreator
+						editExisting={currentCommand}
+						onSubmit={handleCreate}
+					/>
+					<button
+						className={classNames(
+							'bg-red-500 text-white p-3 rounded-md w-full col-span-4'
+						)}
+						hidden={!currentCommand}
+						onClick={() => setCurrentCommand(undefined)}
+					>
+						Cancel editing
+					</button>
+				</div>
+			</ControlContent>
 		</ControlPanel>
 	);
 };

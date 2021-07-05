@@ -10,6 +10,10 @@ import React, {
 } from 'react';
 
 import { AutomodTabs } from '../../../../components/control/AutomodWrapper';
+import {
+	ControlContent,
+	ControlMainTitle,
+} from '../../../../components/control/ControlSidebar';
 import ControlPanel from '../../../../components/ControlPanel';
 import { ConfigContext, GuildContext } from '../../../../contexts/guild';
 import { db } from '../../../../utils/auth/firebase';
@@ -195,192 +199,205 @@ const AutomodIndex = (_props: Props) => {
 
 	return (
 		<ControlPanel>
-			<AutomodTabs />
-			<div className="mt-2 mb-4">
-				<div>
+			<ControlMainTitle>Automod Management</ControlMainTitle>
+			<ControlContent>
+				<AutomodTabs />
+				<div className="mt-2 mb-4">
+					<div>
+						<h3 className="text-lg leading-6 font-medium text-green-300">
+							Tag/Keyword Management
+						</h3>
+						<p className="mt-1 text-sm text-gray-500">
+							Find and ban words that may be offensive to users or
+							your community.
+						</p>
+					</div>
+					<div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+						<div className="col-span-6">
+							<TagsToggle />
+						</div>
+					</div>
+				</div>
+				<FormError errors={formErrors} resetStateHandler={setErrors} />
+				<form onSubmit={addTag} className="mt-2">
+					<div className="shadow sm:rounded-md sm:overflow-hidden">
+						<div className="border border-gray-900 bg-gray-800 py-6 px-4 space-y-6 sm:p-6">
+							<div>
+								<h3 className="text-lg leading-6 font-medium text-green-300">
+									Create new Tag
+								</h3>
+								<p className="mt-1 text-sm text-gray-300">
+									Just enter a phrase or word that you don't
+									want in your server, and Ferris will warn
+									for each infraction!
+								</p>
+							</div>
+
+							<div className="grid grid-cols-3 gap-6">
+								<div className="col-span-3 sm:col-span-2">
+									<label
+										htmlFor="company_website"
+										className="block text-sm font-medium"
+									>
+										Keyword
+									</label>
+									<input
+										type="text"
+										name="tag"
+										id="tag"
+										onChange={(t) => {
+											setFormTag(t.target.value);
+										}}
+										value={formTag}
+										className="bg-gray-900 shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-700 rounded-md"
+									/>
+								</div>
+							</div>
+							<legend className="text-base font-medium">
+								Extra options
+							</legend>
+							<div className="mt-4 space-y-4">
+								<div className="flex items-start">
+									<div className="flex items-center h-5">
+										<input
+											id="casesensitive"
+											name="casesensitive"
+											type="checkbox"
+											className="focus:ring-green-500 h-4 w-4 text-green-600 rounded bg-gray-900"
+											checked={isCaseSensitive}
+											onChange={(e) => {
+												setCaseSensitive(
+													e.target.checked
+												);
+											}}
+										/>
+									</div>
+									<div className="ml-3 text-sm">
+										<label
+											htmlFor="casesensitive"
+											className="font-medium"
+										>
+											Case sensitive
+										</label>
+										<p className="text-gray-500">
+											Text will be compared with capital
+											letters and non-capital letters.
+											Turn off if using non ASCII
+											charcters.
+										</p>
+									</div>
+								</div>
+								<div className="flex items-start">
+									<div className="flex items-center h-5">
+										<input
+											id="strict"
+											name="strict"
+											type="checkbox"
+											className="focus:ring-green-500 h-4 w-4 text-green-600 rounded bg-gray-900"
+											checked={isStrict}
+											onChange={(e) => {
+												setStrict(e.target.checked);
+											}}
+										/>
+									</div>
+									<div className="ml-3 text-sm">
+										<label
+											htmlFor="strict"
+											className="font-medium"
+										>
+											Strict word check
+										</label>
+										<p className="text-gray-500">
+											Best for single words or curse
+											words. This option will check whole
+											words for matching terms.{' '}
+											<span className="text-red-400">
+												This option will not work with
+												spaces.
+											</span>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div className="px-4 py-3 bg-gray-700 text-right sm:px-6">
+							<button
+								type="submit"
+								className="bg-green-600 rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-green-50 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+							>
+								Add Tag
+							</button>
+						</div>
+					</div>
+				</form>
+				{/* END OF THE FORM */}
+				<div
+					className="mt-2"
+					hidden={
+						(config?.automod?.word_filter?.tags?.length || 0) < 1
+					}
+				>
 					<h3 className="text-lg leading-6 font-medium text-green-300">
-						Tag/Keyword Management
+						Tags/Keywords
 					</h3>
-					<p className="mt-1 text-sm text-gray-500">
-						Find and ban words that may be offensive to users or
-						your community.
+					<p className="mt-1 text-sm text-gray-300">
+						Delete and see existing tags here.
 					</p>
 				</div>
-				<div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-					<div className="col-span-6">
-						<TagsToggle />
-					</div>
-				</div>
-			</div>
-			<FormError errors={formErrors} resetStateHandler={setErrors} />
-			<form onSubmit={addTag} className="mt-2">
-				<div className="shadow sm:rounded-md sm:overflow-hidden">
-					<div className="border border-gray-900 bg-gray-800 py-6 px-4 space-y-6 sm:p-6">
-						<div>
-							<h3 className="text-lg leading-6 font-medium text-green-300">
-								Create new Tag
-							</h3>
-							<p className="mt-1 text-sm text-gray-300">
-								Just enter a phrase or word that you don't want
-								in your server, and Ferris will warn for each
-								infraction!
-							</p>
-						</div>
-
-						<div className="grid grid-cols-3 gap-6">
-							<div className="col-span-3 sm:col-span-2">
-								<label
-									htmlFor="company_website"
-									className="block text-sm font-medium"
-								>
-									Keyword
-								</label>
-								<input
-									type="text"
-									name="tag"
-									id="tag"
-									onChange={(t) => {
-										setFormTag(t.target.value);
-									}}
-									value={formTag}
-									className="bg-gray-900 shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-700 rounded-md"
-								/>
-							</div>
-						</div>
-						<legend className="text-base font-medium">
-							Extra options
-						</legend>
-						<div className="mt-4 space-y-4">
-							<div className="flex items-start">
-								<div className="flex items-center h-5">
-									<input
-										id="casesensitive"
-										name="casesensitive"
-										type="checkbox"
-										className="focus:ring-green-500 h-4 w-4 text-green-600 rounded bg-gray-900"
-										checked={isCaseSensitive}
-										onChange={(e) => {
-											setCaseSensitive(e.target.checked);
-										}}
-									/>
+				<ul className="divide-y divide-gray-700">
+					{config?.automod?.word_filter?.tags?.map((item) => (
+						<li key={item.tag} className="py-4 mx-auto pr-2">
+							<div className="flex justify-between">
+								<div className="min-w-0 flex-1">
+									<div className="block focus:outline-none">
+										<p className="text-sm font-mono truncate">
+											{item.tag}
+										</p>
+									</div>
 								</div>
-								<div className="ml-3 text-sm">
-									<label
-										htmlFor="casesensitive"
-										className="font-medium"
-									>
-										Case sensitive
-									</label>
-									<p className="text-gray-500">
-										Text will be compared with capital
-										letters and non-capital letters. Turn
-										off if using non ASCII charcters.
-									</p>
+								<div className="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
+									<div className="-mx-1.5 -my-1.5">
+										<button
+											type="button"
+											className="inline-flex bg-gray-800 rounded-md p-1.5 text-red-500 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-red-50 focus:ring-red-600"
+											onClick={() => {
+												if (guild?.id)
+													delTagFromGuild(
+														guild.id,
+														item
+													);
+											}}
+										>
+											<span className="sr-only">
+												Delete
+											</span>
+											<XIcon
+												className="h-5 w-5"
+												aria-hidden="true"
+											/>
+										</button>
+									</div>
 								</div>
 							</div>
-							<div className="flex items-start">
-								<div className="flex items-center h-5">
-									<input
-										id="strict"
-										name="strict"
-										type="checkbox"
-										className="focus:ring-green-500 h-4 w-4 text-green-600 rounded bg-gray-900"
-										checked={isStrict}
-										onChange={(e) => {
-											setStrict(e.target.checked);
-										}}
-									/>
-								</div>
-								<div className="ml-3 text-sm">
-									<label
-										htmlFor="strict"
-										className="font-medium"
-									>
-										Strict word check
-									</label>
-									<p className="text-gray-500">
-										Best for single words or curse words.
-										This option will check whole words for
-										matching terms.{' '}
-										<span className="text-red-400">
-											This option will not work with
-											spaces.
+							<div className="mt-1">
+								<p className="line-clamp-2 text-sm text-gray-600">
+									{item.case_sensitive ? (
+										<span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-gray-800 text-green-100">
+											Case Sensitive
 										</span>
-									</p>
-								</div>
+									) : null}{' '}
+									{item.strict ? (
+										<span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-gray-800 text-green-100">
+											Strict
+										</span>
+									) : null}
+								</p>
 							</div>
-						</div>
-					</div>
-
-					<div className="px-4 py-3 bg-gray-700 text-right sm:px-6">
-						<button
-							type="submit"
-							className="bg-green-600 rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-green-50 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-						>
-							Add Tag
-						</button>
-					</div>
-				</div>
-			</form>
-			{/* END OF THE FORM */}
-			<div
-				className="mt-2"
-				hidden={(config?.automod?.word_filter?.tags?.length || 0) < 1}
-			>
-				<h3 className="text-lg leading-6 font-medium text-green-300">
-					Tags/Keywords
-				</h3>
-				<p className="mt-1 text-sm text-gray-300">
-					Delete and see existing tags here.
-				</p>
-			</div>
-			<ul className="divide-y divide-gray-700">
-				{config?.automod?.word_filter?.tags?.map((item) => (
-					<li key={item.tag} className="py-4 mx-auto pr-2">
-						<div className="flex justify-between">
-							<div className="min-w-0 flex-1">
-								<div className="block focus:outline-none">
-									<p className="text-sm font-mono truncate">
-										{item.tag}
-									</p>
-								</div>
-							</div>
-							<div className="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
-								<div className="-mx-1.5 -my-1.5">
-									<button
-										type="button"
-										className="inline-flex bg-gray-800 rounded-md p-1.5 text-red-500 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-red-50 focus:ring-red-600"
-										onClick={() => {
-											if (guild?.id)
-												delTagFromGuild(guild.id, item);
-										}}
-									>
-										<span className="sr-only">Delete</span>
-										<XIcon
-											className="h-5 w-5"
-											aria-hidden="true"
-										/>
-									</button>
-								</div>
-							</div>
-						</div>
-						<div className="mt-1">
-							<p className="line-clamp-2 text-sm text-gray-600">
-								{item.case_sensitive ? (
-									<span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-gray-800 text-green-100">
-										Case Sensitive
-									</span>
-								) : null}{' '}
-								{item.strict ? (
-									<span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-gray-800 text-green-100">
-										Strict
-									</span>
-								) : null}
-							</p>
-						</div>
-					</li>
-				))}
-			</ul>
+						</li>
+					))}
+				</ul>
+			</ControlContent>
 		</ControlPanel>
 	);
 };

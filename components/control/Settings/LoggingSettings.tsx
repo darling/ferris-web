@@ -1,6 +1,7 @@
 import { Switch } from '@headlessui/react';
 import classNames from 'classnames';
 import { groupBy, startCase } from 'lodash';
+import Link from 'next/link';
 import { useContext } from 'react';
 
 import { GuildContext } from '../../../contexts/guild';
@@ -8,7 +9,6 @@ import { GuildConfig } from '../../../interfaces/control';
 import { LoggingTypes, typesAsArray } from '../../../interfaces/logging';
 import { db } from '../../../utils/auth/firebase';
 import { InfoWarningBubble } from '../../ui-atoms/InfoWarningBubble';
-import { SmallHero } from './../../SmallHero';
 
 function startsWithVowel(word: string) {
 	return /[aeiou]/i.test(word[0]);
@@ -55,12 +55,28 @@ export const LoggingSettings = ({ config }: { config: GuildConfig }) => {
 
 	if (!config?.logging || !config?.logging?.subs) {
 		return (
-			<div className="sm:col-span-6">
-				<SmallHero
-					title="Please enable logging in your server."
-					description="You need to enable logging initially through the 'setlogchannel' command. After that, you can change the settings here."
-					href="/docs/commands"
-				/>
+			<div className="bg-white shadow sm:rounded-lg col-span-6">
+				<div className="px-4 py-5 sm:p-6">
+					<h3 className="text-lg leading-6 font-medium text-gray-900">
+						Logging config does not exist.
+					</h3>
+					<div className="mt-2 max-w-xl text-sm text-gray-500">
+						<p>
+							In order to enable to logging from the panel, you
+							need to use `;setlogchannel` at least once in the
+							Discord.
+						</p>
+					</div>
+					<div className="mt-3 text-sm">
+						<Link href="/">
+							<a className="font-medium text-green-600 hover:text-green-500">
+								{' '}
+								Learn more about Logging{' '}
+								<span aria-hidden="true">&rarr;</span>
+							</a>
+						</Link>
+					</div>
+				</div>
 			</div>
 		);
 	}
@@ -75,7 +91,7 @@ export const LoggingSettings = ({ config }: { config: GuildConfig }) => {
 			</InfoWarningBubble>
 			<Switch.Group
 				as="div"
-				className="flex items-center justify-between my-2"
+				className="flex items-center justify-between my-2 md:w-2/3 lg:w-1/2"
 			>
 				<Switch.Label
 					as="span"

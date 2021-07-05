@@ -4,6 +4,10 @@ import React, { FC } from 'react';
 import { useContext } from 'react';
 
 import { AutomodTabs } from '../../../../components/control/AutomodWrapper';
+import {
+	ControlContent,
+	ControlMainTitle,
+} from '../../../../components/control/ControlSidebar';
 import ControlPanel from '../../../../components/ControlPanel';
 import { ConfigContext, GuildContext } from '../../../../contexts/guild';
 import { db } from '../../../../utils/auth/firebase';
@@ -121,23 +125,44 @@ const AutomodIndex = (_props: Props) => {
 
 	return (
 		<ControlPanel right={<DataPanel />}>
-			<AutomodTabs />
-			<div className="mt-2">
-				<div>
-					<h3 className="text-lg leading-6 font-medium text-green-300">
-						General Config
-					</h3>
-					<p className="mt-1 text-sm text-gray-500">
-						Automod may be a little complex to setup, but these
-						settings are laid out to help.
-					</p>
-				</div>
-				<div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-					<div className="sm:col-span-6">
-						<AutomodToggle />
+			<ControlMainTitle>Automod Management</ControlMainTitle>
+			<ControlContent>
+				<AutomodTabs />
+				<div className="mt-2">
+					<div>
+						<h3 className="text-lg leading-6 font-medium text-green-300">
+							General Config
+						</h3>
+						<p className="mt-1 text-sm text-gray-500">
+							Automod may be a little complex to setup, but these
+							settings are laid out to help.
+						</p>
+					</div>
+					<div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+						<div className="sm:col-span-6">
+							<AutomodToggle />
+						</div>
 					</div>
 				</div>
-			</div>
+				<div className="mt-6">
+					<div>
+						<h3 className="text-lg leading-6 font-medium text-green-300">
+							Overview
+						</h3>
+						<p className="mt-1 text-sm text-gray-500">
+							Here's everything we block right now. (under
+							construction)
+						</p>
+					</div>
+					<div className="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+						<div className="sm:col-span-6">
+							<div className="py-4">
+								<div className="border-4 border-dashed border-gray-700 rounded-lg h-40" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</ControlContent>
 		</ControlPanel>
 	);
 };

@@ -10,6 +10,7 @@ type Props = {
 	headerClassName?: string;
 	linkClassName?: string;
 	header?: boolean;
+	footer?: boolean;
 };
 
 const Layout = ({
@@ -19,6 +20,7 @@ const Layout = ({
 	headerClassName,
 	linkClassName,
 	header = true,
+	footer = true,
 }: Props) => {
 	return (
 		<div
@@ -37,7 +39,7 @@ const Layout = ({
 				<></>
 			)}
 			<div className="mx-auto min-h-screen">{children}</div>
-			<Footer />
+			{footer ? <Footer /> : <></>}
 		</div>
 	);
 };

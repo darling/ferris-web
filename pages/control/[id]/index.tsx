@@ -1,37 +1,67 @@
-import { useContext } from 'react';
+import {
+	AtSymbolIcon,
+	EmojiHappyIcon,
+	InformationCircleIcon,
+	UsersIcon,
+} from '@heroicons/react/outline';
+import Link from 'next/link';
+import React, { useContext } from 'react';
 
+import {
+	ControlContent,
+	ControlMainTitle,
+} from '../../../components/control/ControlSidebar';
 import ControlPanel from '../../../components/ControlPanel';
-import { SectionHeading } from '../../../components/ui-atoms/SectionHeading';
-import { GuildContext } from '../../../contexts/guild';
+import { ConfigContext, GuildContext } from '../../../contexts/guild';
 
 const ControlHome = () => {
 	const guild = useContext(GuildContext);
+	const config = useContext(ConfigContext);
 
 	return (
 		<ControlPanel>
-			<SectionHeading heading="Control Panel Home" />
-			<div className="py-4">
-				<dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-2">
+			<ControlMainTitle>
+				{guild?.name}{' '}
+				<span className="text-green-100">Control Panel</span>
+			</ControlMainTitle>
+			{/* <ControlCard desc="heheeh" title="wowowo">
+			</ControlCard> */}
+			<ControlContent>
+				<div className="rounded-md bg-blue-50 p-4">
+					<div className="flex">
+						<div className="flex-shrink-0">
+							<InformationCircleIcon
+								className="h-5 w-5 text-blue-400"
+								aria-hidden="true"
+							/>
+						</div>
+						<div className="ml-3 flex-1 md:flex md:justify-between">
+							<p className="text-sm text-blue-700">
+								Ferris is in beta, feel free to stop by the
+								Discord and see what's new!
+							</p>
+							<p className="mt-3 text-sm md:mt-0 md:ml-6">
+								<Link href="/discord">
+									<a className="whitespace-nowrap font-medium text-blue-700 hover:text-blue-600">
+										Details{' '}
+										<span aria-hidden="true">&rarr;</span>
+									</a>
+								</Link>
+							</p>
+						</div>
+					</div>
+				</div>
+			</ControlContent>
+			<ControlContent>
+				<h3 className="text-lg leading-6 font-medium text-green-200">
+					Some Stats
+				</h3>
+				<dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
 					<div className="flex flex-col bg-gray-700 overflow-hidden shadow rounded-lg">
 						<div className="flex-grow px-4 py-5 sm:p-6">
 							<div className="flex items-center">
 								<div className="flex-shrink-0 bg-green-500 rounded-md p-3">
-									<svg
-										className="h-6 w-6 text-white"
-										data-todo-x-description="Heroicon name: outline/users"
-										xmlns="http://www.w3.org/2000/svg"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke="currentColor"
-										aria-hidden="true"
-									>
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											strokeWidth="2"
-											d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
-										></path>
-									</svg>
+									<UsersIcon className="h-6 w-6 text-white"></UsersIcon>
 								</div>
 								<div className="ml-5 w-0 flex-1">
 									<dt className="text-sm font-medium text-gray-200 truncate">
@@ -49,16 +79,16 @@ const ControlHome = () => {
 							<div className="text-sm">
 								That's a good amount of members!
 								{/* <a
-									href="/"
-									className="font-medium text-green-600 hover:text-green-500"
-								>
-									{' '}
-									View all
-									<span className="sr-only">
+										href="/"
+										className="font-medium text-green-600 hover:text-green-500"
+									>
 										{' '}
-										Total Member stats
-									</span>
-								</a> */}
+										View all
+										<span className="sr-only">
+											{' '}
+											Total Member stats
+										</span>
+									</a> */}
 							</div>
 						</div>
 					</div>
@@ -67,20 +97,43 @@ const ControlHome = () => {
 						<div className="flex-grow px-4 py-5 sm:p-6">
 							<div className="flex items-center">
 								<div className="flex-shrink-0 bg-green-500 rounded-md p-3">
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										className="h-6 w-6 text-white"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke="currentColor"
+									<AtSymbolIcon className="h-6 w-6 text-white" />
+								</div>
+								<div className="ml-5 w-0 flex-1">
+									<dt className="text-sm font-medium text-gray-200 truncate">
+										Self Roles
+									</dt>
+									<dd className="flex items-baseline">
+										<div className="text-2xl font-semibold ">
+											{config?.selfrole?.length || 0}
+										</div>
+									</dd>
+								</div>
+							</div>
+						</div>
+						<div className="bg-gray-800 px-4 py-4 sm:px-6">
+							<div className="text-sm">
+								Wow!
+								{/* <a
+										href="/"
+										className="font-medium text-green-600 hover:text-green-500"
 									>
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											stroke-width="2"
-											d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-										/>
-									</svg>
+										{' '}
+										View all
+										<span className="sr-only">
+											{' '}
+											Total Member stats
+										</span>
+									</a> */}
+							</div>
+						</div>
+					</div>
+
+					<div className="flex flex-col bg-gray-700 overflow-hidden shadow rounded-lg">
+						<div className="flex-grow px-4 py-5 sm:p-6">
+							<div className="flex items-center">
+								<div className="flex-shrink-0 bg-green-500 rounded-md p-3">
+									<EmojiHappyIcon className="h-6 w-6 text-white"></EmojiHappyIcon>
 								</div>
 								<div className="ml-5 w-0 flex-1">
 									<dt className="text-sm font-medium text-gray-200 truncate">
@@ -135,7 +188,23 @@ const ControlHome = () => {
 						</div>
 					</div>
 				</dl>
-			</div>
+			</ControlContent>
+			<ControlContent>
+				<h3 className="text-lg leading-6 font-medium text-green-200">
+					Under Construction
+				</h3>
+				<div className="py-4">
+					<div className="border-4 border-dashed border-gray-700 rounded-lg h-40" />
+				</div>
+			</ControlContent>
+			<ControlContent>
+				<h3 className="text-lg leading-6 font-medium text-green-200">
+					Under Construction
+				</h3>
+				<div className="py-4">
+					<div className="border-4 border-dashed border-gray-700 rounded-lg h-40" />
+				</div>
+			</ControlContent>
 		</ControlPanel>
 	);
 };

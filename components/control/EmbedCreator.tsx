@@ -1,10 +1,12 @@
+import classNames from 'classnames';
 import clsx from 'clsx';
 import { Formik } from 'formik';
 import { identity, pick, pickBy } from 'lodash';
-import { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import { GuildContext } from '../../contexts/guild';
 import { Embed } from '../../interfaces/control';
+import { FormLabel } from '../../pages/control/[id]/config';
 import { db } from '../../utils/auth/firebase';
 
 interface IEmbedCreator {
@@ -73,18 +75,12 @@ const EmbedCreator = (props: IEmbedCreator) => {
 	}, [props.editExisting, guild]);
 
 	const inputClassName =
-		'rounded-lg bg-gray-800 shadow-lg p-3 focus:bg-gray-900 focus:shadow-none transition-all duration-100 border-0';
+		'bg-gray-800 shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-700 rounded-md';
 
 	function noAllowSpaces(event: any) {
 		if (event.key === ' ') {
 			event.preventDefault();
 		}
-	}
-
-	function EmbedTitleSection({ children }: any) {
-		return (
-			<h2 className="text-green-300 font-bold tracking-wider text-lg">{`${children}`}</h2>
-		);
 	}
 
 	return (
@@ -134,10 +130,15 @@ const EmbedCreator = (props: IEmbedCreator) => {
 			}) => (
 				<form
 					onSubmit={handleSubmit}
-					className={clsx('text-green-100', 'flex', 'flex-col', {
-						'space-y-2': true,
-					})}
+					className={classNames(
+						'text-green-100 flex flex-col col-span-4',
+						{
+							'space-y-2': true,
+						}
+					)}
 				>
+					<FormLabel>General Information</FormLabel>
+
 					<input
 						type="text"
 						name="name"
@@ -148,98 +149,75 @@ const EmbedCreator = (props: IEmbedCreator) => {
 						disabled={!!props.editExisting}
 						onKeyDown={noAllowSpaces}
 						placeholder="commandname"
-						className={clsx(
-							'rounded-lg',
-							'bg-gray-900',
-							'p-3',
-							'shadow-xl',
-							'mt-2',
-							'font-mono',
-							'border-0'
-						)}
+						className="bg-gray-800 shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-700 rounded-md col-span-6"
 					/>
-					<EmbedTitleSection>Embed Contents</EmbedTitleSection>
-					<div
-						className="flex flex-col gap-2 bg-gray-900 p-3 rounded-md border-l-4"
-						style={{ borderColor: values.color }}
-					>
-						<input
-							type="text"
-							name="title"
-							placeholder="The title goes here"
-							onChange={handleChange}
-							onBlur={handleBlur}
-							value={values.title}
-							className={clsx(
-								inputClassName,
-								'font-bold',
-								'text-lg'
-							)}
-						/>
-						<textarea
-							name="description"
-							onChange={handleChange}
-							onBlur={handleBlur}
-							value={values.description}
-							wrap={'true'}
-							placeholder="Description... try putting something interesting here? You can try some **markdown**, but until I add some styling, it will just end up like text here LOL."
-							className={clsx(inputClassName)}
-						/>
-						<input
-							type="text"
-							name="footer"
-							placeholder="You can write anything you'd like in the footer"
-							onChange={handleChange}
-							onBlur={handleBlur}
-							value={values.footer}
-							className={inputClassName}
-						/>
-					</div>
-					<EmbedTitleSection>Links & Images</EmbedTitleSection>
-					<div className="w-full flex flex-col bg-gray-900 p-3 rounded-lg shadow-md space-y-2">
-						<label htmlFor="name">Title URL</label>
-						<input
-							type="url"
-							name="url"
-							value={values.url}
-							className={inputClassName}
-							onChange={handleChange}
-							onBlur={handleBlur}
-							placeholder="https://ferris.gg/img/placeholder-crystal.png"
-						/>
-						<label htmlFor="name">Large image</label>
-						<input
-							type="url"
-							name="image"
-							value={values.image}
-							className={inputClassName}
-							onChange={handleChange}
-							onBlur={handleBlur}
-							placeholder="https://ferris.gg/img/placeholder-crystal.png"
-						/>
-						<label htmlFor="thumbnail">Thumbnail</label>
-						<input
-							type="url"
-							name="thumbnail"
-							value={values.thumbnail}
-							className={inputClassName}
-							onChange={handleChange}
-							onBlur={handleBlur}
-							placeholder="https://ferris.gg/img/placeholder-crystal.png"
-						/>
-					</div>
-					<EmbedTitleSection>Extra</EmbedTitleSection>
-					<div className="w-full flex flex-col bg-gray-900 p-3 rounded-lg shadow-md space-y-2">
-						<label htmlFor="name">Embed Color</label>
-						<input
-							type="color"
-							name="color"
-							value={values.color}
-							onChange={handleChange}
-							onBlur={handleBlur}
-							placeholder="#FFFFFF"
-						/>
-					</div>
+					<FormLabel>Embed Contents</FormLabel>
+					<input
+						type="text"
+						name="title"
+						placeholder="The title goes here"
+						onChange={handleChange}
+						onBlur={handleBlur}
+						value={values.title}
+						className={clsx(inputClassName, 'font-bold', 'text-lg')}
+					/>
+					<textarea
+						name="description"
+						onChange={handleChange}
+						onBlur={handleBlur}
+						value={values.description}
+						wrap={'true'}
+						placeholder="Description... try putting something interesting here? You can try some **markdown**, but until I add some styling, it will just end up like text here LOL."
+						className={clsx(inputClassName)}
+					/>
+					<input
+						type="text"
+						name="footer"
+						placeholder="You can write anything you'd like in the footer"
+						onChange={handleChange}
+						onBlur={handleBlur}
+						value={values.footer}
+						className={inputClassName}
+					/>
+					<FormLabel htmlFor="name">Title URL</FormLabel>
+					<input
+						type="url"
+						name="url"
+						value={values.url}
+						className={inputClassName}
+						onChange={handleChange}
+						onBlur={handleBlur}
+						placeholder="https://ferris.gg/img/placeholder-crystal.png"
+					/>
+					<FormLabel htmlFor="name">Large image</FormLabel>
+					<input
+						type="url"
+						name="image"
+						value={values.image}
+						className={inputClassName}
+						onChange={handleChange}
+						onBlur={handleBlur}
+						placeholder="https://ferris.gg/img/placeholder-crystal.png"
+					/>
+					<FormLabel htmlFor="thumbnail">Thumbnail</FormLabel>
+					<input
+						type="url"
+						name="thumbnail"
+						value={values.thumbnail}
+						className={inputClassName}
+						onChange={handleChange}
+						onBlur={handleBlur}
+						placeholder="https://ferris.gg/img/placeholder-crystal.png"
+					/>
+					<FormLabel htmlFor="name">Embed Color</FormLabel>
+					<input
+						type="color"
+						name="color"
+						value={values.color}
+						onChange={handleChange}
+						onBlur={handleBlur}
+						placeholder="#FFFFFF"
+					/>
 					<button
 						type="submit"
 						disabled={isSubmitting}

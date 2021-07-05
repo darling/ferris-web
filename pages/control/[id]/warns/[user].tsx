@@ -7,6 +7,10 @@ import firebase from 'firebase';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { FC, useContext, useEffect, useState } from 'react';
+import {
+	ControlContent,
+	ControlMainTitle,
+} from '../../../../components/control/ControlSidebar';
 
 import ControlPanel from '../../../../components/ControlPanel';
 import { GuildContext } from '../../../../contexts/guild';
@@ -51,71 +55,77 @@ const UserWarnPage: FC = () => {
 
 	return (
 		<ControlPanel>
-			<div className="lg:flex lg:items-center lg:justify-between">
-				<div className="flex-1 min-w-0">
-					<nav className="flex" aria-label="Breadcrumb">
-						<ol className="flex items-center space-x-4" role="list">
-							<li>
-								<Link
-									href={{
-										pathname: '/control/[id]/warns',
-										query: { id: guild?.id },
-									}}
-								>
-									<a className="text-sm font-medium text-gray-300 hover:text-white">
-										Warns
-									</a>
-								</Link>
-							</li>
-							<li>
-								<div className="flex items-center">
-									<ChevronRightIcon
-										className="flex-shrink-0 h-5 w-5 text-gray-500"
-										aria-hidden="true"
-									/>
+			<ControlMainTitle>Warning Management</ControlMainTitle>
+			<ControlContent>
+				<div className="lg:flex lg:items-center lg:justify-between">
+					<div className="flex-1 min-w-0">
+						<nav className="flex" aria-label="Breadcrumb">
+							<ol
+								className="flex items-center space-x-4"
+								role="list"
+							>
+								<li>
 									<Link
 										href={{
 											pathname: '/control/[id]/warns',
 											query: { id: guild?.id },
 										}}
 									>
-										<a className="ml-4 text-sm font-medium text-gray-300 hover:text-white">
-											{reportee?.username}
+										<a className="text-sm font-medium text-gray-300 hover:text-white">
+											Warns
 										</a>
 									</Link>
-								</div>
-							</li>
-						</ol>
-					</nav>
-					<h2 className="mt-2 text-2xl font-bold leading-7 text-green-200 sm:text-3xl sm:truncate">
-						{reportee?.username}
-						<span className="font-mono text-xl">
-							#{reportee?.discriminator}
-						</span>
-					</h2>
-					<div className="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
-						<div className="mt-2 flex items-center text-sm text-gray-300">
-							<ShieldExclamationIcon
-								className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-500"
-								aria-hidden="true"
-							/>
-							{Object.keys(warnings).length} warning
-							{Object.keys(warnings).length > 1 ? 's' : ''}
+								</li>
+								<li>
+									<div className="flex items-center">
+										<ChevronRightIcon
+											className="flex-shrink-0 h-5 w-5 text-gray-500"
+											aria-hidden="true"
+										/>
+										<Link
+											href={{
+												pathname: '/control/[id]/warns',
+												query: { id: guild?.id },
+											}}
+										>
+											<a className="ml-4 text-sm font-medium text-gray-300 hover:text-white">
+												{reportee?.username}
+											</a>
+										</Link>
+									</div>
+								</li>
+							</ol>
+						</nav>
+						<h2 className="mt-2 text-2xl font-bold leading-7 text-green-200 sm:text-3xl sm:truncate">
+							{reportee?.username}
+							<span className="font-mono text-xl">
+								#{reportee?.discriminator}
+							</span>
+						</h2>
+						<div className="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
+							<div className="mt-2 flex items-center text-sm text-gray-300">
+								<ShieldExclamationIcon
+									className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-500"
+									aria-hidden="true"
+								/>
+								{Object.keys(warnings).length} warning
+								{Object.keys(warnings).length > 1 ? 's' : ''}
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<ul className="divide-y divide-gray-700">
-				{Object.keys(warnings).map((timestamp) => {
-					return (
-						<WarningEntry
-							warnings={warnings}
-							timestamp={timestamp}
-							uid={uid}
-						/>
-					);
-				})}
-			</ul>
+				<ul className="divide-y divide-gray-700">
+					{Object.keys(warnings).map((timestamp) => {
+						return (
+							<WarningEntry
+								warnings={warnings}
+								timestamp={timestamp}
+								uid={uid}
+							/>
+						);
+					})}
+				</ul>
+			</ControlContent>
 		</ControlPanel>
 	);
 };
