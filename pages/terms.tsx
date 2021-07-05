@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import rereact from 'rehype-react';
 import parse from 'remark-parse';
 import rehtml from 'remark-rehype';
