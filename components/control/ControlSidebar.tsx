@@ -270,28 +270,27 @@ export const ControlSideBar: FC = (props) => {
 							</nav>
 						</div>
 						<div className="flex-shrink-0 flex bg-gray-700 p-4">
-							<a
-								href="#"
-								className="flex-shrink-0 w-full group block"
-							>
-								<div className="flex items-center">
-									<div>
-										<img
-											className="inline-block h-9 w-9 rounded-full"
-											src={auth.photoURL}
-											alt=""
-										/>
+							<Link href="/profile">
+								<a className="flex-shrink-0 w-full group block">
+									<div className="flex items-center">
+										<div>
+											<img
+												className="inline-block h-9 w-9 rounded-full"
+												src={auth.photoURL}
+												alt=""
+											/>
+										</div>
+										<div className="ml-3">
+											<p className="text-sm font-medium text-white">
+												{auth.displayName}
+											</p>
+											<p className="text-xs font-medium text-gray-300 group-hover:text-gray-200">
+												View profile
+											</p>
+										</div>
 									</div>
-									<div className="ml-3">
-										<p className="text-sm font-medium text-white">
-											{auth.displayName}
-										</p>
-										<p className="text-xs font-medium text-gray-300 group-hover:text-gray-200">
-											View profile
-										</p>
-									</div>
-								</div>
-							</a>
+								</a>
+							</Link>
 						</div>
 					</div>
 				</div>
