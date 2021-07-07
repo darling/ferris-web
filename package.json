@@ -24,7 +24,7 @@
 		"clsx": "^1.1.1",
 		"firebase": "^8.0.0",
 		"firebase-admin": "^9.3.0",
-		"formik": "^2.2.6",
+		"formik": "^2.2.9",
 		"fs": "^0.0.1-security",
 		"lodash": "^4.17.20",
 		"next": "^10.0.5",

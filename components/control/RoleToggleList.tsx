@@ -3,7 +3,7 @@ import React, { FC, useContext } from 'react';
 import classNames from 'classnames';
 import { ConfigContext, GuildContext } from '../../contexts/guild';
 import { db } from '../../utils/auth/firebase';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 
 export const RoleToggleList: FC<{ className?: string }> = (props) => {
 	const guild = useContext(GuildContext);

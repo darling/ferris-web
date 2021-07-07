@@ -1,4 +1,5 @@
 import { InformationCircleIcon } from '@heroicons/react/outline';
+import classNames from 'classnames';
 import Link from 'next/link';
 import React, { useContext } from 'react';
 
@@ -34,14 +35,17 @@ export const FormSection = (props: {
 };
 
 export const FormLabel = (props: { children: any; htmlFor?: any }) => {
+	const classname = classNames('block text-sm font-medium text-gray-200');
+
 	return (
 		<div className="sm:col-span-3">
-			<label
-				htmlFor={props.htmlFor}
-				className="block text-sm font-medium text-gray-200"
-			>
-				{props.children}
-			</label>
+			{props.htmlFor ? (
+				<label htmlFor={props.htmlFor} className={classname}>
+					{props.children}
+				</label>
+			) : (
+				<p className={classname}>{props.children}</p>
+			)}
 		</div>
 	);
 };

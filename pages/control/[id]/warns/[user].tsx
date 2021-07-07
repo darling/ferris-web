@@ -3,7 +3,7 @@ import {
 	ShieldExclamationIcon,
 	XIcon,
 } from '@heroicons/react/solid';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { FC, useContext, useEffect, useState } from 'react';

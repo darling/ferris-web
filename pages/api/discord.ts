@@ -66,5 +66,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		return res.status(200).json({ ok: true });
 	}
 
-	return res.status(401).send('Please authenticate... :(');
+	return res.status(401).send({ message: 'Please authenticate... :(' });
 };

@@ -1,4 +1,4 @@
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 
 import { IBannedWord } from '../interfaces/control';
 import { db } from './auth/firebase';

@@ -1,68 +1,57 @@
 import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
 import classNames from 'classnames';
-import firebase from 'firebase/app';
 import React, { Fragment, useContext } from 'react';
 
 import { GuildContext } from '../../contexts/guild';
-import { db } from '../../utils/auth/firebase';
+import { Channel } from '../../interfaces/control';
 
-interface RoleSelectProps {
+interface ChannelSelectProps {
 	children?: any;
-	roleData: any;
-	firebaseKey: string;
+	channelData: any;
+	type?: string;
+	id?: string;
+	onChange: (newId: Channel) => void;
 }
 
-export const RoleSelectBox = (props: RoleSelectProps) => {
+export const ChannelSelectBox = (props: ChannelSelectProps) => {
 	const guild = useContext(GuildContext);
 
-	const selectableRoles = Object.keys(guild?.roles || {}).map((roleId) => {
-		const role = guild?.roles?.[roleId];
-		return {
-			label: role?.name || ':ERROR: non named role',
-			value: roleId,
-		};
-	});
+	const selectableChannels = Object.keys(guild?.channels || {})
+		.map((channelId) => {
+			const channel = guild?.channels?.[channelId];
+
+			return {
+				label: channel?.name || ':ERROR: non named channel',
+				value: channelId,
+				type: channel?.type,
+			};
+		})
+		.filter((channel) => channel.type === 'text');
 
 	return (
 		<Listbox
-			value={props.roleData}
-			onChange={(newRole) => {
-				if (!newRole) {
-					db.collection('configs')
-						.doc(guild?.id)
-						.set(
-							{
-								[props.firebaseKey]:
-									firebase.firestore.FieldValue.delete(),
-							},
-							{ merge: true }
-						);
-				} else {
-					db.collection('configs')
-						.doc(guild?.id)
-						.set(
-							{
-								[props.firebaseKey]: newRole?.value,
-							},
-							{ merge: true }
-						);
-				}
+			value={props.channelData}
+			onChange={(newChannel) => {
+				props.onChange(newChannel);
 			}}
 		>
 			{({ open }) => (
 				<>
 					<div className="mt-1 relative">
-						<Listbox.Button className="bg-gray-800 relative w-full border border-gray-700 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 sm:text-sm">
+						<Listbox.Button
+							id={props.id}
+							className="bg-gray-800 relative w-full border border-gray-700 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 sm:text-sm"
+						>
 							<span
 								className={classNames(
 									'block truncate',
-									props.roleData?.label
+									props.channelData?.label
 										? 'text-green-200'
 										: 'text-gray-500'
 								)}
 							>
-								{props.roleData?.label || 'Pick a role'}
+								{props.channelData?.label || 'Pick a channel'}
 							</span>
 							<span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
 								<SelectorIcon
@@ -97,9 +86,9 @@ export const RoleSelectBox = (props: RoleSelectProps) => {
 								>
 									<b>NO ROLE</b>
 								</Listbox.Option>
-								{selectableRoles.map((role) => (
+								{selectableChannels.map((channel) => (
 									<Listbox.Option
-										key={role.value}
+										key={channel.value}
 										className={({ active }) =>
 											classNames(
 												active
@@ -108,12 +97,12 @@ export const RoleSelectBox = (props: RoleSelectProps) => {
 												'cursor-default select-none relative py-2 pl-3 pr-9'
 											)
 										}
-										value={role}
+										value={channel}
 									>
 										{({ active }) => {
 											const selected =
-												props.roleData?.value ==
-												role.value;
+												props.channelData?.value ==
+												channel.value;
 											return (
 												<>
 													<span
@@ -124,7 +113,7 @@ export const RoleSelectBox = (props: RoleSelectProps) => {
 															'block truncate'
 														)}
 													>
-														{role.label}
+														{channel.label}
 													</span>
 
 													{selected ? (

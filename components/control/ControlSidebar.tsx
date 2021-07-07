@@ -1,36 +1,42 @@
 /* This example requires Tailwind CSS v2.0+ */
-import React, { FC, Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import {
-	CalendarIcon,
-	FolderIcon,
+	AdjustmentsIcon,
+	CogIcon,
+	ExclamationIcon,
 	HomeIcon,
-	InboxIcon,
 	MenuIcon,
-	UsersIcon,
+	PencilAltIcon,
 	XIcon,
 } from '@heroicons/react/outline';
 import classNames from 'classnames';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React, { FC, Fragment, useState } from 'react';
+
 import { useAuth } from '../../contexts/auth';
 import { FailedAuth } from '../auth/FailedAuth';
-import { useRouter } from 'next/router';
 import Footer from '../default/Footer';
 
 const navigation = [
 	{ name: 'Home', href: '/index', icon: HomeIcon },
-	{ name: 'Config', href: '/config', icon: UsersIcon },
-	{ name: 'Warnings', href: '/warns', icon: FolderIcon },
-	{ name: 'Automod', href: '/automod', icon: CalendarIcon },
+	{ name: 'Config', href: '/config', icon: AdjustmentsIcon },
+	{ name: 'Warnings', href: '/warns', icon: ExclamationIcon },
+	{ name: 'Automod', href: '/automod', icon: CogIcon },
 	{
 		name: 'Custom Commands',
 		href: '/custom-commands',
-		icon: InboxIcon,
+		icon: PencilAltIcon,
 	},
+	// {
+	// 	name: 'Integrations',
+	// 	href: '/integrations',
+	// 	icon: LinkIcon,
+	// },
 ];
 
 const secondaryNavigation = [
-	{ name: 'Premium', href: '/premium' },
+	{ name: 'Premium', href: '/pricing' },
 	{ name: 'Our Discord', href: '/discord' },
 	{ name: 'Add Ferris', href: '/add' },
 	{ name: 'Control Panel', href: '/control' },
@@ -38,7 +44,7 @@ const secondaryNavigation = [
 
 export const ControlSideBar: FC = (props) => {
 	const auth = useAuth();
-	if (!auth) return <FailedAuth></FailedAuth>;
+	if (!auth) return <FailedAuth />;
 
 	const router = useRouter();
 	const [sidebarOpen, setSidebarOpen] = useState(false);

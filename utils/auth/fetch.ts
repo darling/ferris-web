@@ -18,7 +18,12 @@ export async function fetchApi(url: string, opts?: any) {
 		}
 	);
 
-	const data = await res.json();
+	try {
+		const data = await res.json();
 
-	return data;
+		return data;
+	} catch (error) {
+		console.error(error);
+		return error;
+	}
 }

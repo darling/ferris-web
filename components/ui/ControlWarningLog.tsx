@@ -1,4 +1,4 @@
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import { take, toPairsIn } from 'lodash';
 import { useEffect } from 'react';
 import { useState } from 'react';
