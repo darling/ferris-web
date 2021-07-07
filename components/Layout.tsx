@@ -1,10 +1,9 @@
-import { ReactNode } from 'react';
 import Header from './default/Header';
 import Footer from './default/Footer';
 import { CustomHead } from './default/Head';
+import { FC } from 'react';
 
 type Props = {
-	children?: ReactNode;
 	title?: string;
 	colorOverride?: string;
 	headerClassName?: string;
@@ -13,7 +12,7 @@ type Props = {
 	footer?: boolean;
 };
 
-const Layout = ({
+const Layout: FC<Props> = ({
 	children,
 	title = 'Ferris Bot — A Discord bot for protecting your community.',
 	colorOverride,
@@ -21,7 +20,7 @@ const Layout = ({
 	linkClassName,
 	header = true,
 	footer = true,
-}: Props) => {
+}) => {
 	return (
 		<div
 			className={

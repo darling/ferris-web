@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import clsx from 'clsx';
 import { Formik } from 'formik';
 import { identity, pick, pickBy } from 'lodash';
 import React, { useContext, useEffect, useState } from 'react';
@@ -159,7 +158,11 @@ const EmbedCreator = (props: IEmbedCreator) => {
 						onChange={handleChange}
 						onBlur={handleBlur}
 						value={values.title}
-						className={clsx(inputClassName, 'font-bold', 'text-lg')}
+						className={classNames(
+							inputClassName,
+							'font-bold',
+							'text-lg'
+						)}
 					/>
 					<textarea
 						name="description"
@@ -168,7 +171,7 @@ const EmbedCreator = (props: IEmbedCreator) => {
 						value={values.description}
 						wrap={'true'}
 						placeholder="Description... try putting something interesting here? You can try some **markdown**, but until I add some styling, it will just end up like text here LOL."
-						className={clsx(inputClassName)}
+						className={classNames(inputClassName)}
 					/>
 					<input
 						type="text"
@@ -221,7 +224,7 @@ const EmbedCreator = (props: IEmbedCreator) => {
 					<button
 						type="submit"
 						disabled={isSubmitting}
-						className={clsx(
+						className={classNames(
 							{
 								'bg-white': !isSubmitting,
 								'bg-gray-400': isSubmitting,
