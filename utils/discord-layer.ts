@@ -25,7 +25,10 @@ export const getUserInfo = async (id: string): Promise<DiscordUser> => {
 	return res.data;
 };
 
-export const discordProfilePic = (id: string, avatar: string): string => {
+export const discordProfilePic = (id: string, avatar?: string): string => {
+	if (!avatar) {
+		return `https://ferris.gg/img/placeholder-crystal.png`;
+	}
 	return `https://cdn.discordapp.com/avatars/${id}/${avatar}.${
 		avatar.startsWith('a_') ? 'gif' : 'png'
 	}`;
